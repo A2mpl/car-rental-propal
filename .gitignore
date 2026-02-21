@@ -1,0 +1,40 @@
+# Dépendances
+/node_modules
+/.pnp
+.pnp.js
+
+# Build et production
+/out/
+/.next/
+/bin/
+/build/
+
+# Environnement (NE JAMAIS PUSH CES FICHIERS)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Debug
+.vercel
+*.tsbuildinfo
+next-env.d.ts
+
+# Tests
+/coverage
+/.nyc_output
+
+# OS (Fichiers système inutiles)
+.DS_Store
+Thumbs.db
+
+# IDE (Optionnel, selon tes outils)
+.vscode/
+.idea/

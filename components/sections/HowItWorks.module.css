@@ -1,0 +1,337 @@
+.section {
+    position: relative;
+    overflow: hidden;
+    background: #121214;
+    padding: 64px 0;
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.label {
+    display: inline-block;
+    font-family: var(--font-inter), 'Inter', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    margin-bottom: 16px;
+    position: relative;
+    padding: 0 16px;
+}
+
+.label::before,
+.label::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 24px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.label::before {
+    right: 100%;
+}
+
+.label::after {
+    left: 100%;
+}
+
+.heading {
+    font-family: var(--font-bebas), 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 8vw, 48px);
+    font-weight: 400;
+    color: #ffffff;
+    text-transform: uppercase;
+    line-height: 0.95;
+    letter-spacing: 0.02em;
+    margin-bottom: 16px;
+}
+
+.subtitle {
+    font-family: var(--font-inter), 'Inter', sans-serif;
+    font-size: 14px;
+    color: #999;
+    line-height: 1.6;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+.grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.cardWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card {
+    position: relative;
+    width: 100%;
+    padding: 1px;
+    border-radius: 2px;
+    background: rgba(255, 255, 255, 0.06);
+    transition: background 0.4s ease;
+}
+
+.card:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.cardInner {
+    position: relative;
+    z-index: 1;
+    background: #18181b;
+    border-radius: 1px;
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    transition: background 0.4s ease;
+}
+
+.card:hover .cardInner {
+    background: #1c1c1f;
+}
+
+.cardGlow {
+    position: absolute;
+    inset: -1px;
+    border-radius: 3px;
+    background: linear-gradient(
+            135deg,
+            rgba(255, 255, 255, 0.12) 0%,
+            rgba(255, 255, 255, 0.03) 40%,
+            rgba(255, 255, 255, 0) 60%,
+            rgba(255, 255, 255, 0.08) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.card:hover .cardGlow {
+    opacity: 1;
+}
+
+.cardTop {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cardNumber {
+    font-family: var(--font-bebas), 'Bebas Neue', sans-serif;
+    font-size: 56px;
+    font-weight: 400;
+    line-height: 1;
+    background: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.2) 0%,
+            rgba(255, 255, 255, 0.05) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.cardIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    transition: border-color 0.4s ease, background 0.4s ease;
+}
+
+.card:hover .cardIcon {
+    border-color: rgba(255, 255, 255, 0.25);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.cardContent {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.cardTitle {
+    font-family: var(--font-inter), 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 0.01em;
+}
+
+.cardDesc {
+    font-family: var(--font-inter), 'Inter', sans-serif;
+    font-size: 13px;
+    color: #999;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.progressTrack {
+    width: 1px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.06);
+    position: relative;
+    overflow: hidden;
+}
+
+.progressFill {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.3) 0%,
+            rgba(255, 255, 255, 0.08) 100%
+    );
+    transform-origin: top center;
+}
+
+@media (min-width: 768px) {
+    .section {
+        padding: 80px 0;
+    }
+
+    .container {
+        padding: 0 40px;
+    }
+
+    .header {
+        margin-bottom: 56px;
+    }
+
+    .heading {
+        font-size: clamp(48px, 6vw, 64px);
+    }
+
+    .label::before,
+    .label::after {
+        width: 40px;
+    }
+
+    .grid {
+        flex-direction: row;
+        align-items: stretch;
+    }
+
+    .cardWrapper {
+        flex: 1;
+        flex-direction: row;
+        align-items: stretch;
+    }
+
+    .card {
+        flex: 1;
+    }
+
+    .cardInner {
+        padding: 32px;
+        height: 100%;
+    }
+
+    .progressTrack {
+        width: 32px;
+        height: auto;
+        align-self: center;
+        background: rgba(255, 255, 255, 0.06);
+    }
+
+    .progressFill {
+        transform-origin: left center;
+        background: linear-gradient(
+                90deg,
+                rgba(255, 255, 255, 0.3) 0%,
+                rgba(255, 255, 255, 0.08) 100%
+        );
+    }
+}
+
+@media (min-width: 1024px) {
+    .section {
+        padding: 96px 0;
+    }
+
+    .container {
+        padding: 0 var(--px);
+    }
+
+    .header {
+        margin-bottom: 64px;
+    }
+
+    .heading {
+        font-size: clamp(56px, 5vw, 72px);
+    }
+
+    .subtitle {
+        font-size: 15px;
+        max-width: 520px;
+    }
+
+    .label::before,
+    .label::after {
+        width: 56px;
+    }
+
+    .cardInner {
+        padding: 40px;
+        gap: 32px;
+    }
+
+    .cardNumber {
+        font-size: 64px;
+    }
+
+    .cardIcon {
+        width: 48px;
+        height: 48px;
+    }
+
+    .cardTitle {
+        font-size: 17px;
+    }
+
+    .cardDesc {
+        font-size: 14px;
+    }
+
+    .progressTrack {
+        width: 48px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .cardInner {
+        padding: 48px;
+    }
+
+    .progressTrack {
+        width: clamp(48px, 4vw, 64px);
+    }
+}

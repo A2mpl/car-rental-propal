@@ -1,0 +1,138 @@
+.footer {
+  background: #141414;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 80px var(--px);
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 60px;
+}
+
+.ctaSide {
+  flex-shrink: 0;
+  width: 38%;
+}
+
+.heading {
+  font-family: var(--font-bebas), 'Bebas Neue', sans-serif;
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 400;
+  color: #ffffff;
+  text-transform: uppercase;
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
+.body {
+  margin-top: 16px;
+  font-size: 13px;
+  color: #888888;
+  line-height: 1.7;
+  max-width: 340px;
+  font-family: var(--font-inter), 'Inter', sans-serif;
+}
+
+.navArea {
+  flex: 1;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  list-style: none;
+}
+
+.navLink {
+  font-size: 11px;
+  color: #888888;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-family: var(--font-inter), 'Inter', sans-serif;
+  text-decoration: none;
+  transition: color 0.15s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.navLink:hover {
+  color: #ffffff;
+}
+
+.badge {
+  display: inline-block;
+  padding: 2px 5px;
+  font-size: 9px;
+  font-weight: 700;
+  color: #000000;
+  background: #4ade80;
+  border-radius: 3px;
+  line-height: 1;
+}
+
+.bottomBar {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.bottomInner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 20px var(--px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.copyright {
+  font-size: 11px;
+  color: #888888;
+  font-family: var(--font-inter), 'Inter', sans-serif;
+}
+
+.tagline {
+  font-size: 11px;
+  color: #888888;
+  font-family: var(--font-inter), 'Inter', sans-serif;
+}
+
+@media (max-width: 768px) {
+  .row {
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  .ctaSide {
+    width: 100%;
+  }
+
+  .columns {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .main {
+    padding: 60px var(--px-mobile);
+  }
+
+  .bottomInner {
+    padding: 16px var(--px-mobile);
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+}

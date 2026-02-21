@@ -1,0 +1,148 @@
+.header {
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    background: rgba(18, 18, 20, 0.85);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px);
+}
+
+.nav {
+    max-width: 1440px;
+    margin: 0 auto;
+    height: 80px;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    flex-shrink: 0;
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    padding: 5px 15px;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.35em;
+    color: #ffffff;
+    text-transform: uppercase;
+    font-family: var(--font-bebas), sans-serif;
+    text-decoration: none;
+}
+
+.links {
+    display: flex;
+    align-items: center;
+    gap: 45px;
+    list-style: none;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.linkWrapper {
+    position: relative;
+}
+
+.link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-weight: 500;
+    color: #99999c;
+    text-decoration: none;
+    padding: 8px 0;
+    transition: color 0.3s ease;
+}
+
+.link:hover, .linkActive {
+    color: #ffffff;
+}
+
+.underline {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    background: #ffffff;
+}
+
+.chevron {
+    opacity: 0.4;
+    transition: transform 0.3s ease;
+}
+
+.link:hover .chevron {
+    transform: translateY(1px);
+    opacity: 1;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.iconBtn {
+    color: #ffffff;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.iconBtn:hover {
+    opacity: 1;
+}
+
+.hamburger {
+    display: none;
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+}
+
+/* --- Mobile --- */
+@media (max-width: 1024px) {
+    .nav {
+        padding: 0 24px;
+        height: 70px;
+    }
+    .links {
+        display: none;
+    }
+    .hamburger {
+        display: block;
+    }
+    .mobileMenu {
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: #121214;
+        padding: 30px 24px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .mobileLinks {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    .mobileLinks a {
+        color: white;
+        text-decoration: none;
+        font-size: 18px;
+        font-family: var(--font-bebas), serif;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+}
