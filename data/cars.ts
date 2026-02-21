@@ -1,20 +1,20 @@
 export interface Car {
   id: string;
-  number: string;                // Display number: "01", "02", …
+  number: string; // Display number: "01", "02", …
   name: string;
   brand: string;
   category: 'sedan' | 'suv' | 'sport' | 'supercar';
   fuel: 'electric' | 'hybrid';
   image: string;
   specs: {
-    range: string;               // e.g. "358 MI"
-    acceleration: string;        // e.g. "3.1 S"
-    power: string;               // e.g. "670 HP"
+    range: string; // e.g. "358 MI"
+    acceleration: string; // e.g. "3.1 S"
+    power: string; // e.g. "670 HP"
   };
   specLabels: {
-    range: string;               // e.g. "Range (EPA est.)"
-    acceleration: string;        // e.g. "0-60 mph"
-    power: string;               // e.g. "peak power"
+    range: string; // e.g. "Range (EPA est.)"
+    acceleration: string; // e.g. "0-60 mph"
+    power: string; // e.g. "peak power"
   };
   description: string;
   featured?: boolean;

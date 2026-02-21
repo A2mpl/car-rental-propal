@@ -3,7 +3,7 @@
   top: 25%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-family: var(--font-bebas), 'Bebas Neue', sans-serif;
+  font-family: var(--font-bebas), "Bebas Neue", sans-serif;
   font-size: 16vw;
   line-height: 1;
   white-space: nowrap;

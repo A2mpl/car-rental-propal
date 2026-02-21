@@ -1,241 +1,289 @@
 .section {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    background: #121214;
-    overflow: hidden;
-    padding-bottom: 20px;
-    padding-top: 96px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: #121214;
+  overflow: hidden;
+  padding-bottom: 20px;
+  padding-top: 96px;
 }
 
 .lightSweep {
-    position: absolute;
-    top: 0;
-    width: 15%;
-    height: 100%;
-    background: linear-gradient(
-            90deg,
-            transparent 0%,
-            rgba(255, 255, 255, 0.08) 40%,
-            rgba(255, 255, 255, 0.15) 50%,
-            rgba(255, 255, 255, 0.08) 60%,
-            transparent 100%
-    );
-    pointer-events: none;
-    z-index: 2;
-    filter: blur(8px);
+  position: absolute;
+  top: 0;
+  width: 15%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.08) 40%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.08) 60%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 2;
+  filter: blur(8px);
 }
 
 .ghostText {
-    position: absolute;
-    bottom: 55%;
-    left: 50%;
-    transform: translateX(-50%);
-    font-family: var(--font-bebas), serif;
-    font-size: clamp(100px, 18vw, 280px);
-    font-weight: 900;
-    color: rgba(255, 255, 255, 0.03);
-    text-transform: uppercase;
-    white-space: nowrap;
-    z-index: 1;
-    pointer-events: none;
-    user-select: none;
-    letter-spacing: 0.05em;
+  position: absolute;
+  bottom: 55%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-bebas), serif;
+  font-size: clamp(100px, 18vw, 280px);
+  font-weight: 900;
+  color: rgba(255, 255, 255, 0.03);
+  text-transform: uppercase;
+  white-space: nowrap;
+  z-index: 1;
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: 0.05em;
 }
 
 /* --- EFFET LUMINEUX --- */
 .glowEffect {
-    position: absolute;
-    bottom: 5%;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-    height: 30%;
-    background: radial-gradient(
-            ellipse at center,
-            rgba(200, 220, 255, 0.15) 0%,
-            transparent 75%
-    );
-    filter: blur(25px);
-    z-index: -1;
-    pointer-events: none;
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  height: 30%;
+  background: radial-gradient(ellipse at center, rgba(200, 220, 255, 0.15) 0%, transparent 75%);
+  filter: blur(25px);
+  z-index: -1;
+  pointer-events: none;
 }
 
 .heroMain {
-    display: flex;
-    flex-direction: column;
-    padding: 60px 24px 20px;
-    z-index: 2;
+  display: flex;
+  flex-direction: column;
+  padding: 60px 24px 20px;
+  z-index: 2;
 }
 
 .heading {
-    font-family: var(--font-bebas), serif;
-    font-size: clamp(38px, 8vw, 55px);
-    line-height: 0.9;
-    text-transform: uppercase;
-    color: #ffffff;
-    margin-bottom: 2rem;
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  font-family: var(--font-bebas), serif;
+  font-size: clamp(38px, 8vw, 55px);
+  line-height: 0.9;
+  text-transform: uppercase;
+  color: #ffffff;
+  margin-bottom: 2rem;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
 }
 
 .carContent {
-    position: relative;
-    width: 100%;
-    height: 35vh;
-    margin-bottom: 40px;
+  position: relative;
+  width: 100%;
+  height: 35vh;
+  margin-bottom: 40px;
 }
 
 .carWrapper {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
-.carImg { object-fit: contain; }
+.carImg {
+  object-fit: contain;
+}
 
 /* --- BARRE DU BAS --- */
 .bottomBar {
-    width: 100%;
-    background: #1a1a1c;
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
+  width: 100%;
+  background: #1a1a1c;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
 }
 
 .bottomBarInner {
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 0 24px;
-    display: flex;
-    flex-direction: column;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
 }
 
-.thumbBox { display: none; }
+.thumbBox {
+  display: none;
+}
 
 .titleRow {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .titleWrap {
-    display: flex;
-    align-items: baseline;
-    gap: 0.8rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
 }
 
 .modelNumber {
-    font-family: var(--font-bebas), serif;
-    font-size: 1.2rem;
-    color: #55555a;
+  font-family: var(--font-bebas), serif;
+  font-size: 1.2rem;
+  color: #55555a;
 }
 
 .modelName {
-    font-family: var(--font-bebas), serif;
-    font-size: 1.2rem;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: #fff;
+  font-family: var(--font-bebas), serif;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #fff;
 }
 
-.arrows { display: flex; gap: 0.8rem; }
+.arrows {
+  display: flex;
+  gap: 0.8rem;
+}
 .arrowBtn {
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    color: white;
-    width: 38px; height: 38px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    transition: all 0.3s ease;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
 }
 
 .arrowBtn:hover {
-    border-color: #fff;
-    background: rgba(255, 255, 255, 0.1);
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .statsRow {
-    padding: 2rem 0;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
+  padding: 2rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
-.statsGrid { display: flex; justify-content: space-between; }
+.statsGrid {
+  display: flex;
+  justify-content: space-between;
+}
 
 .stat {
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
 }
 
-.statValue { font-size: 1.4rem; font-weight: 500; color: #fff; }
-.statLabel { font-size: 0.65rem; color: #888; text-transform: uppercase; }
-.descBox { font-size: 0.78rem; color: #ccc; line-height: 1.5; }
+.statValue {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #fff;
+}
+.statLabel {
+  font-size: 0.65rem;
+  color: #888;
+  text-transform: uppercase;
+}
+.descBox {
+  font-size: 0.78rem;
+  color: #ccc;
+  line-height: 1.5;
+}
 
 .learnMore {
-    margin-top: 10px;
-    font-size: 0.75rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    border-bottom: 2px solid #fff;
-    background: none; color: #fff;
-    padding: 0 0 2px 0;
-    border-top: none; border-left: none; border-right: none;
-    cursor: pointer;
+  margin-top: 10px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-bottom: 2px solid #fff;
+  background: none;
+  color: #fff;
+  padding: 0 0 2px 0;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  cursor: pointer;
 }
 
 /* --- DESKTOP (1024px+) --- */
 @media (min-width: 1024px) {
-    .heroMain {
-        flex-direction: row;
-        align-items: center;
-        padding: 0 10vw;
-        min-height: 65vh;
-    }
+  .heroMain {
+    flex-direction: row;
+    align-items: center;
+    padding: 0 10vw;
+    min-height: 65vh;
+  }
 
-    .textContent { width: 50%; order: 2; }
-    .carContent { width: 40%; order: 1; height: 50vh; }
+  .textContent {
+    width: 50%;
+    order: 2;
+  }
+  .carContent {
+    width: 40%;
+    order: 1;
+    height: 50vh;
+  }
 
-    .bottomBarInner {
-        flex-direction: row;
-        gap: 3rem;
-        padding: 0 40px;
-        max-width: 1200px;
-    }
+  .bottomBarInner {
+    flex-direction: row;
+    gap: 3rem;
+    padding: 0 40px;
+    max-width: 1200px;
+  }
 
-    .thumbBox {
-        display: block;
-        flex: 0 0 260px;
-        height: 170px;
-        background: #232326;
-        margin-top: -85px;
-        position: relative;
-        z-index: 10;
-        border: 1px solid rgba(255, 255, 255, 0.15);
-        padding: 16px;
-        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
-    }
+  .thumbBox {
+    display: block;
+    flex: 0 0 260px;
+    height: 170px;
+    background: #232326;
+    margin-top: -85px;
+    position: relative;
+    z-index: 10;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 16px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
+  }
 
-    .metaData { flex: 1; }
-    .modelNumber { font-size: 1.4rem; }
-    .modelName { font-size: 1.4rem; }
+  .metaData {
+    flex: 1;
+  }
+  .modelNumber {
+    font-size: 1.4rem;
+  }
+  .modelName {
+    font-size: 1.4rem;
+  }
 
-    .titleRow {
-        padding: 1rem 0;
-    }
+  .titleRow {
+    padding: 1rem 0;
+  }
 
-    .statsRow {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: flex-start;
-        padding-top: 1rem;
-        gap: 2rem;
-    }
+  .statsRow {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding-top: 1rem;
+    gap: 2rem;
+  }
 
-    .statsGrid { gap: 3rem; }
-    .statValue { font-size: 1.5rem; }
-    .statLabel { font-size: 0.6rem; }
-    .descBox { max-width: 350px; font-size: 0.75rem; }
+  .statsGrid {
+    gap: 3rem;
+  }
+  .statValue {
+    font-size: 1.5rem;
+  }
+  .statLabel {
+    font-size: 0.6rem;
+  }
+  .descBox {
+    max-width: 350px;
+    font-size: 0.75rem;
+  }
 }

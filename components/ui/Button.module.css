@@ -9,9 +9,11 @@
   text-transform: uppercase;
   letter-spacing: 0.15em;
   font-weight: 600;
-  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-family: var(--font-inter), "Inter", sans-serif;
   cursor: pointer;
-  transition: background 0.15s ease, color 0.15s ease;
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
   white-space: nowrap;
 }
 

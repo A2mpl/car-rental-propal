@@ -22,7 +22,7 @@
 }
 
 .heading {
-  font-family: var(--font-bebas), 'Bebas Neue', sans-serif;
+  font-family: var(--font-bebas), "Bebas Neue", sans-serif;
   font-size: clamp(36px, 5vw, 64px);
   font-weight: 400;
   color: #ffffff;
@@ -37,7 +37,7 @@
   color: #888888;
   line-height: 1.7;
   max-width: 340px;
-  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-family: var(--font-inter), "Inter", sans-serif;
 }
 
 .navArea {
@@ -62,7 +62,7 @@
   color: #888888;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-family: var(--font-inter), "Inter", sans-serif;
   text-decoration: none;
   transition: color 0.15s ease;
   display: inline-flex;
@@ -101,13 +101,13 @@
 .copyright {
   font-size: 11px;
   color: #888888;
-  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-family: var(--font-inter), "Inter", sans-serif;
 }
 
 .tagline {
   font-size: 11px;
   color: #888888;
-  font-family: var(--font-inter), 'Inter', sans-serif;
+  font-family: var(--font-inter), "Inter", sans-serif;
 }
 
 @media (max-width: 768px) {

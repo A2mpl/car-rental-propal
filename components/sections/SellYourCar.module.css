@@ -1,128 +1,127 @@
 .section {
-    position: relative;
-    overflow: hidden;
-    background: #121214;
-    padding: 64px 0;
+  position: relative;
+  overflow: hidden;
+  background: #121214;
+  padding: 64px 0;
 }
 
 .container {
-    position: relative;
-    z-index: 1;
-    max-width: var(--max-width);
-    margin: 0 auto;
-    padding: 0 24px;
+  position: relative;
+  z-index: 1;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
 }
 
 .topRow {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-    margin-bottom: 48px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-bottom: 48px;
 }
 
 .imageSide {
-    width: 100%;
+  width: 100%;
 }
 
 .imageWrapper {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    overflow: hidden;
-    background: #1a1a1c;
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: #1a1a1c;
 }
 
 .img {
-    object-fit: cover;
-    object-position: center;
+  object-fit: cover;
+  object-position: center;
 }
 
 .headingSide {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
 }
 
 .heading {
-    font-family: var(--font-bebas), 'Bebas Neue', sans-serif;
-    font-size: clamp(48px, 10vw, 64px);
-    font-weight: 400;
-    color: #ffffff;
-    text-transform: uppercase;
-    line-height: 0.9;
-    letter-spacing: 0.02em;
+  font-family: var(--font-bebas), "Bebas Neue", sans-serif;
+  font-size: clamp(48px, 10vw, 64px);
+  font-weight: 400;
+  color: #ffffff;
+  text-transform: uppercase;
+  line-height: 0.9;
+  letter-spacing: 0.02em;
 }
 
 .intro {
-    font-family: var(--font-inter), 'Inter', sans-serif;
-    font-size: 14px;
-    color: #999;
-    line-height: 1.7;
-    max-width: 400px;
+  font-family: var(--font-inter), "Inter", sans-serif;
+  font-size: 14px;
+  color: #999;
+  line-height: 1.7;
+  max-width: 400px;
 }
 
 @media (min-width: 768px) {
-    .section {
-        padding: 80px 0;
-    }
+  .section {
+    padding: 80px 0;
+  }
 
-    .container {
-        padding: 0 40px;
-    }
+  .container {
+    padding: 0 40px;
+  }
 
-    .topRow {
-        gap: 40px;
-        margin-bottom: 56px;
-    }
+  .topRow {
+    gap: 40px;
+    margin-bottom: 56px;
+  }
 
-    .heading {
-        font-size: clamp(56px, 8vw, 72px);
-    }
+  .heading {
+    font-size: clamp(56px, 8vw, 72px);
+  }
 
-    .imageWrapper {
-        aspect-ratio: 16 / 10;
-    }
-
+  .imageWrapper {
+    aspect-ratio: 16 / 10;
+  }
 }
 
 @media (min-width: 1024px) {
-    .section {
-        padding: 96px 0;
-    }
+  .section {
+    padding: 96px 0;
+  }
 
-    .container {
-        padding: 0 var(--px);
-    }
+  .container {
+    padding: 0 var(--px);
+  }
 
-    .topRow {
-        flex-direction: row;
-        align-items: center;
-        gap: clamp(48px, 5vw, 80px);
-        margin-bottom: 64px;
-    }
+  .topRow {
+    flex-direction: row;
+    align-items: center;
+    gap: clamp(48px, 5vw, 80px);
+    margin-bottom: 64px;
+  }
 
-    .imageSide {
-        width: 50%;
-        flex-shrink: 0;
-    }
+  .imageSide {
+    width: 50%;
+    flex-shrink: 0;
+  }
 
-    .imageWrapper {
-        aspect-ratio: 3 / 4;
-        max-height: 520px;
-    }
+  .imageWrapper {
+    aspect-ratio: 3 / 4;
+    max-height: 520px;
+  }
 
-    .headingSide {
-        flex: 1;
-        gap: 24px;
-    }
+  .headingSide {
+    flex: 1;
+    gap: 24px;
+  }
 
-    .heading {
-        font-size: clamp(64px, 6vw, 96px);
-    }
+  .heading {
+    font-size: clamp(64px, 6vw, 96px);
+  }
 
-    .intro {
-        font-size: 14px;
-        max-width: 440px;
-    }
+  .intro {
+    font-size: 14px;
+    max-width: 440px;
+  }
 }

@@ -1,11 +1,11 @@
-import Navbar from '@/components/layout/Navbar'
-import Hero from '@/components/sections/Hero'
-import WhyUs from '@/components/sections/WhyUs'
-import SellYourCar from '@/components/sections/SellYourCar'
-import FAQ from '@/components/sections/FAQ'
-import Testimonials from '@/components/sections/Testimonials'
-import CTAFooter from '@/components/sections/CTAFooter'
-import HowItWorks from "@/components/sections/HowItWorks";
+import Navbar from '@/components/layout/Navbar';
+import CtaFooter from '@/components/sections/CtaFooter';
+import Faq from '@/components/sections/Faq';
+import Hero from '@/components/sections/Hero';
+import HowItWorks from '@/components/sections/HowItWorks';
+import SellYourCar from '@/components/sections/SellYourCar';
+import Testimonials from '@/components/sections/Testimonials';
+import WhyUs from '@/components/sections/WhyUs';
 
 export default function Home() {
   return (
@@ -14,10 +14,10 @@ export default function Home() {
       <Hero />
       <WhyUs />
       <SellYourCar />
-        <HowItWorks/>
-      <FAQ />
+      <HowItWorks />
+      <Faq />
       <Testimonials />
-      <CTAFooter />
+      <CtaFooter />
     </main>
-  )
+  );
 }

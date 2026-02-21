@@ -1,8 +1,8 @@
-import styles from './GhostText.module.css'
+import styles from './GhostText.module.css';
 
 interface GhostTextProps {
-  text: string
-  className?: string
+  text: string;
+  className?: string;
 }
 
 export default function GhostText({ text, className }: GhostTextProps) {
@@ -14,5 +14,5 @@ export default function GhostText({ text, className }: GhostTextProps) {
     >
       {text}
     </span>
-  )
+  );
 }
