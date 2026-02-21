@@ -11,6 +11,11 @@ export default function Navbar() {
     const [mobileOpen, setMobileOpen] = useState(false)
     const { nav } = siteContent
 
+    const underlineVariants = {
+        initial: { width: 0, opacity: 0 },
+        hover: { width: '100%', opacity: 1 }
+    }
+
     return (
         <header className={styles.header}>
             <nav className={styles.nav}>
@@ -23,18 +28,24 @@ export default function Navbar() {
                 <ul className={styles.links}>
                     {nav.links.map((link) => (
                         <li key={link.label} className={styles.linkWrapper}>
-                            <Link
-                                href={link.href}
-                                className={`${styles.link} ${link.active ? styles.linkActive : ''}`}
+                            <motion.div
+                                initial="initial"
+                                whileHover="hover"
+                                animate="initial"
+                                className={styles.motionContainer}
                             >
-                                {link.label}
-                                <motion.div
-                                    className={styles.underline}
-                                    initial={{ width: 0 }}
-                                    whileHover={{ width: '100%' }}
-                                    transition={{ duration: 0.3, ease: "circOut" }}
-                                />
-                            </Link>
+                                <Link
+                                    href={link.href}
+                                    className={`${styles.link} ${link.active ? styles.linkActive : ''}`}
+                                >
+                                    {link.label}
+                                    <motion.div
+                                        className={styles.underline}
+                                        variants={underlineVariants}
+                                        transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                                    />
+                                </Link>
+                            </motion.div>
                         </li>
                     ))}
                 </ul>
@@ -60,9 +71,10 @@ export default function Navbar() {
                 {mobileOpen && (
                     <motion.div
                         className={styles.mobileMenu}
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -10 }}
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        transition={{ duration: 0.3 }}
                     >
                         <ul className={styles.mobileLinks}>
                             {nav.links.map((link) => (
