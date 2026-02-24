@@ -10,8 +10,8 @@ import styles from './WhyUs.module.css';
 export default function WhyUs() {
   const { evChargers } = siteContent;
 
-  const premiumWhiteHalo = '0 20px 50px rgba(255, 255, 255, 0.04), 0 0 20px rgba(255, 255, 255, 0.02)';
-  const premiumYellowHalo = '0 15px 45px rgba(245, 197, 24, 0.08)';
+  const premiumWhiteHalo = '0 20px 40px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.04)';
+  const premiumGreenHalo = '0 15px 45px rgba(62, 99, 86, 0.10), 0 4px 12px rgba(62, 99, 86, 0.06)';
 
   return (
     <section className={styles.section} aria-label="EV Chargers">
@@ -30,7 +30,7 @@ export default function WhyUs() {
             whileHover={{ y: -8 }}
             transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
             className={`${styles.imgCell} ${styles.imgLarge}`}
-            style={{ boxShadow: premiumWhiteHalo, borderRadius: '32px' }}
+            style={{ boxShadow: premiumWhiteHalo, borderRadius: '32px', overflow: 'hidden' }}
           >
             <Image src="images/img_2.png" alt={evChargers.images[0].alt} fill className={styles.img} unoptimized />
             <div
@@ -62,52 +62,52 @@ export default function WhyUs() {
 
           <motion.div
             whileHover={{ y: -8 }}
-            transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-            className={`${styles.imgCell} ${styles.imgSmallA}`}
-            style={{
-              backgroundColor: '#E2E2E2',
-              borderRadius: '24px',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              alignItems: 'center',
-              boxShadow: premiumYellowHalo,
-              textAlign: 'center',
-            }}
-          >
-            <h3
-              style={{
-                color: 'black',
-                fontFamily: 'var(--font-bebas)',
-                fontSize: '48px',
-                fontWeight: '900',
-                margin: 0,
-                lineHeight: 0.9,
-              }}
-            >
-              900+
-            </h3>
-            <span
-              style={{
-                color: 'black',
-                fontWeight: '800',
-                fontSize: '10px',
-                textTransform: 'uppercase',
-                letterSpacing: '1px',
-                marginTop: '10px',
-              }}
-            >
-              Satisfied Clients
-            </span>
-          </motion.div>
-
-          <motion.div
-            whileHover={{ y: -8 }}
             className={`${styles.imgCell} ${styles.imgSmallB}`}
-            style={{ borderRadius: '24px', boxShadow: premiumWhiteHalo }}
+            style={{ borderRadius: '24px', boxShadow: premiumWhiteHalo, overflow: 'hidden' }}
           >
             <Image src="images/img_1.png" alt={evChargers.images[2].alt} fill className={styles.img} unoptimized />
           </motion.div>
+            <motion.div
+                whileHover={{ y: -8 }}
+                transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+                className={`${styles.imgCell} ${styles.imgSmallA}`}
+                style={{
+                    backgroundColor: '#EBF0EE',
+                    borderRadius: '24px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    boxShadow: premiumGreenHalo,
+                    textAlign: 'center',
+                    overflow: 'hidden',
+                }}
+            >
+                <h3
+                    style={{
+                        color: '#3E6356',
+                        fontFamily: 'var(--font-bebas)',
+                        fontSize: '48px',
+                        fontWeight: '900',
+                        margin: 0,
+                        lineHeight: 0.9,
+                    }}
+                >
+                    900+
+                </h3>
+                <span
+                    style={{
+                        color: '#2D4A3F',
+                        fontWeight: '800',
+                        fontSize: '10px',
+                        textTransform: 'uppercase',
+                        letterSpacing: '1px',
+                        marginTop: '10px',
+                    }}
+                >
+              Satisfied Clients
+            </span>
+            </motion.div>
         </div>
 
         <div className={styles.bottomRow}>

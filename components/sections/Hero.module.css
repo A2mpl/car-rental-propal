@@ -1,289 +1,148 @@
-.section {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  background: #121214;
-  overflow: hidden;
-  padding-bottom: 20px;
-  padding-top: 96px;
-}
+/* ══════════════════════════════════════════════
+   Hero — Conteneur centré & Texte en bas à gauche
+   ══════════════════════════════════════════════ */
 
-.lightSweep {
-  position: absolute;
-  top: 0;
-  width: 15%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.08) 40%,
-    rgba(255, 255, 255, 0.15) 50%,
-    rgba(255, 255, 255, 0.08) 60%,
-    transparent 100%
-  );
-  pointer-events: none;
-  z-index: 2;
-  filter: blur(8px);
-}
-
-.ghostText {
-  position: absolute;
-  bottom: 55%;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: var(--font-bebas), serif;
-  font-size: clamp(100px, 18vw, 280px);
-  font-weight: 900;
-  color: rgba(255, 255, 255, 0.03);
-  text-transform: uppercase;
-  white-space: nowrap;
-  z-index: 1;
-  pointer-events: none;
-  user-select: none;
-  letter-spacing: 0.05em;
-}
-
-/* --- EFFET LUMINEUX --- */
-.glowEffect {
-  position: absolute;
-  bottom: 5%;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  height: 30%;
-  background: radial-gradient(ellipse at center, rgba(200, 220, 255, 0.15) 0%, transparent 75%);
-  filter: blur(25px);
-  z-index: -1;
-  pointer-events: none;
-}
-
-.heroMain {
-  display: flex;
-  flex-direction: column;
-  padding: 60px 24px 20px;
-  z-index: 2;
-}
-
-.heading {
-  font-family: var(--font-bebas), serif;
-  font-size: clamp(38px, 8vw, 55px);
-  line-height: 0.9;
-  text-transform: uppercase;
-  color: #ffffff;
-  margin-bottom: 2rem;
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
-}
-
-.carContent {
-  position: relative;
-  width: 100%;
-  height: 35vh;
-  margin-bottom: 40px;
-}
-
-.carWrapper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.carImg {
-  object-fit: contain;
-}
-
-/* --- BARRE DU BAS --- */
-.bottomBar {
-  width: 100%;
-  background: #1a1a1c;
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
-}
-
-.bottomBarInner {
-  max-width: 1440px;
-  margin: 0 auto;
-  padding: 0 24px;
-  display: flex;
-  flex-direction: column;
-}
-
-.thumbBox {
-  display: none;
-}
-
-.titleRow {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1.5rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.titleWrap {
-  display: flex;
-  align-items: baseline;
-  gap: 0.8rem;
-}
-
-.modelNumber {
-  font-family: var(--font-bebas), serif;
-  font-size: 1.2rem;
-  color: #55555a;
-}
-
-.modelName {
-  font-family: var(--font-bebas), serif;
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: #fff;
-}
-
-.arrows {
-  display: flex;
-  gap: 0.8rem;
-}
-.arrowBtn {
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: white;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s ease;
-}
-
-.arrowBtn:hover {
-  border-color: #fff;
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.statsRow {
-  padding: 2rem 0;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.statsGrid {
-  display: flex;
-  justify-content: space-between;
-}
-
-.stat {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-}
-
-.statValue {
-  font-size: 1.4rem;
-  font-weight: 500;
-  color: #fff;
-}
-.statLabel {
-  font-size: 0.65rem;
-  color: #888;
-  text-transform: uppercase;
-}
-.descBox {
-  font-size: 0.78rem;
-  color: #ccc;
-  line-height: 1.5;
-}
-
-.learnMore {
-  margin-top: 10px;
-  font-size: 0.75rem;
-  font-weight: bold;
-  text-transform: uppercase;
-  border-bottom: 2px solid #fff;
-  background: none;
-  color: #fff;
-  padding: 0 0 2px 0;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  cursor: pointer;
-}
-
-/* --- DESKTOP (1024px+) --- */
-@media (min-width: 1024px) {
-  .heroMain {
-    flex-direction: row;
-    align-items: center;
-    padding: 0 10vw;
-    min-height: 65vh;
-  }
-
-  .textContent {
-    width: 50%;
-    order: 2;
-  }
-  .carContent {
-    width: 40%;
-    order: 1;
-    height: 50vh;
-  }
-
-  .bottomBarInner {
-    flex-direction: row;
-    gap: 3rem;
-    padding: 0 40px;
-    max-width: 1200px;
-  }
-
-  .thumbBox {
-    display: block;
-    flex: 0 0 260px;
-    height: 170px;
-    background: #232326;
-    margin-top: -85px;
+.heroSection {
     position: relative;
-    z-index: 10;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    padding: 16px;
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.6);
-  }
+    width: 100%;
+    padding: 92px 12px 12px 12px; /* Décale le Hero sous la navbar fixe */
+    display: flex;
+    justify-content: center;
+    background: var(--surface); /* Raccord de couleur avec la section WhyUs */
+}
 
-  .metaData {
-    flex: 1;
-  }
-  .modelNumber {
-    font-size: 1.4rem;
-  }
-  .modelName {
-    font-size: 1.4rem;
-  }
+.imageContainer {
+    position: relative;
+    width: 100%;
+    height: 75vh;
+    min-height: 500px;
+    /* On enlève overflow: hidden et le border-radius ici pour ne pas couper les menus déroulants */
 
-  .titleRow {
-    padding: 1rem 0;
-  }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
-  .statsRow {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding-top: 1rem;
-    gap: 2rem;
-  }
+.image {
+    object-fit: cover;
+    object-position: center;
+    border-radius: 20px; /* L'arrondi est appliqué directement sur l'image */
+}
 
-  .statsGrid {
-    gap: 3rem;
-  }
-  .statValue {
-    font-size: 1.5rem;
-  }
-  .statLabel {
-    font-size: 0.6rem;
-  }
-  .descBox {
-    max-width: 350px;
-    font-size: 0.75rem;
-  }
+.overlay {
+    position: absolute;
+    inset: 0;
+    /* Dégradé sombre en bas et à gauche pour bien lire le texte */
+    background: linear-gradient(to right, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0) 60%),
+    linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%);
+    z-index: 1;
+    border-radius: 20px; /* L'arrondi suit celui de l'image */
+    pointer-events: none; /* Essentiel pour que l'overlay ne bloque pas les clics sur la barre de recherche */
+}
+
+/* ── 2. Texte (Détaché du reste, épinglé en bas à gauche) ── */
+.textContent {
+    position: absolute;
+    z-index: 2;
+    text-align: left;
+
+    /* Placement en bas à gauche sur mobile */
+    bottom: 40px;
+    left: 20px;
+    right: 20px; /* Pour éviter que ça touche le bord droit sur petit écran */
+}
+
+.title {
+    font-family: var(--font-inter, sans-serif), sans-serif;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+    max-width: 800px; /* Empêche d'être trop long sur une seule ligne */
+}
+
+.subtitle {
+    font-family: var(--font-inter, sans-serif), sans-serif;
+    font-size: clamp(1rem, 3vw, 1.2rem);
+    color: #f1f5f9;
+    font-weight: 400;
+}
+
+/* ── 3. Bouton Mobile CTA ── */
+.mobileButton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 24px;
+    padding: 14px 32px;
+    background-color: #466c5a;
+    color: #ffffff;
+    border-radius: 50px;
+    font-family: var(--font-inter, sans-serif), sans-serif;
+    font-weight: 500;
+    font-size: 1rem;
+    text-decoration: none;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.mobileButton:hover {
+    background-color: #3b5a4b;
+}
+
+/* ── 4. Barre de recherche (Cachée sur Mobile) ── */
+.searchContainer {
+    display: none;
+}
+
+/* ─────────────────────────────────────────────
+   Tablette et Desktop (min-width: 768px)
+───────────────────────────────────────────── */
+@media (min-width: 768px) {
+
+    .heroSection {
+        padding: 96px 16px 16px 16px;
+        z-index: 20; /* Permet au menu déroulant de passer par-dessus la section suivante (BrandStrip) */
+    }
+
+    .imageContainer {
+        margin: 0 auto;
+        height: 75vh;
+        max-height: 750px;
+    }
+
+    .image, .overlay {
+        border-radius: 32px; /* Coins plus arrondis sur desktop */
+    }
+
+    .textContent {
+        bottom: 220px;
+        left: 60px; /* Marge à gauche alignée de façon élégante */
+    }
+
+    .mobileButton {
+        display: none;
+    }
+
+    .searchContainer {
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        bottom: 100px;
+        left: 0;
+        width: 100%;
+        z-index: 30; /* Place la barre bien au-dessus de l'image et de l'overlay */
+        padding: 0 40px;
+    }
+
+    .searchBarWrapper {
+        width: 100%;
+        max-width: 1040px;
+        background: transparent;
+        padding: 0;
+        box-shadow: none;
+        border-radius: 0;
+    }
 }

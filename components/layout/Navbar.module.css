@@ -3,10 +3,11 @@
   top: 0;
   z-index: 100;
   width: 100%;
-  background: rgba(18, 18, 20, 0.85);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  background: rgba(244, 244, 240, 0.96);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
 }
 
 .nav {
@@ -19,17 +20,24 @@
   justify-content: space-between;
 }
 
+/* Logo — bottle green border, dark text */
 .logo {
   flex-shrink: 0;
-  border: 1px solid rgba(255, 255, 255, 0.9);
+  border: 1.5px solid var(--accent);
   padding: 5px 15px;
   font-size: 13px;
   font-weight: 800;
   letter-spacing: 0.35em;
-  color: #ffffff;
+  color: var(--accent);
   text-transform: uppercase;
   font-family: var(--font-bebas), sans-serif;
   text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.logo:hover {
+  background: var(--accent);
+  color: #ffffff;
 }
 
 .links {
@@ -60,15 +68,15 @@
   text-transform: uppercase;
   letter-spacing: 0.18em;
   font-weight: 500;
-  color: #99999c;
+  color: var(--muted);
   text-decoration: none;
   padding: 10px 0;
-  transition: color 0.3s ease;
+  transition: color 0.25s ease;
 }
 
 .link:hover,
 .linkActive {
-  color: #ffffff;
+  color: var(--text);
 }
 
 .underline {
@@ -76,7 +84,7 @@
   bottom: 0;
   left: 0;
   height: 1.5px;
-  background: #ffffff;
+  background: var(--accent);
   pointer-events: none;
   transform-origin: left;
 }
@@ -84,17 +92,17 @@
 .icons {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 .iconBtn {
-  color: #ffffff;
+  color: var(--text);
   background: transparent;
   border: none;
   cursor: pointer;
   padding: 8px;
-  opacity: 0.7;
-  transition: opacity 0.3s ease;
+  opacity: 0.55;
+  transition: opacity 0.25s ease;
   display: flex;
   align-items: center;
 }
@@ -105,7 +113,7 @@
 
 .hamburger {
   display: none;
-  color: white;
+  color: var(--text);
   background: none;
   border: none;
   cursor: pointer;
@@ -117,30 +125,40 @@
     padding: 0 24px;
     height: 70px;
   }
+
   .links {
     display: none;
   }
+
   .hamburger {
     display: block;
   }
+
   .mobileMenu {
     overflow: hidden;
-    background: #121214;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
   }
+
   .mobileLinks {
     list-style: none;
     display: flex;
     flex-direction: column;
     padding: 20px 24px 40px;
-    gap: 25px;
+    gap: 22px;
   }
+
   .mobileLinks a {
-    color: white;
+    color: var(--text);
     text-decoration: none;
     font-size: 24px;
     font-family: var(--font-bebas), sans-serif;
     text-transform: uppercase;
     letter-spacing: 2px;
+    transition: color 0.2s ease;
+  }
+
+  .mobileLinks a:hover {
+    color: var(--accent);
   }
 }

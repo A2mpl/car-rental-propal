@@ -1,11 +1,11 @@
 /* ══════════════════════════════════
-   Faq.module.css — Mobile First
+   Faq.module.css — Light Mode
    ══════════════════════════════════ */
 
 .section {
   position: relative;
   overflow: hidden;
-  background: #121214;
+  background: var(--bg);
   padding: 64px 0;
 }
 
@@ -17,8 +17,6 @@
   padding: 0 24px;
 }
 
-/* ── Header — mirrors HowItWorks ── */
-
 .header {
   text-align: center;
   margin-bottom: 48px;
@@ -29,7 +27,7 @@
   font-family: var(--font-inter), "Inter", sans-serif;
   font-size: 11px;
   font-weight: 600;
-  color: #999;
+  color: var(--accent);
   text-transform: uppercase;
   letter-spacing: 0.16em;
   margin-bottom: 16px;
@@ -44,7 +42,7 @@
   top: 50%;
   width: 24px;
   height: 1px;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(62, 99, 86, 0.25);
 }
 
 .label::before {
@@ -59,7 +57,7 @@
   font-family: var(--font-bebas), "Bebas Neue", sans-serif;
   font-size: clamp(36px, 8vw, 48px);
   font-weight: 400;
-  color: #ffffff;
+  color: var(--text);
   text-transform: uppercase;
   line-height: 0.95;
   letter-spacing: 0.02em;
@@ -69,7 +67,7 @@
 .subtitle {
   font-family: var(--font-inter), "Inter", sans-serif;
   font-size: 14px;
-  color: #999;
+  color: var(--muted);
   line-height: 1.6;
   max-width: 480px;
   margin: 0 auto;

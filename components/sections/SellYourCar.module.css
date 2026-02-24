@@ -1,7 +1,7 @@
 .section {
   position: relative;
   overflow: hidden;
-  background: #121214;
+  background: var(--surface);
   padding: 64px 0;
 }
 
@@ -29,7 +29,7 @@
   width: 100%;
   aspect-ratio: 4 / 3;
   overflow: hidden;
-  background: #1a1a1c;
+  background: var(--surface-2);
 }
 
 .img {
@@ -48,7 +48,7 @@
   font-family: var(--font-bebas), "Bebas Neue", sans-serif;
   font-size: clamp(48px, 10vw, 64px);
   font-weight: 400;
-  color: #ffffff;
+  color: var(--text);
   text-transform: uppercase;
   line-height: 0.9;
   letter-spacing: 0.02em;
@@ -57,7 +57,7 @@
 .intro {
   font-family: var(--font-inter), "Inter", sans-serif;
   font-size: 14px;
-  color: #999;
+  color: var(--muted);
   line-height: 1.7;
   max-width: 400px;
 }

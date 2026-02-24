@@ -1,7 +1,7 @@
 .section {
   position: relative;
   overflow: hidden;
-  background: #121214;
+  background: var(--bg);
   padding: 64px 0;
 }
 
@@ -23,7 +23,7 @@
   font-family: var(--font-inter), "Inter", sans-serif;
   font-size: 11px;
   font-weight: 600;
-  color: #999;
+  color: var(--accent);
   text-transform: uppercase;
   letter-spacing: 0.16em;
   margin-bottom: 16px;
@@ -38,7 +38,7 @@
   top: 50%;
   width: 24px;
   height: 1px;
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(62, 99, 86, 0.25);
 }
 
 .label::before {
@@ -53,7 +53,7 @@
   font-family: var(--font-bebas), "Bebas Neue", sans-serif;
   font-size: clamp(36px, 8vw, 48px);
   font-weight: 400;
-  color: #ffffff;
+  color: var(--text);
   text-transform: uppercase;
   line-height: 0.95;
   letter-spacing: 0.02em;
@@ -63,7 +63,7 @@
 .subtitle {
   font-family: var(--font-inter), "Inter", sans-serif;
   font-size: 14px;
-  color: #999;
+  color: var(--muted);
   line-height: 1.6;
   max-width: 480px;
   margin: 0 auto;
@@ -86,18 +86,18 @@
   width: 100%;
   padding: 1px;
   border-radius: 2px;
-  background: rgba(255, 255, 255, 0.06);
+  background: var(--border);
   transition: background 0.4s ease;
 }
 
 .card:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--border-mid);
 }
 
 .cardInner {
   position: relative;
   z-index: 1;
-  background: #18181b;
+  background: var(--surface);
   border-radius: 1px;
   padding: 32px 24px;
   display: flex;
@@ -107,7 +107,7 @@
 }
 
 .card:hover .cardInner {
-  background: #1c1c1f;
+  background: var(--surface-2);
 }
 
 .cardGlow {
@@ -116,10 +116,10 @@
   border-radius: 3px;
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.12) 0%,
-    rgba(255, 255, 255, 0.03) 40%,
-    rgba(255, 255, 255, 0) 60%,
-    rgba(255, 255, 255, 0.08) 100%
+    rgba(62, 99, 86, 0.1) 0%,
+    rgba(62, 99, 86, 0.03) 40%,
+    rgba(62, 99, 86, 0) 60%,
+    rgba(62, 99, 86, 0.06) 100%
   );
   opacity: 0;
   transition: opacity 0.4s ease;
@@ -142,7 +142,7 @@
   font-size: 56px;
   font-weight: 400;
   line-height: 1;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.05) 100%);
+  background: linear-gradient(180deg, rgba(62, 99, 86, 0.18) 0%, rgba(62, 99, 86, 0.05) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -155,16 +155,16 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #fff;
+  border: 1px solid var(--border-mid);
+  color: var(--accent);
   transition:
     border-color 0.4s ease,
     background 0.4s ease;
 }
 
 .card:hover .cardIcon {
-  border-color: rgba(255, 255, 255, 0.25);
-  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--accent);
+  background: var(--accent-light);
 }
 
 .cardContent {
@@ -177,14 +177,14 @@
   font-family: var(--font-inter), "Inter", sans-serif;
   font-size: 16px;
   font-weight: 600;
-  color: #fff;
+  color: var(--text);
   letter-spacing: 0.01em;
 }
 
 .cardDesc {
   font-family: var(--font-inter), "Inter", sans-serif;
   font-size: 13px;
-  color: #999;
+  color: var(--muted);
   line-height: 1.6;
   margin: 0;
 }
@@ -192,7 +192,7 @@
 .progressTrack {
   width: 1px;
   height: 40px;
-  background: rgba(255, 255, 255, 0.06);
+  background: var(--border);
   position: relative;
   overflow: hidden;
 }
@@ -203,7 +203,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.08) 100%);
+  background: linear-gradient(180deg, rgba(62, 99, 86, 0.4) 0%, rgba(62, 99, 86, 0.1) 100%);
   transform-origin: top center;
 }
 
@@ -253,12 +253,12 @@
     width: 32px;
     height: auto;
     align-self: center;
-    background: rgba(255, 255, 255, 0.06);
+    background: var(--border);
   }
 
   .progressFill {
     transform-origin: left center;
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0.08) 100%);
+    background: linear-gradient(90deg, rgba(62, 99, 86, 0.4) 0%, rgba(62, 99, 86, 0.1) 100%);
   }
 }
 

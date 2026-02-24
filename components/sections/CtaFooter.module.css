@@ -1,6 +1,6 @@
 .footer {
-  background: #141414;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  background: var(--bg);
+  border-top: 1px solid var(--border);
 }
 
 .main {
@@ -25,7 +25,7 @@
   font-family: var(--font-bebas), "Bebas Neue", sans-serif;
   font-size: clamp(36px, 5vw, 64px);
   font-weight: 400;
-  color: #ffffff;
+  color: var(--text);
   text-transform: uppercase;
   line-height: 1;
   letter-spacing: 0.02em;
@@ -34,7 +34,7 @@
 .body {
   margin-top: 16px;
   font-size: 13px;
-  color: #888888;
+  color: var(--muted);
   line-height: 1.7;
   max-width: 340px;
   font-family: var(--font-inter), "Inter", sans-serif;
@@ -59,7 +59,7 @@
 
 .navLink {
   font-size: 11px;
-  color: #888888;
+  color: var(--muted);
   text-transform: uppercase;
   letter-spacing: 0.2em;
   font-family: var(--font-inter), "Inter", sans-serif;
@@ -71,22 +71,23 @@
 }
 
 .navLink:hover {
-  color: #ffffff;
+  color: var(--accent);
 }
 
+/* "New" badge in footer — bottle green */
 .badge {
   display: inline-block;
   padding: 2px 5px;
   font-size: 9px;
   font-weight: 700;
-  color: #000000;
-  background: #4ade80;
+  color: #ffffff;
+  background: var(--accent);
   border-radius: 3px;
   line-height: 1;
 }
 
 .bottomBar {
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid var(--border);
 }
 
 .bottomInner {
@@ -100,13 +101,13 @@
 
 .copyright {
   font-size: 11px;
-  color: #888888;
+  color: var(--muted);
   font-family: var(--font-inter), "Inter", sans-serif;
 }
 
 .tagline {
   font-size: 11px;
-  color: #888888;
+  color: var(--muted);
   font-family: var(--font-inter), "Inter", sans-serif;
 }
 

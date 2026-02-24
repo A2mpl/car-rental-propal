@@ -1,15 +1,28 @@
 :root {
-  --bg: #0a0a0a;
-  --surface: #141414;
-  --surface-2: #1e1e1e;
-  --text: #ffffff;
-  --muted: #888888;
-  --border: rgba(255, 255, 255, 0.08);
-  --border-mid: rgba(255, 255, 255, 0.15);
+  /* ── Backgrounds ── */
+  --bg: #F4F4F0;
+  --surface: #FFFFFF;
+  --surface-2: #ECEAE5;
 
+  /* ── Text ── */
+  --text: #111111;
+  --text-2: #3D3D3D;
+  --muted: #7A7A7A;
+
+  /* ── Accent — Bottle Green ── */
+  --accent: #3E6356;
+  --accent-dark: #2D4A3F;
+  --accent-light: rgba(62, 99, 86, 0.08);
+
+  /* ── Borders ── */
+  --border: rgba(0, 0, 0, 0.07);
+  --border-mid: rgba(0, 0, 0, 0.13);
+
+  /* ── Typography ── */
   --font-bebas: "Bebas Neue", sans-serif;
   --font-inter: "Inter", sans-serif;
 
+  /* ── Layout ── */
   --max-width: 1280px;
   --px: 48px;
   --px-mobile: 20px;

@@ -6,12 +6,14 @@ import HowItWorks from '@/components/sections/HowItWorks';
 import SellYourCar from '@/components/sections/SellYourCar';
 import Testimonials from '@/components/sections/Testimonials';
 import WhyUs from '@/components/sections/WhyUs';
+import BrandStrip from "@/components/sections/BrandStrip";
 
 export default function Home() {
   return (
-    <main className="bg-[#0a0a0a] text-white">
+    <main>
       <Navbar />
       <Hero />
+        <BrandStrip />
       <WhyUs />
       <SellYourCar />
       <HowItWorks />

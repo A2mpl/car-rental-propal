@@ -3,23 +3,24 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  border: 1px solid #ffffff;
+  border: 1.5px solid var(--accent);
   color: #ffffff;
-  background: transparent;
+  background: var(--accent);
   text-transform: uppercase;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.13em;
   font-weight: 600;
   font-family: var(--font-inter), "Inter", sans-serif;
   cursor: pointer;
   transition:
-    background 0.15s ease,
-    color 0.15s ease;
+    background 0.18s ease,
+    border-color 0.18s ease;
   white-space: nowrap;
 }
 
 .btn:hover {
-  background: #ffffff;
-  color: #000000;
+  background: var(--accent-dark);
+  border-color: var(--accent-dark);
+  color: #ffffff;
 }
 
 .sm {
@@ -33,6 +34,6 @@
 }
 
 .lg {
-  padding: 16px 32px;
+  padding: 15px 32px;
   font-size: 13px;
 }
