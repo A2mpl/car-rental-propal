@@ -235,7 +235,7 @@ export default function SearchBar() {
                 style={{
                     display: 'flex',
                     alignItems: 'center',
-                    backgroundColor: 'rgba(255, 255, 255, 0.88)',
+                    backgroundColor: 'color-mix(in srgb, var(--surface) 92%, transparent)',
                     backdropFilter: 'blur(24px)',
                     WebkitBackdropFilter: 'blur(24px)',
                     borderRadius: '14px',

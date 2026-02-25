@@ -44,7 +44,7 @@ export default function WhyUs() {
             >
               <h3
                 style={{
-                  color: 'var(--surface)',
+                  color: 'var(--text-on-dark)',
                   fontSize: '28px',
                   margin: 0,
                   fontFamily: 'var(--font-display)',
@@ -54,7 +54,7 @@ export default function WhyUs() {
                 Véhicules Premium
               </h3>
               <p style={{
-                  color: 'var(--surface)',
+                  color: 'var(--text-on-dark)',
                   fontSize: '14px',
                   fontWeight: '500',
                   textShadow: '0 2px 4px rgba(0,0,0,0.6)',

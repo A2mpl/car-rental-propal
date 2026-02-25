@@ -54,7 +54,7 @@
 
 .bodyBadge {
   padding: 3px 9px;
-  background: rgba(255, 255, 255, 0.88);
+  background: color-mix(in srgb, var(--surface) 90%, transparent);
   backdrop-filter: blur(8px);
   border-radius: 20px;
   font-family: var(--font-body), sans-serif;
@@ -63,7 +63,7 @@
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--text);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--border-mid);
 }
 
 .badge {
@@ -77,27 +77,27 @@
 }
 
 .badgeNew {
-  background: rgba(34, 197, 94, 0.15);
-  color: #16a34a;
-  border: 1px solid rgba(34, 197, 94, 0.25);
+  background: #16a34a;
+  color: #ffffff;
+  border: none;
 }
 
 .badgePopular {
-  background: rgba(59, 130, 246, 0.12);
-  color: #2563eb;
-  border: 1px solid rgba(59, 130, 246, 0.2);
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
 }
 
 .badgeLimited {
-  background: rgba(239, 68, 68, 0.12);
-  color: #dc2626;
-  border: 1px solid rgba(239, 68, 68, 0.2);
+  background: #dc2626;
+  color: #ffffff;
+  border: none;
 }
 
 .badgeElectric {
-  background: var(--accent-light);
-  color: var(--accent);
-  border: 1px solid rgba(62, 99, 86, 0.25);
+  background: var(--accent);
+  color: var(--text-on-dark);
+  border: none;
 }
 
 /* Fuel chip (bottom-right) */
@@ -109,14 +109,14 @@
   align-items: center;
   gap: 4px;
   padding: 4px 9px;
-  background: rgba(255, 255, 255, 0.88);
+  background: color-mix(in srgb, var(--surface) 90%, transparent);
   backdrop-filter: blur(8px);
   border-radius: 20px;
   font-family: var(--font-body), sans-serif;
   font-size: 10px;
   font-weight: 600;
   color: var(--text);
-  border: 1px solid rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--border-mid);
   z-index: 2;
 }
 

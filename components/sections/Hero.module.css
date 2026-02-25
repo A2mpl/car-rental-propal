@@ -58,7 +58,7 @@
     font-size: clamp(2.2rem, 5vw, 3.2rem);
     font-weight: 400;
     font-style: italic;
-    color: var(--surface);
+    color: var(--text-on-dark);
     line-height: 0.95;
     margin-bottom: 12px;
     letter-spacing: 0.01em;
@@ -82,7 +82,7 @@
     margin-top: 24px;
     padding: 13px 32px;
     background-color: var(--accent);
-    color: var(--surface);
+    color: var(--text-on-dark);
     border-radius: 8px;
     font-family: var(--font-body), sans-serif;
     font-weight: 600;

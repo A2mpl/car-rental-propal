@@ -125,7 +125,7 @@
     font-size: 120px;
     font-weight: 300;
     line-height: 1;
-    color: rgba(62, 99, 86, 0.06);
+    color: var(--step-number-color);
     position: absolute;
     top: -60px;
     left: -20px;

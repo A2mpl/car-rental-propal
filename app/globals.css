@@ -18,6 +18,15 @@
   --border: rgba(0, 0, 0, 0.07);
   --border-mid: rgba(0, 0, 0, 0.13);
 
+  /* ── Semantic helpers ── */
+  /* Text always on dark image overlays (hero, WhyUs photo) — never changes */
+  --text-on-dark: #FFFFFF;
+  /* Step number watermark */
+  --step-number-color: rgba(62, 99, 86, 0.06);
+  /* Quote mark tint */
+  --quotemark-color: rgba(62, 99, 86, 0.12);
+  --quotemark-hover: rgba(62, 99, 86, 0.22);
+
   /* ── Typography — Polices brutes ── */
   /* Déclarées ici comme fallback pour le linter.               */
   /* Next.js les écrase au runtime via le className sur <html>  */
@@ -60,6 +69,12 @@
   /* Borders */
   --border: rgba(255, 255, 255, 0.06);
   --border-mid: rgba(255, 255, 255, 0.10);
+
+  /* Semantic overrides */
+  --text-on-dark: #FFFFFF;             /* stays white on dark overlays */
+  --step-number-color: rgba(82, 168, 130, 0.14); /* brighter on dark bg */
+  --quotemark-color: rgba(82, 168, 130, 0.20);   /* visible on dark card */
+  --quotemark-hover: rgba(82, 168, 130, 0.35);
 }
 
 *,
