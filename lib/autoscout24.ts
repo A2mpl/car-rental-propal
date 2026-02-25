@@ -661,10 +661,24 @@ export function filtersToParams(filters: ShopFilters): URLSearchParams {
 
 /**
  * Async car fetcher — server-only.
- * Set NEXT_PUBLIC_CARS_API_URL to proxy real AutoScout24 data.
- * Falls back to mock data automatically.
+ *
+ * Priority order:
+ *  1. AS24 Dealer API  — when AS24_CLIENT_ID + AS24_CLIENT_SECRET are set
+ *  2. Custom proxy URL — when CARS_API_URL is set (legacy / BYO proxy)
+ *  3. Local mock data  — always available as a fallback
  */
 export async function fetchCars(filters: ShopFilters, page = 1): Promise<AS24Response> {
+  // 1. Real AutoScout24 Dealer API
+  if (process.env.AS24_CLIENT_ID && process.env.AS24_CLIENT_SECRET) {
+    try {
+      const { searchVehicles } = await import('./as24/client');
+      return await searchVehicles(filters, page);
+    } catch (err) {
+      console.error('[fetchCars] AS24 API error, falling back:', err);
+    }
+  }
+
+  // 2. Legacy custom proxy (e.g. a BYO scraping server)
   const apiUrl = process.env.CARS_API_URL;
   if (apiUrl) {
     const params = filtersToParams(filters);
@@ -674,6 +688,8 @@ export async function fetchCars(filters: ShopFilters, page = 1): Promise<AS24Res
     });
     if (res.ok) return res.json() as Promise<AS24Response>;
   }
+
+  // 3. Mock data fallback
   return filterAndSort(MOCK_CARS, { ...filters, page });
 }
 

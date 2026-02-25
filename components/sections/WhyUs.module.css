@@ -32,7 +32,7 @@
 }
 
 .nbClients {
-    color: #3E6356;
+    color: var(--surface);
     font-size: 22px;
     font-weight: 900;
     margin: 0;

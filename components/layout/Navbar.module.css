@@ -38,7 +38,7 @@
 
 .logo:hover {
   background: var(--accent);
-  color: #ffffff;
+  color: var(--surface);
 }
 
 .links {

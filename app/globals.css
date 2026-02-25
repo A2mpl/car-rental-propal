@@ -1,13 +1,13 @@
 :root {
   /* ── Backgrounds ── */
   --bg: #F4F4F0;
-  --surface: #FFFFFF;
+  --surface: #F8FAF8;
   --surface-2: #ECEAE5;
 
   /* ── Text ── */
   --text: #111111;
   --text-2: #3D3D3D;
-  --muted: #7A7A7A;
+  --muted: #6B6B6B;
 
   /* ── Accent — Bottle Green ── */
   --accent: #3E6356;

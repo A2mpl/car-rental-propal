@@ -186,7 +186,7 @@
   left: 4.5px;
   width: 5px;
   height: 8px;
-  border: 2px solid #fff;
+  border: 2px solid var(--surface);
   border-top: none;
   border-left: none;
   transform: rotate(42deg);
@@ -394,7 +394,7 @@
   width: 100%;
   padding: 13px;
   background: var(--accent);
-  color: #fff;
+  color: var(--surface);
   border: none;
   border-radius: 10px;
   font-family: var(--font-body), sans-serif;

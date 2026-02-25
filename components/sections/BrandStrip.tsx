@@ -14,7 +14,7 @@ const LOGOS = [TeslaLogo, AudiLogo, BmwLogo, PorscheLogo, FerrariLogo];
 export default function BrandStrip() {
     return (
         <section style={{
-        paddingTop: '80px',
+        paddingTop: '32px',
         overflow: 'hidden',
         position: 'relative',
             backgroundColor: 'var(--surface)'
@@ -22,7 +22,7 @@ export default function BrandStrip() {
 
         <div style={{
             backgroundColor: 'var(--bg)',
-            padding: '32px 0',
+            padding: '40px 0',
             position: 'relative',
         }}>
             <div style={{ display: 'flex', width: 'max-content' }}>
@@ -45,7 +45,7 @@ export default function BrandStrip() {
                             // biome-ignore lint/suspicious/noArrayIndexKey: DEV
                             key={index}
                             style={{
-                                color: 'var(--text-2)',
+                                color: 'var(--text)',
                                 width: LOGO_SIZE,
                                 flexShrink: 0,
                                 display: 'flex',

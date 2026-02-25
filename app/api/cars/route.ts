@@ -6,38 +6,38 @@ import { filterAndSort, MOCK_CARS, parseSearchParams } from '@/lib/autoscout24';
  *
  * Car listing endpoint — integration point for AutoScout24.
  *
- * Current behaviour: filters & paginates the local MOCK_CARS dataset.
+ * Behaviour:
+ *  1. If AS24_CLIENT_ID + AS24_CLIENT_SECRET are set → real AS24 Dealer API
+ *  2. Falls back to local MOCK_CARS if the API errors or creds are absent
  *
- * To connect a real AutoScout24 proxy:
- *  1. Deploy a scraping server (Node / Python) that fetches:
- *       https://www.autoscout24.com/lst?{params}
- *     and returns JSON matching the AS24Response shape.
- *  2. Set AUTOSCOUT24_PROXY_URL=https://your-proxy.com in .env.local
- *     (server-only env — NOT prefixed with NEXT_PUBLIC_).
- *  3. Uncomment the proxy block below.
- *
- * AutoScout24 search URL params reference:
- *   mmvmk0={make_id}  fuel={E|B|D|X}  body={1|5|9|8}
- *   gear={A|M}  pricefrom={n}  priceto={n}  fregfrom={yyyy}  fregto={yyyy}
- *   sort=standard|price  desc=0|1  size=20  page={n}
+ * To activate the real API:
+ *  1. Get credentials from https://developer.autoscout24.com
+ *  2. Set AS24_CLIENT_ID and AS24_CLIENT_SECRET in .env.local
+ *  3. Optionally set AS24_MARKET (default "FR") and AS24_API_BASE
  */
 export async function GET(request: NextRequest) {
   const sp = request.nextUrl.searchParams;
   const filters = parseSearchParams(sp);
   const page = Math.max(1, Number(sp.get('page') ?? 1));
 
-  // ── Real AutoScout24 proxy (uncomment when proxy is ready) ─────────────────
-  // const proxyUrl = process.env.AUTOSCOUT24_PROXY_URL;
-  // if (proxyUrl) {
-  //   const upstream = await fetch(`${proxyUrl}?${sp.toString()}`, {
-  //     headers: { 'Accept': 'application/json' },
-  //     next: { revalidate: 120 },
-  //   });
-  //   if (upstream.ok) {
-  //     const data = await upstream.json();
-  //     return NextResponse.json(data);
-  //   }
-  // }
+  // ── Real AutoScout24 API (active when credentials are configured) ──────────
+  const clientId = process.env.AS24_CLIENT_ID;
+  const clientSecret = process.env.AS24_CLIENT_SECRET;
+
+  if (clientId && clientSecret) {
+    try {
+      const { searchVehicles } = await import('@/lib/as24/client');
+      const data = await searchVehicles(filters, page);
+      return NextResponse.json(data, {
+        headers: {
+          // Longer cache: real data changes less frequently than mock
+          'Cache-Control': 'public, s-maxage=120, stale-while-revalidate=600',
+        },
+      });
+    } catch (err) {
+      console.error('[GET /api/cars] AS24 API error, falling back to mock:', err);
+    }
+  }
   // ─────────────────────────────────────────────────────────────────────────
 
   const result = filterAndSort(MOCK_CARS, { ...filters, page });

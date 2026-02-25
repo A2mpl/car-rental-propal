@@ -83,7 +83,7 @@
   padding: 2px 5px;
   font-size: 9px;
   font-weight: 700;
-  color: #ffffff;
+  color: var(--surface);
   background: var(--accent);
   border-radius: 3px;
   line-height: 1;

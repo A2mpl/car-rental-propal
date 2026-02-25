@@ -5,7 +5,7 @@
   gap: 8px;
   border: 1.5px solid var(--accent);
   border-radius: 8px;
-  color: #ffffff;
+  color: var(--surface);
   background: var(--accent);
   text-transform: uppercase;
   letter-spacing: 0.13em;
@@ -21,7 +21,7 @@
 .btn:hover {
   background: var(--accent-dark);
   border-color: var(--accent-dark);
-  color: #ffffff;
+  color: var(--surface);
 }
 
 .sm {

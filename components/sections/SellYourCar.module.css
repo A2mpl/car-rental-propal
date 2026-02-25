@@ -28,6 +28,7 @@
   position: relative;
   width: 100%;
   aspect-ratio: 4 / 3;
+    border-radius: 32px;
   overflow: hidden;
   background: var(--surface-2);
 }

@@ -238,7 +238,7 @@
   gap: 6px;
   padding: 9px 18px;
   background: var(--accent);
-  color: #fff;
+  color: var(--surface);
   border-radius: 8px;
   font-family: var(--font-body), sans-serif;
   font-size: 12px;

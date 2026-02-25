@@ -44,7 +44,7 @@ export default function WhyUs() {
             >
               <h3
                 style={{
-                  color: 'white',
+                  color: 'var(--surface)',
                   fontSize: '28px',
                   margin: 0,
                   fontFamily: 'var(--font-display)',
@@ -53,7 +53,13 @@ export default function WhyUs() {
               >
                 Véhicules Premium
               </h3>
-              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '13px' }}>
+              <p style={{
+                  color: 'var(--surface)',
+                  fontSize: '14px',
+                  fontWeight: '500',
+                  textShadow: '0 2px 4px rgba(0,0,0,0.6)',
+                  marginTop: '6px'
+              }}>
                 Nos meilleurs véhicules disponibles
               </p>
             </div>
@@ -71,7 +77,7 @@ export default function WhyUs() {
                 transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
                 className={`${styles.imgCell} ${styles.imgSmallA}`}
                 style={{
-                    backgroundColor: '#EBF0EE',
+                    backgroundColor: 'var(--accent-dark)',
                     borderRadius: '24px',
                     display: 'flex',
                     flexDirection: 'column',
@@ -89,7 +95,7 @@ export default function WhyUs() {
                 </h3>
                 <span
                     style={{
-                        color: '#2D4A3F',
+                        color: 'var(--surface)',
                         fontWeight: '800',
                         fontSize: '10px',
                         textTransform: 'uppercase',
