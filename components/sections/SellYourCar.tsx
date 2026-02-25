@@ -1,13 +1,12 @@
 import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import Button from '@/components/ui/Button';
-import GhostText from '@/components/ui/GhostText';
 import styles from './SellYourCar.module.css';
 
 export default function SellYourCar() {
   return (
-    <section className={styles.section} aria-label="Sell Your Car">
-      <GhostText text="SELL NOW" />
+    <section className={styles.section} aria-label="Vendre votre voiture">
+        {/*<GhostText text="VENDRE MAINTENANT" />*/}
 
       <div className={styles.container}>
         <div className={styles.topRow}>
@@ -15,7 +14,7 @@ export default function SellYourCar() {
             <div className={styles.imageWrapper}>
               <Image
                 src="https://images.unsplash.com/photo-1563720223185-11003d516935?w=800&q=80"
-                alt="Luxury car ready for consignment"
+                alt="Voiture de luxe prête pour la consignation"
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 45vw"
                 className={styles.img}
@@ -26,18 +25,14 @@ export default function SellYourCar() {
 
           <div className={styles.headingSide}>
             <h2 className={styles.heading}>
-              SELL YOUR
-              <br />
-              CAR WITH
-              <br />
-              CONFIDENCE
+              VENDEZ VOTRE VOITURE
+              EN TOUTE CONFIANCE
             </h2>
             <p className={styles.intro}>
-              Whether you&apos;re upgrading or simply letting go, we offer the most seamless and premium selling
-              experience for high-end vehicles. No listings, no haggling — just a fair price and white-glove service.
+              Que vous souhaitiez passer à un modèle supérieur ou simplement vous séparer de votre véhicule, nous proposons l&apos;expérience de vente la plus fluide et la plus premium pour les véhicules haut de gamme. Pas d&apos;annonces, pas de négociations — juste un prix juste et un service irréprochable.
             </p>
             <Button href="/sell">
-              Get Your Valuation
+              Obtenir une Estimation
               <ArrowRight size={16} aria-hidden="true" />
             </Button>
           </div>

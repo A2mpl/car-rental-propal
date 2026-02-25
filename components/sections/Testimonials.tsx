@@ -3,8 +3,6 @@ import type { BezierDefinition, Variants } from 'framer-motion';
 import { motion, useInView } from 'framer-motion';
 import Image from 'next/image';
 import { useRef } from 'react';
-import GhostText from '@/components/ui/GhostText';
-import { siteContent } from '@/data/content';
 import { testimonials } from '@/data/testimonials';
 import styles from './Testimonials.module.css';
 
@@ -74,7 +72,6 @@ function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
 }
 
 export default function Testimonials() {
-  const { testimonials: content } = siteContent;
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
 
@@ -86,8 +83,7 @@ export default function Testimonials() {
   const rowTwoDuped: Testimonial[] = [...rowTwo, ...rowTwo, ...rowTwo];
 
   return (
-    <section ref={sectionRef} className={styles.section} aria-label="Customer testimonials">
-      <GhostText text={content.ghostText} />
+    <section ref={sectionRef} className={styles.section} aria-label="Témoignages clients">
 
       <div className={styles.container}>
         <motion.div
@@ -96,14 +92,12 @@ export default function Testimonials() {
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
         >
-          <span className={styles.label}>Testimonials</span>
+          <span className={styles.label}>Témoignages</span>
           <h2 className={styles.heading}>
-            WHAT OUR
-            <br />
-            CLIENTS SAY
+            CE QUE DISENT NOS CLIENTS
           </h2>
           <p className={styles.subtitle}>
-            Trusted by discerning collectors and automotive enthusiasts who expect nothing less than excellence.
+            Plébiscité par des collectionneurs avertis et des passionnés d&apos;automobile qui n&apos;acceptent rien de moins que l&apos;excellence.
           </p>
         </motion.div>
       </div>

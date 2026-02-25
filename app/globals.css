@@ -18,9 +18,19 @@
   --border: rgba(0, 0, 0, 0.07);
   --border-mid: rgba(0, 0, 0, 0.13);
 
-  /* ── Typography ── */
-  --font-bebas: "Bebas Neue", sans-serif;
-  --font-inter: "Inter", sans-serif;
+  /* ── Typography — Polices brutes ── */
+  /* Déclarées ici comme fallback pour le linter.               */
+  /* Next.js les écrase au runtime via le className sur <html>  */
+  --font-archivo-black: "Archivo Black", "Arial Black", sans-serif;
+  --font-saira: "Saira", system-ui, sans-serif;
+
+  /* ── Typography — Aliases sémantiques ── */
+  /* ▶ Pour tester une autre fonte display, changez UNIQUEMENT cette ligne : */
+  --font-display: var(--font-archivo-black);
+  /* Exemples : var(--font-playfair), var(--font-cormorant), var(--font-oswald) */
+
+  /* ▶ Pour tester une autre fonte body, changez UNIQUEMENT cette ligne : */
+  --font-body: var(--font-saira);
 
   /* ── Layout ── */
   --max-width: 1280px;
@@ -45,7 +55,7 @@ html {
 body {
   background-color: var(--bg);
   color: var(--text);
-  font-family: var(--font-inter), "Inter", sans-serif;
+  font-family: var(--font-body), system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.5;

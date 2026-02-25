@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import Image from 'next/image';
 import Button from '@/components/ui/Button';
-import GhostText from '@/components/ui/GhostText';
 import { siteContent } from '@/data/content';
 import styles from './WhyUs.module.css';
 
@@ -15,12 +14,12 @@ export default function WhyUs() {
 
   return (
     <section className={styles.section} aria-label="EV Chargers">
-      <GhostText text={evChargers.ghostText} />
+        {/*<GhostText text={evChargers.ghostText} />*/}
 
       <div className={styles.container}>
         <div className={styles.headingRow}>
           <h2 className={styles.heading}>{evChargers.heading}</h2>
-          <button className={styles.arrowBtn} type="button" aria-label="See all chargers">
+          <button className={styles.arrowBtn} type="button" aria-label="Voir tous les véhicules">
             <ArrowUpRight size={22} aria-hidden="true" />
           </button>
         </div>
@@ -48,14 +47,14 @@ export default function WhyUs() {
                   color: 'white',
                   fontSize: '28px',
                   margin: 0,
-                  fontFamily: 'var(--font-bebas)',
+                  fontFamily: 'var(--font-display)',
                   fontWeight: 'bold',
                 }}
               >
-                Premium Cars
+                Véhicules Premium
               </h3>
-              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '13px', maxWidth: '200px' }}>
-                Top-tier vehicules available
+              <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '13px' }}>
+                Nos meilleurs véhicules disponibles
               </p>
             </div>
           </motion.div>
@@ -84,14 +83,7 @@ export default function WhyUs() {
                 }}
             >
                 <h3
-                    style={{
-                        color: '#3E6356',
-                        fontFamily: 'var(--font-bebas)',
-                        fontSize: '48px',
-                        fontWeight: '900',
-                        margin: 0,
-                        lineHeight: 0.9,
-                    }}
+                    className={styles.nbClients}
                 >
                     900+
                 </h3>
@@ -105,7 +97,7 @@ export default function WhyUs() {
                         marginTop: '10px',
                     }}
                 >
-              Satisfied Clients
+              Clients Satisfaits
             </span>
             </motion.div>
         </div>

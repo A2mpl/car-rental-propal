@@ -8,33 +8,33 @@ export interface FAQItem {
 export const faqItems: FAQItem[] = [
   {
     id: 'faq-1',
-    question: 'HOW I CAN RENT THE ELECTRIC CAR?',
+    question: 'COMMENT LOUER UNE VOITURE ÉLECTRIQUE ?',
     answer:
-      'Browse our fleet on the OUR MODELS page, select your preferred vehicle, choose your rental dates, and complete the booking form. You can also use our mobile rental app available on Google Play and the App Store. A valid driving licence and a credit card are required at the time of booking.',
+      'Parcourez notre flotte sur la page NOS MODÈLES, sélectionnez le véhicule de votre choix, choisissez vos dates de location et remplissez le formulaire de réservation. Vous pouvez également utiliser notre application mobile disponible sur Google Play et l\'App Store. Un permis de conduire valide et une carte de crédit sont requis au moment de la réservation.',
   },
   {
     id: 'faq-2',
-    question: 'HOW TO CHECK THE STATUS OF THE BOOKING CODE?',
+    question: 'COMMENT VÉRIFIER LE STATUT DE MA RÉSERVATION ?',
     answer:
-      'After completing your reservation, you will receive a confirmation email containing your unique booking code. You can track the real-time status of your booking by entering that code in the "Track My Booking" section of the app or on our website under the MY BOOKINGS menu.',
+      'Après avoir finalisé votre réservation, vous recevrez un e-mail de confirmation contenant votre code de réservation unique. Vous pouvez suivre le statut en temps réel de votre réservation en saisissant ce code dans la section « Suivre ma réservation » de l\'application ou sur notre site web dans le menu MES RÉSERVATIONS.',
     defaultOpen: true,
   },
   {
     id: 'faq-3',
-    question: 'HOW DO I MAKE A RENT ORDER CHANGE?',
+    question: 'COMMENT MODIFIER UNE RÉSERVATION ?',
     answer:
-      'Changes to an existing rental order — including pickup date, return date, or vehicle selection — can be made up to 24 hours before the scheduled pickup time. Log in to your account, navigate to MY BOOKINGS, select the reservation you wish to modify, and follow the amendment flow.',
+      'Les modifications d\'une réservation existante — date de prise en charge, date de retour ou choix du véhicule — peuvent être effectuées jusqu\'à 24 heures avant l\'heure de prise en charge prévue. Connectez-vous à votre compte, accédez à MES RÉSERVATIONS, sélectionnez la réservation à modifier et suivez le processus de modification.',
   },
   {
     id: 'faq-4',
-    question: 'HOW DO I CANCEL A RENT ORDER?',
+    question: 'COMMENT ANNULER UNE RÉSERVATION ?',
     answer:
-      'Cancellations made more than 48 hours before pickup are fully refunded. Cancellations within 48 hours may be subject to a one-day charge. To cancel, go to MY BOOKINGS, select your reservation, and tap CANCEL ORDER. You will receive a cancellation confirmation and refund details by email.',
+      'Les annulations effectuées plus de 48 heures avant la prise en charge sont intégralement remboursées. Les annulations dans les 48 heures peuvent faire l\'objet d\'une retenue d\'un jour. Pour annuler, accédez à MES RÉSERVATIONS, sélectionnez votre réservation et appuyez sur ANNULER LA COMMANDE. Vous recevrez une confirmation d\'annulation et les détails du remboursement par e-mail.',
   },
   {
     id: 'faq-5',
-    question: 'WHAT IF THERE IS A FAILED ORDER WHEN ORDERING A ELECTRIC CAR ON TIMELESS?',
+    question: 'QUE FAIRE EN CAS D\'ÉCHEC DE PAIEMENT SUR TIMELESS ?',
     answer:
-      'If your order fails during checkout, please check that your payment method is valid and that your billing details are correct. No charge will be applied for a failed order. If the problem persists, contact our support team via the CONTACT page or call our 24/7 helpline — we will resolve the issue and confirm your booking as quickly as possible.',
+      'Si votre commande échoue lors du paiement, vérifiez que votre moyen de paiement est valide et que vos informations de facturation sont correctes. Aucun débit ne sera appliqué pour une commande échouée. Si le problème persiste, contactez notre équipe d\'assistance via la page CONTACT ou appelez notre assistance disponible 24h/24 — nous résoudrons le problème et confirmerons votre réservation dans les plus brefs délais.',
   },
 ];

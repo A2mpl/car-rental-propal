@@ -21,13 +21,22 @@
 }
 
 .heading {
-  font-family: var(--font-bebas), "Bebas Neue", sans-serif;
-  font-size: clamp(40px, 10vw, 56px);
+  font-family: var(--font-display), sans-serif;
+    font-size: clamp(26px, 4.5vw, 32px);
   font-weight: 400;
+  font-style: italic;
   color: var(--text);
   text-transform: uppercase;
   line-height: 0.9;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
+}
+
+.nbClients {
+    color: #3E6356;
+    font-size: 22px;
+    font-weight: 900;
+    margin: 0;
+    line-height: 0.9;
 }
 
 .arrowBtn {
@@ -95,7 +104,7 @@
 }
 
 .subheading {
-  font-family: var(--font-inter), "Inter", sans-serif;
+  font-family: var(--font-body), sans-serif;
   font-size: 14px;
   font-weight: 700;
   color: var(--text);
@@ -143,7 +152,7 @@
 }
 
 .bulletText {
-  font-family: var(--font-inter), sans-serif;
+  font-family: var(--font-body), sans-serif;
   font-size: 14px;
   color: var(--muted);
   line-height: 1.6;
@@ -169,7 +178,11 @@
   }
 
   .heading {
-    font-size: clamp(56px, 8vw, 80px);
+      font-size: clamp(30px, 4vw, 38px);
+  }
+
+  .nbClients {
+      font-size: 40px;
   }
 
   .imageGrid {
@@ -213,7 +226,11 @@
   }
 
   .heading {
-    font-size: clamp(64px, 6vw, 104px);
+      font-size: clamp(34px, 3vw, 44px);
+  }
+
+  .nbClients {
+      font-size: 48px;
   }
 
   .arrowBtn {

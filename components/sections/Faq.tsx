@@ -5,7 +5,6 @@ import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import AccordionItem from '@/components/ui/AccordionItem';
 import Button from '@/components/ui/Button';
-import GhostText from '@/components/ui/GhostText';
 import { siteContent } from '@/data/content';
 import { faqItems } from '@/data/faq';
 import styles from './Faq.module.css';
@@ -50,8 +49,8 @@ export default function Faq() {
   };
 
   return (
-    <section ref={sectionRef} className={styles.section} aria-label="Frequently asked questions">
-      <GhostText text={faq.ghostText} />
+    <section ref={sectionRef} className={styles.section} aria-label="Questions fréquentes">
+        {/*<GhostText text={faq.ghostText} />*/}
 
       <div className={styles.container}>
         <motion.div
@@ -60,21 +59,18 @@ export default function Faq() {
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
         >
-          <span className={styles.label}>Faq</span>
-          {faq.heading.map((elem: string, index) => (
-            <h2 key={`${index} + ${elem}`} className={styles.heading}>
-              {elem}
-              <br />
+          <span className={styles.label}>FAQ</span>
+            <h2 className={styles.heading}>
+              {faq.heading}
             </h2>
-          ))}
           <p className={styles.subtitle}>
-            Everything you need to know about our services. Can&apos;t find what you&apos;re looking for? Get in touch.
+            Tout ce que vous devez savoir sur nos services. Vous ne trouvez pas ce que vous cherchez ? Contactez-nous.
           </p>
         </motion.div>
 
         <motion.ul
           className={styles.accordion}
-          aria-label="Faq accordion"
+          aria-label="Accordéon FAQ"
           variants={listVariants}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}

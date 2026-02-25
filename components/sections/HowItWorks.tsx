@@ -4,7 +4,6 @@ import { motion, useInView } from 'framer-motion';
 import type { LucideIcon } from 'lucide-react';
 import { ClipboardCheck, ScanEye, Wallet } from 'lucide-react';
 import { useRef } from 'react';
-import GhostText from '@/components/ui/GhostText';
 import styles from './HowItWorks.module.css';
 
 interface Step {
@@ -17,20 +16,20 @@ interface Step {
 const steps: Step[] = [
   {
     number: '01',
-    title: 'Get a Quote',
-    desc: 'Submit your vehicle details online and receive a competitive market valuation within 24 hours.',
+    title: 'Obtenir une Estimation',
+    desc: 'Soumettez les informations de votre véhicule en ligne et recevez une estimation compétitive sous 24 heures.',
     icon: ClipboardCheck,
   },
   {
     number: '02',
-    title: 'Vehicle Inspection',
-    desc: 'Our specialists conduct a thorough assessment at your convenience — at home or at our showroom.',
+    title: 'Inspection du Véhicule',
+    desc: 'Nos spécialistes effectuent une évaluation approfondie à votre convenance — à domicile ou dans notre showroom.',
     icon: ScanEye,
   },
   {
     number: '03',
-    title: 'Get Paid',
-    desc: 'Accept the offer and receive secure payment within 48 hours. We handle all paperwork and transfers.',
+    title: 'Recevoir le Paiement',
+    desc: 'Acceptez l\'offre et recevez un paiement sécurisé sous 48 heures. Nous gérons toutes les démarches administratives et les transferts.',
     icon: Wallet,
   },
 ];
@@ -79,8 +78,8 @@ export default function HowItWorks() {
   const isInView = useInView(sectionRef, { once: true, amount: 0.3 });
 
   return (
-    <section ref={sectionRef} className={styles.section} aria-label="How It Works">
-      <GhostText text="PROCESS" />
+    <section ref={sectionRef} className={styles.section} aria-label="Comment ça marche">
+        {/*<GhostText text="PROCESSUS" />*/}
 
       <div className={styles.container}>
         <motion.div
@@ -89,14 +88,12 @@ export default function HowItWorks() {
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
         >
-          <span className={styles.label}>How It Works</span>
+          <span className={styles.label}>Comment ça marche</span>
           <h2 className={styles.heading}>
-            THREE SIMPLE STEPS
-            <br />
-            TO SELL YOUR CAR
+            TROIS ÉTAPES SIMPLES
           </h2>
           <p className={styles.subtitle}>
-            From valuation to payment, our white-glove process ensures a seamless experience worthy of your vehicle.
+            De l&apos;estimation au paiement, notre processus irréprochable garantit une expérience sans accroc, à la hauteur de votre véhicule.
           </p>
         </motion.div>
 

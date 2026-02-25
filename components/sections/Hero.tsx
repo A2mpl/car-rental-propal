@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link'; // Ajout de l'import pour le lien
+import Link from 'next/link';
 import { type BezierDefinition, motion, type Variants } from 'framer-motion';
 import SearchBar from '@/components/ui/SearchBar';
 import styles from './Hero.module.css';
@@ -25,7 +25,7 @@ export default function Hero() {
             {/* ── Container principal (Plus large) ── */}
             <div className={styles.imageContainer}>
                 <Image
-                    src="/images/img_3.png" /* Remplace par ton image */
+                    src="/images/img_4.png" /* Remplace par ton image */
                     alt="Véhicule de luxe"
                     fill
                     priority

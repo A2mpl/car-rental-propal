@@ -36,12 +36,12 @@ export const cars: Car[] = [
       power: '670 HP',
     },
     specLabels: {
-      range: 'Range (EPA est.)',
-      acceleration: '0-60 mph',
-      power: 'peak power',
+      range: 'Autonomie (EPA est.)',
+      acceleration: '0-100 km/h',
+      power: 'puissance max',
     },
     description:
-      'Dual Motor All-Wheel Drive platform with instant torque on every axle. The Model 3 redefines what an electric sedan can be — a perfect balance of performance, range, and minimalist design.',
+      'Plate-forme à double moteur à transmission intégrale avec couple instantané sur chaque essieu. La Model 3 redéfinit ce qu\'une berline électrique peut être — un équilibre parfait de performance, d\'autonomie et de design minimaliste.',
     featured: true,
   },
   {
@@ -59,12 +59,12 @@ export const cars: Car[] = [
       power: '1020 HP',
     },
     specLabels: {
-      range: 'Range (EPA est.)',
-      acceleration: '0-60 mph',
-      power: 'peak power',
+      range: 'Autonomie (EPA est.)',
+      acceleration: '0-100 km/h',
+      power: 'puissance max',
     },
     description:
-      'Plaid tri-motor powertrain with a quarter-mile in under 9.2 seconds. The Model S Plaid is the quickest accelerating production car ever built, wrapped in a refined executive sedan body.',
+      'Groupe motopropulseur tri-moteur Plaid avec un quart de mile en moins de 9,2 secondes. La Model S Plaid est la voiture de série la plus rapide jamais construite, enveloppée dans une carrosserie de berline exécutive raffinée.',
     featured: false,
   },
   {
@@ -82,12 +82,12 @@ export const cars: Car[] = [
       power: '1020 HP',
     },
     specLabels: {
-      range: 'Range (EPA est.)',
-      acceleration: '0-60 mph',
-      power: 'peak power',
+      range: 'Autonomie (EPA est.)',
+      acceleration: '0-100 km/h',
+      power: 'puissance max',
     },
     description:
-      'The safest, quickest SUV ever built. Falcon Wing doors, a panoramic windshield, and Plaid performance combine to deliver an electric SUV unlike anything else on the road.',
+      'Le SUV le plus sûr et le plus rapide jamais construit. Les portes Falcon Wing, un pare-brise panoramique et les performances Plaid s\'associent pour offrir un SUV électrique sans équivalent sur la route.',
     featured: false,
   },
 ];

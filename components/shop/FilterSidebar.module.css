@@ -1,0 +1,446 @@
+/* ══════════════════════════════════════════════
+   FilterSidebar — Light Mode Premium
+   ══════════════════════════════════════════════ */
+
+.backdrop {
+  display: none;
+}
+
+.sidebar {
+  width: 272px;
+  flex-shrink: 0;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: sticky;
+  top: 80px; /* navbar height */
+  max-height: calc(100vh - 80px);
+  overflow: hidden;
+}
+
+/* ── Header ── */
+.sidebarHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 20px 16px;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.sidebarTitle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body), sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text);
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.resetBtn {
+  font-family: var(--font-body), sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--accent);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: opacity 0.2s ease;
+}
+
+.resetBtn:hover {
+  opacity: 0.7;
+}
+
+.closeBtn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--surface-2);
+  border: none;
+  cursor: pointer;
+  color: var(--text);
+  transition: background 0.2s ease;
+}
+
+.closeBtn:hover {
+  background: var(--border-mid);
+}
+
+/* ── Scrollable body ── */
+.filtersBody {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 0 8px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--surface-2) transparent;
+}
+
+.filtersBody::-webkit-scrollbar {
+  width: 4px;
+}
+
+.filtersBody::-webkit-scrollbar-thumb {
+  background: var(--surface-2);
+  border-radius: 2px;
+}
+
+/* ── Filter Group ── */
+.group {
+  padding: 18px 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.group:last-child {
+  border-bottom: none;
+}
+
+.groupLabel {
+  display: block;
+  font-family: var(--font-body), sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+/* Text input */
+.textInput {
+  width: 100%;
+  padding: 9px 12px;
+  border: 1px solid var(--border-mid);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body), sans-serif;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.textInput::placeholder {
+  color: var(--muted);
+}
+
+.textInput:focus {
+  border-color: var(--accent);
+  background: var(--surface);
+}
+
+/* Checkbox list */
+.checkList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.checkItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.checkbox {
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid var(--border-mid);
+  border-radius: 4px;
+  appearance: none;
+  -webkit-appearance: none;
+  background: var(--bg);
+  cursor: pointer;
+  flex-shrink: 0;
+  position: relative;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.checkbox:checked {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.checkbox:checked::after {
+  content: '';
+  position: absolute;
+  top: 2px;
+  left: 4.5px;
+  width: 5px;
+  height: 8px;
+  border: 2px solid #fff;
+  border-top: none;
+  border-left: none;
+  transform: rotate(42deg);
+}
+
+.checkLabel {
+  font-family: var(--font-body), sans-serif;
+  font-size: 13px;
+  color: var(--text-2);
+  transition: color 0.2s ease;
+}
+
+.checkItem:hover .checkLabel {
+  color: var(--text);
+}
+
+/* Price range inputs */
+.rangeRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.rangeField {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--border-mid);
+  border-radius: 8px;
+  background: var(--bg);
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+}
+
+.rangeField:focus-within {
+  border-color: var(--accent);
+}
+
+.rangePrefix {
+  padding: 0 0 0 10px;
+  font-family: var(--font-body), sans-serif;
+  font-size: 13px;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+
+.rangeInput {
+  flex: 1;
+  width: 0;
+  min-width: 0;
+  padding: 8px 8px 8px 4px;
+  border: none;
+  background: transparent;
+  color: var(--text);
+  font-family: var(--font-body), sans-serif;
+  font-size: 13px;
+  outline: none;
+}
+
+.rangeInput::-webkit-inner-spin-button,
+.rangeInput::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+.yearInput {
+  padding: 8px 12px;
+  border: 1px solid var(--border-mid);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body), sans-serif;
+  font-size: 13px;
+  outline: none;
+  flex: 1;
+  transition: border-color 0.2s ease;
+}
+
+.yearInput:focus {
+  border-color: var(--accent);
+}
+
+.rangeSep {
+  font-size: 12px;
+  color: var(--muted);
+  flex-shrink: 0;
+}
+
+/* Slider */
+.sliderSingle {
+  width: 100%;
+  margin-top: 4px;
+  accent-color: var(--accent);
+  cursor: pointer;
+}
+
+/* Fuel chips */
+.fuelGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.fuelChip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 10px;
+  border: 1.5px solid var(--border-mid);
+  border-radius: 8px;
+  background: var(--bg);
+  font-family: var(--font-body), sans-serif;
+  font-size: 12px;
+  color: var(--text-2);
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.fuelChip:hover {
+  border-color: var(--accent);
+  background: var(--accent-light);
+  color: var(--accent);
+}
+
+.fuelChipActive {
+  border-color: var(--accent);
+  background: var(--accent-light);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* Radio group */
+.radioGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.radioItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.radio {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--accent);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.radioLabel {
+  font-family: var(--font-body), sans-serif;
+  font-size: 13px;
+  color: var(--text-2);
+}
+
+/* Select */
+.selectWrap {
+  position: relative;
+}
+
+.select {
+  width: 100%;
+  padding: 9px 32px 9px 12px;
+  border: 1px solid var(--border-mid);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body), sans-serif;
+  font-size: 13px;
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.select:focus {
+  border-color: var(--accent);
+}
+
+.selectArrow {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 11px;
+  color: var(--muted);
+  pointer-events: none;
+}
+
+/* ── Footer CTA ── */
+.sidebarFooter {
+  padding: 16px 20px;
+  border-top: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.applyBtn {
+  width: 100%;
+  padding: 13px;
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-family: var(--font-body), sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.applyBtn:hover {
+  background: var(--accent-dark);
+}
+
+/* ══════════════════════════════════════════════
+   Mobile — sidebar becomes a drawer
+   ══════════════════════════════════════════════ */
+@media (max-width: 1023px) {
+  .backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 49;
+    backdrop-filter: blur(2px);
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 300px;
+    max-width: 85vw;
+    z-index: 50;
+    transform: translateX(-100%);
+    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow: 4px 0 32px rgba(0, 0, 0, 0.12);
+  }
+
+  .sidebarOpen {
+    transform: translateX(0);
+  }
+
+  .closeBtn {
+    display: flex;
+  }
+}

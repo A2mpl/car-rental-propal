@@ -1,6 +1,6 @@
 .item {
   border-bottom: 1px solid var(--border);
-  font-family: var(--font-inter), "Inter", sans-serif;
+  font-family: var(--font-body), sans-serif;
 }
 
 .trigger {
@@ -25,7 +25,7 @@
   text-transform: uppercase;
   letter-spacing: 0.08em;
   line-height: 1.4;
-  font-family: var(--font-inter), "Inter", sans-serif;
+  font-family: var(--font-body), sans-serif;
 }
 
 .chevron {
@@ -53,5 +53,5 @@
   font-size: 13px;
   color: var(--muted);
   line-height: 1.7;
-  font-family: var(--font-inter), "Inter", sans-serif;
+  font-family: var(--font-body), sans-serif;
 }
