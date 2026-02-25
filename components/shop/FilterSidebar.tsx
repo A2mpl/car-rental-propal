@@ -1,6 +1,6 @@
 'use client';
 
-import { useTransition } from 'react';
+import { useEffect, useRef, useState, useTransition } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { SlidersHorizontal, X } from 'lucide-react';
 import {
@@ -28,6 +28,52 @@ export default function FilterSidebar({ isMobileOpen, onMobileClose }: FilterSid
 
   // Derive current filter state from URL — single source of truth
   const filters = parseSearchParams(rawParams);
+
+  // ── Debounced local state for high-frequency inputs ────────────────────────
+  // We keep local state so controlled inputs feel instant, and only push to
+  // the URL after the user pauses (search: 350 ms, price: 500 ms).
+  // Sync effects update local state whenever the URL changes externally
+  // (pill removal, "reset all", etc.) and also cancel any pending timer so a
+  // stale debounce doesn't re-apply a value the user just cleared.
+
+  const [localSearch, setLocalSearch] = useState(filters.search);
+  const [localPriceFrom, setLocalPriceFrom] = useState(filters.priceFrom);
+  const [localPriceTo, setLocalPriceTo] = useState(filters.priceTo);
+
+  const searchTimerRef = useRef<ReturnType<typeof setTimeout>>(null);
+  const priceTimerRef = useRef<ReturnType<typeof setTimeout>>(null);
+
+  useEffect(() => {
+    if (searchTimerRef.current) clearTimeout(searchTimerRef.current);
+    setLocalSearch(filters.search);
+  }, [filters.search]);
+
+  useEffect(() => {
+    if (priceTimerRef.current) clearTimeout(priceTimerRef.current);
+    setLocalPriceFrom(filters.priceFrom);
+    setLocalPriceTo(filters.priceTo);
+  }, [filters.priceFrom, filters.priceTo]);
+
+  const handleSearch = (value: string) => {
+    setLocalSearch(value);
+    if (searchTimerRef.current) clearTimeout(searchTimerRef.current);
+    searchTimerRef.current = setTimeout(() => push({ search: value }), 350);
+  };
+
+  const handlePriceFrom = (value: number) => {
+    const v = Math.max(0, value);
+    setLocalPriceFrom(v);
+    if (priceTimerRef.current) clearTimeout(priceTimerRef.current);
+    priceTimerRef.current = setTimeout(() => push({ priceFrom: v, priceTo: localPriceTo }), 500);
+  };
+
+  const handlePriceTo = (value: number) => {
+    const v = Math.min(5000, value);
+    setLocalPriceTo(v);
+    if (priceTimerRef.current) clearTimeout(priceTimerRef.current);
+    priceTimerRef.current = setTimeout(() => push({ priceFrom: localPriceFrom, priceTo: v }), 500);
+  };
+  // ──────────────────────────────────────────────────────────────────────────
 
   /**
    * Push updated filters to URL via router.push inside a transition.
@@ -116,8 +162,8 @@ export default function FilterSidebar({ isMobileOpen, onMobileClose }: FilterSid
               type="text"
               className={styles.textInput}
               placeholder="ex. Tesla, Porsche…"
-              value={filters.search}
-              onChange={(e) => push({ search: e.target.value })}
+              value={localSearch}
+              onChange={(e) => handleSearch(e.target.value)}
             />
           </div>
 
@@ -168,8 +214,8 @@ export default function FilterSidebar({ isMobileOpen, onMobileClose }: FilterSid
                   className={styles.rangeInput}
                   min={0}
                   max={filters.priceTo}
-                  value={filters.priceFrom}
-                  onChange={(e) => push({ priceFrom: Math.max(0, Number(e.target.value)) })}
+                  value={localPriceFrom}
+                  onChange={(e) => handlePriceFrom(Number(e.target.value))}
                 />
               </div>
               <span className={styles.rangeSep}>—</span>
@@ -180,8 +226,8 @@ export default function FilterSidebar({ isMobileOpen, onMobileClose }: FilterSid
                   className={styles.rangeInput}
                   min={filters.priceFrom}
                   max={5000}
-                  value={filters.priceTo}
-                  onChange={(e) => push({ priceTo: Math.min(5000, Number(e.target.value)) })}
+                  value={localPriceTo}
+                  onChange={(e) => handlePriceTo(Number(e.target.value))}
                 />
               </div>
             </div>
@@ -191,8 +237,8 @@ export default function FilterSidebar({ isMobileOpen, onMobileClose }: FilterSid
               min={0}
               max={5000}
               step={50}
-              value={filters.priceTo}
-              onChange={(e) => push({ priceTo: Number(e.target.value) })}
+              value={localPriceTo}
+              onChange={(e) => handlePriceTo(Number(e.target.value))}
               aria-label="Prix maximum"
             />
           </div>

@@ -22,10 +22,18 @@ export default async function ShopPage({
 }) {
   const params = await searchParams;
   const filters = parseSearchParams(params);
-  const initialData = await fetchCars(filters, 1);
 
-  // Normalised key — forces InfiniteCarGrid to remount when filters change,
-  // resetting the accumulated listings state.
+  // Page number lives outside ShopFilters (infinite scroll ignores it).
+  const rawPage = params['page'];
+  const currentPage = Math.max(
+    1,
+    Number(Array.isArray(rawPage) ? rawPage[0] : (rawPage ?? '1')),
+  );
+
+  const initialData = await fetchCars(filters, currentPage);
+
+  // Normalised key — excludes page so infinite scroll doesn't remount on
+  // page-number changes, only on actual filter changes.
   const filterKey = filtersToParams(filters).toString();
 
   return (
@@ -40,6 +48,8 @@ export default async function ShopPage({
           initialHasMore={initialData.page < initialData.pages}
           total={initialData.total}
           filterKey={filterKey}
+          currentPage={currentPage}
+          totalPages={initialData.pages}
         />
       </Suspense>
     </>

@@ -5,7 +5,9 @@ import { useRouter } from 'next/navigation';
 import FilterSidebar from '@/components/shop/FilterSidebar';
 import ShopControls from './ShopControls';
 import InfiniteCarGrid from './InfiniteCarGrid';
+import PaginatedCarGrid from './PaginatedCarGrid';
 import type { AS24Listing, ShopFilters } from '@/lib/autoscout24';
+import { filtersToParams } from '@/lib/autoscout24';
 import styles from './shop.module.css';
 
 interface Props {
@@ -14,7 +16,11 @@ interface Props {
   initialHasMore: boolean;
   total: number;
   filterKey: string;
+  currentPage: number;
+  totalPages: number;
 }
+
+export type ScrollMode = 'infinite' | 'paginated';
 
 export default function ShopClient({
   initialListings,
@@ -22,10 +28,31 @@ export default function ShopClient({
   initialHasMore,
   total,
   filterKey,
+  currentPage,
+  totalPages,
 }: Props) {
   const router = useRouter();
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+  const [scrollMode, setScrollMode] = useState<ScrollMode>('infinite');
+
+  // Incremented to force InfiniteCarGrid remount when switching back from
+  // paginated mode, so it starts fresh from the correct initialListings.
+  const [infiniteResetKey, setInfiniteResetKey] = useState(0);
+
+  const handleScrollModeChange = (mode: ScrollMode) => {
+    if (mode === scrollMode) return;
+    setScrollMode(mode);
+
+    if (mode === 'infinite') {
+      setInfiniteResetKey((k) => k + 1);
+      // Remove page param so infinite scroll always starts from page 1
+      if (currentPage > 1) {
+        const params = filtersToParams(initialFilters);
+        router.push(`/shop?${params.toString()}`);
+      }
+    }
+  };
 
   return (
     <div className={styles.pageWrap}>
@@ -48,12 +75,14 @@ export default function ShopClient({
           </div>
         </div>
 
-        {/* Sort / count bar */}
+        {/* Sort / count / mode bar */}
         <ShopControls
           total={total}
           viewMode={viewMode}
           onViewModeChange={setViewMode}
           onMobileFilterOpen={() => setMobileFiltersOpen(true)}
+          scrollMode={scrollMode}
+          onScrollModeChange={handleScrollModeChange}
         />
 
         {/* Results or empty state */}
@@ -70,10 +99,18 @@ export default function ShopClient({
               Réinitialiser les filtres
             </button>
           </div>
+        // biome-ignore lint/style/noNestedTernary: We will choose TODO
+        ) : scrollMode === 'paginated' ? (
+          <PaginatedCarGrid
+            listings={initialListings}
+            filters={initialFilters}
+            currentPage={currentPage}
+            totalPages={totalPages}
+            viewMode={viewMode}
+          />
         ) : (
-          // key forces remount (and state reset) whenever filters change
           <InfiniteCarGrid
-            key={filterKey}
+            key={`${filterKey}-${infiniteResetKey}`}
             initialListings={initialListings}
             initialFilters={initialFilters}
             initialHasMore={initialHasMore}

@@ -665,7 +665,7 @@ export function filtersToParams(filters: ShopFilters): URLSearchParams {
  * Falls back to mock data automatically.
  */
 export async function fetchCars(filters: ShopFilters, page = 1): Promise<AS24Response> {
-  const apiUrl = process.env.NEXT_PUBLIC_CARS_API_URL;
+  const apiUrl = process.env.CARS_API_URL;
   if (apiUrl) {
     const params = filtersToParams(filters);
     params.set('page', String(page));

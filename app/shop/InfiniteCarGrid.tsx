@@ -2,8 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState, useTransition } from 'react';
 import CarCard from '@/components/shop/CarCard';
-import type { AS24Listing, ShopFilters } from '@/lib/autoscout24';
-import { loadMoreCars } from './actions';
+import { filtersToParams, type AS24Listing, type AS24Response, type ShopFilters } from '@/lib/autoscout24';
 import styles from './shop.module.css';
 
 interface Props {
@@ -34,7 +33,12 @@ export default function InfiniteCarGrid({
 
     startTransition(async () => {
       const nextPage = page + 1;
-      const data = await loadMoreCars(initialFilters, nextPage);
+      // Route Handler — benefits from Cache-Control: s-maxage=60
+      const params = filtersToParams(initialFilters);
+      params.set('page', String(nextPage));
+      const res = await fetch(`/api/cars?${params.toString()}`);
+      if (!res.ok) return;
+      const data = (await res.json()) as AS24Response;
       setListings((prev) => [...prev, ...data.listings]);
       setPage(nextPage);
       setHasMore(nextPage < data.pages);

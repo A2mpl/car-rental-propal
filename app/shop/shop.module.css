@@ -415,6 +415,28 @@
   color: #fff !important;
 }
 
+/* ── Paginated grid wrapper — fades while navigating ── */
+.gridOuter {
+  transition: opacity 0.2s ease;
+}
+
+.gridPending {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+/* ── Pagination ellipsis ── */
+.pageEllipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  font-size: 14px;
+  color: var(--muted);
+  user-select: none;
+}
+
 /* ── Infinite scroll sentinel ── */
 .sentinel {
   height: 1px;

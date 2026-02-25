@@ -2,7 +2,8 @@
 
 import { useState, useTransition } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
-import { ChevronDown, LayoutGrid, List, SlidersHorizontal, X } from 'lucide-react';
+import { ChevronDown, ChevronsDown, LayoutGrid, List, ListOrdered, SlidersHorizontal, X } from 'lucide-react';
+import type { ScrollMode } from './ShopClient';
 import {
   countActiveFilters,
   filtersToParams,
@@ -37,6 +38,8 @@ interface Props {
   viewMode: 'grid' | 'list';
   onViewModeChange: (v: 'grid' | 'list') => void;
   onMobileFilterOpen: () => void;
+  scrollMode: ScrollMode;
+  onScrollModeChange: (mode: ScrollMode) => void;
 }
 
 export default function ShopControls({
@@ -44,6 +47,8 @@ export default function ShopControls({
   viewMode,
   onViewModeChange,
   onMobileFilterOpen,
+  scrollMode,
+  onScrollModeChange,
 }: Props) {
   const router = useRouter();
   const rawParams = useSearchParams();
@@ -148,6 +153,28 @@ export default function ShopControls({
               aria-label="Vue liste"
             >
               <List size={15} />
+            </button>
+          </div>
+
+          {/* Scroll mode toggle — infinite scroll vs paginated */}
+          <div className={styles.viewToggle}>
+            <button
+              type="button"
+              className={`${styles.viewBtn} ${scrollMode === 'infinite' ? styles.viewBtnActive : ''}`}
+              onClick={() => onScrollModeChange('infinite')}
+              aria-label="Défilement infini"
+              title="Défilement infini"
+            >
+              <ChevronsDown size={15} />
+            </button>
+            <button
+              type="button"
+              className={`${styles.viewBtn} ${scrollMode === 'paginated' ? styles.viewBtnActive : ''}`}
+              onClick={() => onScrollModeChange('paginated')}
+              aria-label="Pagination"
+              title="Pagination"
+            >
+              <ListOrdered size={15} />
             </button>
           </div>
 
