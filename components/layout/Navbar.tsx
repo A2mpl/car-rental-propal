@@ -5,6 +5,7 @@ import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
 import { useState } from 'react';
 import { siteContent } from '@/data/content';
+import ThemeToggle from '@/components/ui/ThemeToggle';
 import styles from './Navbar.module.css';
 
 export default function Navbar() {
@@ -43,13 +44,7 @@ export default function Navbar() {
         </ul>
 
         <div className={styles.icons}>
-            {/*<button type={'button'} className={styles.iconBtn} aria-label="Search">
-            <Search size={19} strokeWidth={1.5} />
-          </button>
-          <button type="button" className={styles.iconBtn} aria-label="Account">
-            <User size={19} strokeWidth={1.5} />
-          </button>
-            */}
+          <ThemeToggle />
           <button type="button" className={styles.hamburger} onClick={() => setMobileOpen(!mobileOpen)}>
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
           </button>

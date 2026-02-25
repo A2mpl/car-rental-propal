@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Archivo, Saira } from 'next/font/google';
+import ThemeProvider from '@/components/layout/ThemeProvider';
 import './globals.css';
 
 const saira = Saira({
@@ -29,9 +30,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr" className={`${saira.variable} ${archivo.variable}`}>
+    <html lang="fr" className={`${saira.variable} ${archivo.variable}`} suppressHydrationWarning>
       <body>
-        {children}
+        <ThemeProvider>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
