@@ -84,7 +84,6 @@ export default function Testimonials() {
 
   return (
     <section ref={sectionRef} className={styles.section} aria-label="Témoignages clients">
-
       <div className={styles.container}>
         <motion.div
           className={styles.header}
@@ -93,11 +92,10 @@ export default function Testimonials() {
           animate={isInView ? 'visible' : 'hidden'}
         >
           <span className={styles.label}>Témoignages</span>
-          <h2 className={styles.heading}>
-            CE QUE DISENT NOS CLIENTS
-          </h2>
+          <h2 className={styles.heading}>CE QUE DISENT NOS CLIENTS</h2>
           <p className={styles.subtitle}>
-            Plébiscité par des collectionneurs avertis et des passionnés d&apos;automobile qui n&apos;acceptent rien de moins que l&apos;excellence.
+            Plébiscité par des collectionneurs avertis et des passionnés d&apos;automobile qui n&apos;acceptent rien de
+            moins que l&apos;excellence.
           </p>
         </motion.div>
       </div>

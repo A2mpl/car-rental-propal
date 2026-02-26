@@ -50,7 +50,7 @@ export default function Faq() {
 
   return (
     <section ref={sectionRef} className={styles.section} aria-label="Questions fréquentes">
-        {/*<GhostText text={faq.ghostText} />*/}
+      {/*<GhostText text={faq.ghostText} />*/}
 
       <div className={styles.container}>
         <motion.div
@@ -60,9 +60,7 @@ export default function Faq() {
           animate={isInView ? 'visible' : 'hidden'}
         >
           <span className={styles.label}>FAQ</span>
-            <h2 className={styles.heading}>
-              {faq.heading}
-            </h2>
+          <h2 className={styles.heading}>{faq.heading}</h2>
           <p className={styles.subtitle}>
             Tout ce que vous devez savoir sur nos services. Vous ne trouvez pas ce que vous cherchez ? Contactez-nous.
           </p>

@@ -1,13 +1,13 @@
 'use client';
 
-import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 import FilterSidebar from '@/components/shop/FilterSidebar';
-import ShopControls from './ShopControls';
-import InfiniteCarGrid from './InfiniteCarGrid';
-import PaginatedCarGrid from './PaginatedCarGrid';
 import type { AS24Listing, ShopFilters } from '@/lib/autoscout24';
 import { filtersToParams } from '@/lib/autoscout24';
+import InfiniteCarGrid from './InfiniteCarGrid';
+import PaginatedCarGrid from './PaginatedCarGrid';
+import ShopControls from './ShopControls';
 import styles from './shop.module.css';
 
 interface Props {
@@ -56,19 +56,14 @@ export default function ShopClient({
 
   return (
     <div className={styles.pageWrap}>
-      <FilterSidebar
-        isMobileOpen={mobileFiltersOpen}
-        onMobileClose={() => setMobileFiltersOpen(false)}
-      />
+      <FilterSidebar isMobileOpen={mobileFiltersOpen} onMobileClose={() => setMobileFiltersOpen(false)} />
 
       <main className={styles.main}>
         {/* Page header */}
         <div className={styles.pageHeader}>
           <div className={styles.pageHeaderLeft}>
             <h1 className={styles.pageTitle}>Trouvez Votre Véhicule</h1>
-            <p className={styles.pageSubtitle}>
-              Parcourez notre flotte sélectionnée de véhicules de location premium
-            </p>
+            <p className={styles.pageSubtitle}>Parcourez notre flotte sélectionnée de véhicules de location premium</p>
           </div>
           <div className={styles.pageHeaderRight}>
             <span className={styles.sourceBadge}>Propulsé par AutoScout24</span>
@@ -91,15 +86,11 @@ export default function ShopClient({
             <div className={styles.emptyIcon}>🚗</div>
             <p className={styles.emptyTitle}>Aucun véhicule trouvé</p>
             <p className={styles.emptySubtitle}>Essayez d&apos;ajuster vos filtres</p>
-            <button
-              type="button"
-              className={styles.emptyReset}
-              onClick={() => router.push('/shop')}
-            >
+            <button type="button" className={styles.emptyReset} onClick={() => router.push('/shop')}>
               Réinitialiser les filtres
             </button>
           </div>
-        // biome-ignore lint/style/noNestedTernary: We will choose TODO
+          // biome-ignore lint/style/noNestedTernary: We will choose TODO
         ) : scrollMode === 'paginated' ? (
           <PaginatedCarGrid
             listings={initialListings}

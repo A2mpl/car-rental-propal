@@ -1,10 +1,10 @@
 'use client';
 
-import { useTransition } from 'react';
-import { useRouter } from 'next/navigation';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { useTransition } from 'react';
 import CarCard from '@/components/shop/CarCard';
-import { filtersToParams, type AS24Listing, type ShopFilters } from '@/lib/autoscout24';
+import { type AS24Listing, filtersToParams, type ShopFilters } from '@/lib/autoscout24';
 import styles from './shop.module.css';
 
 interface Props {
@@ -15,13 +15,7 @@ interface Props {
   viewMode: 'grid' | 'list';
 }
 
-export default function PaginatedCarGrid({
-  listings,
-  filters,
-  currentPage,
-  totalPages,
-  viewMode,
-}: Props) {
+export default function PaginatedCarGrid({ listings, filters, currentPage, totalPages, viewMode }: Props) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
 
@@ -61,6 +55,7 @@ export default function PaginatedCarGrid({
 
           {getPageRange(currentPage, totalPages).map((item, i) =>
             item === 'ellipsis' ? (
+              // biome-ignore lint/suspicious/noArrayIndexKey: DEV
               <span key={`e-${i}`} className={styles.pageEllipsis}>
                 …
               </span>
@@ -68,9 +63,7 @@ export default function PaginatedCarGrid({
               <button
                 key={item}
                 type="button"
-                className={`${styles.pageBtn} ${
-                  currentPage === item ? styles.pageBtnActive : ''
-                }`}
+                className={`${styles.pageBtn} ${currentPage === item ? styles.pageBtnActive : ''}`}
                 onClick={() => goToPage(item)}
                 disabled={isPending}
                 aria-label={`Page ${item}`}
@@ -78,7 +71,7 @@ export default function PaginatedCarGrid({
               >
                 {item}
               </button>
-            ),
+            )
           )}
 
           <button

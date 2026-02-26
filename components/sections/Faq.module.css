@@ -55,7 +55,7 @@
 
 .heading {
   font-family: var(--font-display), sans-serif;
-    font-size: clamp(26px, 4.5vw, 32px);
+  font-size: clamp(26px, 4.5vw, 32px);
   font-weight: 400;
   font-style: italic;
   color: var(--text);
@@ -101,7 +101,7 @@
   }
 
   .heading {
-      font-size: clamp(30px, 4vw, 38px);
+    font-size: clamp(30px, 4vw, 38px);
   }
 
   .label::before,
@@ -128,7 +128,7 @@
   }
 
   .heading {
-      font-size: clamp(34px, 3vw, 44px);
+    font-size: clamp(34px, 3vw, 44px);
   }
 
   .subtitle {

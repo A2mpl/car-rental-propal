@@ -33,7 +33,9 @@
   text-transform: uppercase;
   font-family: var(--font-display), sans-serif;
   text-decoration: none;
-  transition: background 0.2s ease, color 0.2s ease;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
 }
 
 .logo:hover {

@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from 'next/server';
+import { type NextRequest, NextResponse } from 'next/server';
 import { filterAndSort, MOCK_CARS, parseSearchParams } from '@/lib/autoscout24';
 
 /**

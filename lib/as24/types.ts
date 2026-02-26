@@ -43,24 +43,24 @@ export interface AS24RawImage {
 
 /** AS24 fuel type codes */
 export type AS24FuelCode =
-  | 'P'  // Petrol / Gasoline
-  | 'D'  // Diesel
-  | 'E'  // Electric
-  | 'H'  // Hybrid (or Hydrogen — context-dependent)
-  | 'L'  // LPG
-  | 'C'  // CNG
+  | 'P' // Petrol / Gasoline
+  | 'D' // Diesel
+  | 'E' // Electric
+  | 'H' // Hybrid (or Hydrogen — context-dependent)
+  | 'L' // LPG
+  | 'C' // CNG
   | 'X'; // Other
 
 /** AS24 body type identifiers */
 export type AS24BodyCode =
-  | 'limousine'   // Sedan / Berline
-  | 'suv'         // SUV / Crossover
-  | 'coupe'       // Coupé / Sport
-  | 'cabriolet'   // Convertible / Cabriolet
-  | 'estate'      // Estate / Break
-  | 'minivan'     // Monospace
-  | 'van'         // Utilitaire
-  | 'pickup';     // Pick-up
+  | 'limousine' // Sedan / Berline
+  | 'suv' // SUV / Crossover
+  | 'coupe' // Coupé / Sport
+  | 'cabriolet' // Convertible / Cabriolet
+  | 'estate' // Estate / Break
+  | 'minivan' // Monospace
+  | 'van' // Utilitaire
+  | 'pickup'; // Pick-up
 
 /** AS24 transmission codes */
 export type AS24GearCode = 'A' | 'M'; // Automatic | Manual

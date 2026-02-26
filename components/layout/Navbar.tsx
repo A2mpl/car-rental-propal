@@ -4,8 +4,8 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
 import { useState } from 'react';
-import { siteContent } from '@/data/content';
 import ThemeToggle from '@/components/ui/ThemeToggle';
+import { siteContent } from '@/data/content';
 import styles from './Navbar.module.css';
 
 export default function Navbar() {

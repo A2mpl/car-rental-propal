@@ -1,16 +1,11 @@
 'use client';
 
-import { useState, useTransition } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
 import { ChevronDown, ChevronsDown, LayoutGrid, List, ListOrdered, SlidersHorizontal, X } from 'lucide-react';
-import type { ScrollMode } from './ShopClient';
-import {
-  countActiveFilters,
-  filtersToParams,
-  parseSearchParams,
-  SORT_OPTIONS,
-} from '@/lib/autoscout24';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { useState, useTransition } from 'react';
 import type { SortOption } from '@/lib/autoscout24';
+import { countActiveFilters, filtersToParams, parseSearchParams, SORT_OPTIONS } from '@/lib/autoscout24';
+import type { ScrollMode } from './ShopClient';
 import styles from './shop.module.css';
 
 const BODY_LABELS: Record<string, string> = {
@@ -57,8 +52,7 @@ export default function ShopControls({
 
   const filters = parseSearchParams(rawParams);
   const activeFilterCount = countActiveFilters(filters);
-  const currentSortLabel =
-    SORT_OPTIONS.find((o) => o.value === filters.sort)?.label ?? 'Recommandé';
+  const currentSortLabel = SORT_OPTIONS.find((o) => o.value === filters.sort)?.label ?? 'Recommandé';
 
   const pushFilters = (partial: Partial<typeof filters>) => {
     const next = filtersToParams({ ...filters, ...partial });
@@ -119,16 +113,10 @@ export default function ShopControls({
       {/* Sort / count bar */}
       <div className={`${styles.sortBar} ${isPending ? styles.sortBarPending : ''}`}>
         {/* Mobile filter toggle */}
-        <button
-          type="button"
-          className={styles.mobileFilterBtn}
-          onClick={onMobileFilterOpen}
-        >
+        <button type="button" className={styles.mobileFilterBtn} onClick={onMobileFilterOpen}>
           <SlidersHorizontal size={15} />
           <span>Filtres</span>
-          {activeFilterCount > 0 && (
-            <span className={styles.filterCount}>{activeFilterCount}</span>
-          )}
+          {activeFilterCount > 0 && <span className={styles.filterCount}>{activeFilterCount}</span>}
         </button>
 
         <span className={styles.resultCount}>
@@ -180,11 +168,7 @@ export default function ShopControls({
 
           {/* Sort dropdown */}
           <div className={styles.sortDropdown}>
-            <button
-              type="button"
-              className={styles.sortBtn}
-              onClick={() => setSortOpen((o) => !o)}
-            >
+            <button type="button" className={styles.sortBtn} onClick={() => setSortOpen((o) => !o)}>
               <span>{currentSortLabel}</span>
               <ChevronDown
                 size={13}
@@ -200,9 +184,7 @@ export default function ShopControls({
                   <button
                     key={opt.value}
                     type="button"
-                    className={`${styles.sortOption} ${
-                      filters.sort === opt.value ? styles.sortOptionActive : ''
-                    }`}
+                    className={`${styles.sortOption} ${filters.sort === opt.value ? styles.sortOptionActive : ''}`}
                     onClick={() => pushFilters({ sort: opt.value as SortOption })}
                   >
                     {opt.label}
@@ -234,9 +216,7 @@ export default function ShopControls({
             <button
               type="button"
               className={styles.clearAllPills}
-              onClick={() =>
-                startTransition(() => router.push('/shop'))
-              }
+              onClick={() => startTransition(() => router.push('/shop'))}
             >
               Tout effacer
             </button>

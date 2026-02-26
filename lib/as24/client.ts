@@ -119,10 +119,7 @@ async function fetchWithAuth(url: string, retried = false): Promise<Response> {
  * @returns        Normalised `AS24Response` with internal listing shape
  * @throws         On network error or non-OK HTTP response
  */
-export async function searchVehicles(
-  filters: ShopFilters,
-  page = 1,
-): Promise<AS24Response> {
+export async function searchVehicles(filters: ShopFilters, page = 1): Promise<AS24Response> {
   const params = buildAS24Params(filters, page, PAGE_SIZE);
   const res = await fetchWithAuth(`/v1/listings?${params.toString()}`);
 

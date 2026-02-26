@@ -1,5 +1,5 @@
-import Image from 'next/image';
 import { ArrowRight, Fuel, Gauge, Zap } from 'lucide-react';
+import Image from 'next/image';
 import type { AS24Listing } from '@/lib/autoscout24';
 import styles from './CarCard.module.css';
 
@@ -57,11 +57,7 @@ export default function CarCard({ car }: CarCardProps) {
         {/* Overlay badges */}
         <div className={styles.imageBadges}>
           <span className={styles.bodyBadge}>{BODY_LABELS[car.body] ?? car.body}</span>
-          {badge && (
-            <span className={`${styles.badge} ${styles[badge.className]}`}>
-              {badge.label}
-            </span>
-          )}
+          {badge && <span className={`${styles.badge} ${styles[badge.className]}`}>{badge.label}</span>}
         </div>
 
         {/* Fuel chip */}
@@ -98,9 +94,7 @@ export default function CarCard({ car }: CarCardProps) {
             </div>
           )}
           <div className={styles.spec}>
-            <span className={styles.specValue}>
-              {car.mileage.toLocaleString()} km
-            </span>
+            <span className={styles.specValue}>{car.mileage.toLocaleString()} km</span>
             <span className={styles.specLabel}>Kilométrage</span>
           </div>
         </div>

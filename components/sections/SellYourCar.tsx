@@ -6,7 +6,7 @@ import styles from './SellYourCar.module.css';
 export default function SellYourCar() {
   return (
     <section className={styles.section} aria-label="Vendre votre voiture">
-        {/*<GhostText text="VENDRE MAINTENANT" />*/}
+      {/*<GhostText text="VENDRE MAINTENANT" />*/}
 
       <div className={styles.container}>
         <div className={styles.topRow}>
@@ -24,12 +24,11 @@ export default function SellYourCar() {
           </div>
 
           <div className={styles.headingSide}>
-            <h2 className={styles.heading}>
-              VENDEZ VOTRE VOITURE
-              EN TOUTE CONFIANCE
-            </h2>
+            <h2 className={styles.heading}>VENDEZ VOTRE VOITURE EN TOUTE CONFIANCE</h2>
             <p className={styles.intro}>
-              Que vous souhaitiez passer à un modèle supérieur ou simplement vous séparer de votre véhicule, nous proposons l&apos;expérience de vente la plus fluide et la plus premium pour les véhicules haut de gamme. Pas d&apos;annonces, pas de négociations — juste un prix juste et un service irréprochable.
+              Que vous souhaitiez passer à un modèle supérieur ou simplement vous séparer de votre véhicule, nous
+              proposons l&apos;expérience de vente la plus fluide et la plus premium pour les véhicules haut de gamme.
+              Pas d&apos;annonces, pas de négociations — juste un prix juste et un service irréprochable.
             </p>
             <Button href="/sell">
               Obtenir une Estimation

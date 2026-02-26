@@ -28,7 +28,7 @@ export const siteContent = {
   evChargers: {
     ghostText: 'POURQUOI',
     heading: 'POURQUOI NOUS CHOISIR',
-    subheading: 'Tout ce qu\'il vous faut pour trouver votre véhicule',
+    subheading: "Tout ce qu'il vous faut pour trouver votre véhicule",
     bullets: [
       'Large sélection de véhicules premium et exotiques',
       'Meilleurs prix — justes, transparents, sans frais cachés',
@@ -46,7 +46,7 @@ export const siteContent = {
         alt: 'Gros plan sur une jante de voiture électrique',
       },
       {
-        alt: 'Détail d\'étrier de frein rouge sur fond sombre',
+        alt: "Détail d'étrier de frein rouge sur fond sombre",
       },
     ],
   },
@@ -68,7 +68,7 @@ export const siteContent = {
 
   ctaFooter: {
     heading: 'PRÊT À PASSER AVEC NOUS ?',
-    body: 'Rejoignez des milliers de conducteurs qui ont déjà franchi le cap de l\'électrique. Louez un véhicule Timeless dès aujourd\'hui et vivez l\'avenir de la mobilité — zéro émission, performance totale.',
+    body: "Rejoignez des milliers de conducteurs qui ont déjà franchi le cap de l'électrique. Louez un véhicule Timeless dès aujourd'hui et vivez l'avenir de la mobilité — zéro émission, performance totale.",
     navColumns: [
       [
         { label: 'MENTIONS LÉGALES', href: '/privacy' },

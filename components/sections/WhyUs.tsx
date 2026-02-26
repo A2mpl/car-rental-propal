@@ -14,7 +14,7 @@ export default function WhyUs() {
 
   return (
     <section className={styles.section} aria-label="EV Chargers">
-        {/*<GhostText text={evChargers.ghostText} />*/}
+      {/*<GhostText text={evChargers.ghostText} />*/}
 
       <div className={styles.container}>
         <div className={styles.headingRow}>
@@ -53,13 +53,15 @@ export default function WhyUs() {
               >
                 Véhicules Premium
               </h3>
-              <p style={{
+              <p
+                style={{
                   color: 'var(--text-on-dark)',
                   fontSize: '14px',
                   fontWeight: '500',
                   textShadow: '0 2px 4px rgba(0,0,0,0.6)',
-                  marginTop: '6px'
-              }}>
+                  marginTop: '6px',
+                }}
+              >
                 Nos meilleurs véhicules disponibles
               </p>
             </div>
@@ -72,40 +74,36 @@ export default function WhyUs() {
           >
             <Image src="images/img_1.png" alt={evChargers.images[2].alt} fill className={styles.img} unoptimized />
           </motion.div>
-            <motion.div
-                whileHover={{ y: -8 }}
-                transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-                className={`${styles.imgCell} ${styles.imgSmallA}`}
-                style={{
-                    backgroundColor: 'var(--accent-dark)',
-                    borderRadius: '24px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    boxShadow: premiumGreenHalo,
-                    textAlign: 'center',
-                    overflow: 'hidden',
-                }}
+          <motion.div
+            whileHover={{ y: -8 }}
+            transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+            className={`${styles.imgCell} ${styles.imgSmallA}`}
+            style={{
+              backgroundColor: 'var(--accent-dark)',
+              borderRadius: '24px',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+              boxShadow: premiumGreenHalo,
+              textAlign: 'center',
+              overflow: 'hidden',
+            }}
+          >
+            <h3 className={styles.nbClients}>900+</h3>
+            <span
+              style={{
+                color: 'var(--surface)',
+                fontWeight: '800',
+                fontSize: '10px',
+                textTransform: 'uppercase',
+                letterSpacing: '1px',
+                marginTop: '10px',
+              }}
             >
-                <h3
-                    className={styles.nbClients}
-                >
-                    900+
-                </h3>
-                <span
-                    style={{
-                        color: 'var(--surface)',
-                        fontWeight: '800',
-                        fontSize: '10px',
-                        textTransform: 'uppercase',
-                        letterSpacing: '1px',
-                        marginTop: '10px',
-                    }}
-                >
               Clients Satisfaits
             </span>
-            </motion.div>
+          </motion.div>
         </div>
 
         <div className={styles.bottomRow}>

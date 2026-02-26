@@ -23,6 +23,7 @@ export default function ShopLoading() {
           <div className={styles.skeletonSortBar} />
           <div className={styles.grid}>
             {Array.from({ length: 9 }).map((_, i) => (
+              // biome-ignore lint/suspicious/noArrayIndexKey: DEV
               <div key={i} className={styles.skeletonCard}>
                 <div className={styles.skeletonImage} />
                 <div className={styles.skeletonContent}>

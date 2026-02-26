@@ -1,17 +1,17 @@
 :root {
   /* ── Backgrounds ── */
-  --bg: #F4F4F0;
-  --surface: #F8FAF8;
-  --surface-2: #ECEAE5;
+  --bg: #f4f4f0;
+  --surface: #f8faf8;
+  --surface-2: #eceae5;
 
   /* ── Text ── */
   --text: #111111;
-  --text-2: #3D3D3D;
-  --muted: #6B6B6B;
+  --text-2: #3d3d3d;
+  --muted: #6b6b6b;
 
   /* ── Accent — Bottle Green ── */
-  --accent: #3E6356;
-  --accent-dark: #2D4A3F;
+  --accent: #3e6356;
+  --accent-dark: #2d4a3f;
   --accent-light: rgba(62, 99, 86, 0.08);
 
   /* ── Borders ── */
@@ -20,7 +20,7 @@
 
   /* ── Semantic helpers ── */
   /* Text always on dark image overlays (hero, WhyUs photo) — never changes */
-  --text-on-dark: #FFFFFF;
+  --text-on-dark: #ffffff;
   /* Step number watermark */
   --step-number-color: rgba(62, 99, 86, 0.06);
   /* Quote mark tint */
@@ -52,28 +52,28 @@
    ══════════════════════════════════════════════ */
 [data-theme="dark"] {
   /* Backgrounds — deep forest, warm-black with green undertone */
-  --bg: #0F1210;
-  --surface: #161A17;
-  --surface-2: #1D221E;
+  --bg: #0f1210;
+  --surface: #161a17;
+  --surface-2: #1d221e;
 
   /* Text */
-  --text: #E8EAE6;
-  --text-2: #AAB4AE;
-  --muted: #7A8880;       /* 4.9:1 on --bg  — WCAG AA ✓ */
+  --text: #e8eae6;
+  --text-2: #aab4ae;
+  --muted: #7a8880; /* 4.9:1 on --bg  — WCAG AA ✓ */
 
   /* Accent — brighter green, readable on dark surfaces */
-  --accent: #52A882;      /* 6.7:1 on --bg  — WCAG AA ✓ */
-  --accent-dark: #3E8E6A;
+  --accent: #52a882; /* 6.7:1 on --bg  — WCAG AA ✓ */
+  --accent-dark: #3e8e6a;
   --accent-light: rgba(82, 168, 130, 0.12);
 
   /* Borders */
   --border: rgba(255, 255, 255, 0.06);
-  --border-mid: rgba(255, 255, 255, 0.10);
+  --border-mid: rgba(255, 255, 255, 0.1);
 
   /* Semantic overrides */
-  --text-on-dark: #FFFFFF;             /* stays white on dark overlays */
+  --text-on-dark: #ffffff; /* stays white on dark overlays */
   --step-number-color: rgba(82, 168, 130, 0.14); /* brighter on dark bg */
-  --quotemark-color: rgba(82, 168, 130, 0.20);   /* visible on dark card */
+  --quotemark-color: rgba(82, 168, 130, 0.2); /* visible on dark card */
   --quotemark-hover: rgba(82, 168, 130, 0.35);
 }
 

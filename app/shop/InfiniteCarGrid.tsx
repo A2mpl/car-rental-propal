@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState, useTransition } from 'react';
 import CarCard from '@/components/shop/CarCard';
-import { filtersToParams, type AS24Listing, type AS24Response, type ShopFilters } from '@/lib/autoscout24';
+import { type AS24Listing, type AS24Response, filtersToParams, type ShopFilters } from '@/lib/autoscout24';
 import styles from './shop.module.css';
 
 interface Props {
@@ -12,12 +12,7 @@ interface Props {
   viewMode: 'grid' | 'list';
 }
 
-export default function InfiniteCarGrid({
-  initialListings,
-  initialFilters,
-  initialHasMore,
-  viewMode,
-}: Props) {
+export default function InfiniteCarGrid({ initialListings, initialFilters, initialHasMore, viewMode }: Props) {
   const [listings, setListings] = useState<AS24Listing[]>(initialListings);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(initialHasMore);
@@ -57,7 +52,7 @@ export default function InfiniteCarGrid({
       ([entry]) => {
         if (entry.isIntersecting) loadMore();
       },
-      { rootMargin: '300px' },
+      { rootMargin: '300px' }
     );
 
     observer.observe(el);
@@ -76,7 +71,8 @@ export default function InfiniteCarGrid({
             inside the grid so they slot naturally into the layout */}
         {isPending &&
           Array.from({ length: 3 }).map((_, i) => (
-            <div key={`sk-${i}`} className={styles.skeletonCard}>
+            <div key={`sk-${// biome-ignore lint/suspicious/noArrayIndexKey: dev
+i}`} className={styles.skeletonCard}>
               <div className={styles.skeletonImage} />
               <div className={styles.skeletonContent}>
                 <div className={styles.skeletonLine} style={{ width: '35%' }} />

@@ -1,17 +1,17 @@
 'use client';
 
-import { useEffect, useRef, useState, useTransition } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
 import { SlidersHorizontal, X } from 'lucide-react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { useEffect, useRef, useState, useTransition } from 'react';
 import {
   BODIES,
-  filtersToParams,
+  type BodyType,
   FUELS,
+  type FuelType,
+  filtersToParams,
   MAKES,
   MILEAGE_OPTIONS,
   parseSearchParams,
-  type BodyType,
-  type FuelType,
   type ShopFilters,
 } from '@/lib/autoscout24';
 import styles from './FilterSidebar.module.css';
@@ -88,23 +88,17 @@ export default function FilterSidebar({ isMobileOpen, onMobileClose }: FilterSid
   };
 
   const toggleMake = (make: string) => {
-    const next = filters.makes.includes(make)
-      ? filters.makes.filter((m) => m !== make)
-      : [...filters.makes, make];
+    const next = filters.makes.includes(make) ? filters.makes.filter((m) => m !== make) : [...filters.makes, make];
     push({ makes: next });
   };
 
   const toggleBody = (body: BodyType) => {
-    const next = filters.bodies.includes(body)
-      ? filters.bodies.filter((b) => b !== body)
-      : [...filters.bodies, body];
+    const next = filters.bodies.includes(body) ? filters.bodies.filter((b) => b !== body) : [...filters.bodies, body];
     push({ bodies: next });
   };
 
   const toggleFuel = (fuel: FuelType) => {
-    const next = filters.fuels.includes(fuel)
-      ? filters.fuels.filter((f) => f !== fuel)
-      : [...filters.fuels, fuel];
+    const next = filters.fuels.includes(fuel) ? filters.fuels.filter((f) => f !== fuel) : [...filters.fuels, fuel];
     push({ fuels: next });
   };
 
@@ -116,13 +110,7 @@ export default function FilterSidebar({ isMobileOpen, onMobileClose }: FilterSid
   return (
     <>
       {/* Mobile backdrop */}
-      {isMobileOpen && (
-        <div
-          className={styles.backdrop}
-          onClick={onMobileClose}
-          aria-hidden="true"
-        />
-      )}
+      {isMobileOpen && <div className={styles.backdrop} onClick={onMobileClose} aria-hidden="true" />}
 
       <aside
         className={`${styles.sidebar} ${isMobileOpen ? styles.sidebarOpen : ''} ${
@@ -139,19 +127,13 @@ export default function FilterSidebar({ isMobileOpen, onMobileClose }: FilterSid
             <button type="button" className={styles.resetBtn} onClick={onReset}>
               Tout réinitialiser
             </button>
-            <button
-              type="button"
-              className={styles.closeBtn}
-              onClick={onMobileClose}
-              aria-label="Fermer les filtres"
-            >
+            <button type="button" className={styles.closeBtn} onClick={onMobileClose} aria-label="Fermer les filtres">
               <X size={18} />
             </button>
           </div>
         </div>
 
         <div className={styles.filtersBody}>
-
           {/* Search */}
           <div className={styles.group}>
             <label className={styles.groupLabel} htmlFor="shop-search">
@@ -275,9 +257,7 @@ export default function FilterSidebar({ isMobileOpen, onMobileClose }: FilterSid
                 <button
                   key={value}
                   type="button"
-                  className={`${styles.fuelChip} ${
-                    filters.fuels.includes(value) ? styles.fuelChipActive : ''
-                  }`}
+                  className={`${styles.fuelChip} ${filters.fuels.includes(value) ? styles.fuelChipActive : ''}`}
                   onClick={() => toggleFuel(value)}
                 >
                   <span>{icon}</span>
@@ -302,6 +282,7 @@ export default function FilterSidebar({ isMobileOpen, onMobileClose }: FilterSid
                     onChange={() => push({ transmission: t })}
                   />
                   <span className={styles.radioLabel}>
+                    {/** biome-ignore lint/style/noNestedTernary: Fix Biome */}
                     {t === 'all' ? 'Tous' : t === 'automatic' ? 'Automatique' : 'Manuelle'}
                   </span>
                 </label>
@@ -334,16 +315,11 @@ export default function FilterSidebar({ isMobileOpen, onMobileClose }: FilterSid
               <span className={styles.selectArrow}>▾</span>
             </div>
           </div>
-
         </div>
 
         {/* CTA */}
         <div className={styles.sidebarFooter}>
-          <button
-            type="button"
-            className={styles.applyBtn}
-            onClick={onMobileClose}
-          >
+          <button type="button" className={styles.applyBtn} onClick={onMobileClose}>
             Voir les Résultats
           </button>
         </div>

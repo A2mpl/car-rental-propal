@@ -100,8 +100,7 @@ export interface AS24Response {
 // ─────────────────────────────────────────────────────────────────────────────
 // Image helper — Unsplash CDN with consistent sizing
 // ─────────────────────────────────────────────────────────────────────────────
-const u = (id: string) =>
-  `https://images.unsplash.com/photo-${id}?w=800&auto=format&fit=crop&q=80`;
+const u = (id: string) => `https://images.unsplash.com/photo-${id}?w=800&auto=format&fit=crop&q=80`;
 
 // ─────────────────────────────────────────────────────────────────────────────
 // AutoScout24 listing URL helper
@@ -467,10 +466,7 @@ export function filterAndSort(cars: AS24Listing[], filters: ShopFilters): AS24Re
   if (filters.search) {
     const q = filters.search.toLowerCase();
     results = results.filter(
-      (c) =>
-        c.title.toLowerCase().includes(q) ||
-        c.make.toLowerCase().includes(q) ||
-        c.model.toLowerCase().includes(q),
+      (c) => c.title.toLowerCase().includes(q) || c.make.toLowerCase().includes(q) || c.model.toLowerCase().includes(q)
     );
   }
 
@@ -495,14 +491,10 @@ export function filterAndSort(cars: AS24Listing[], filters: ShopFilters): AS24Re
   }
 
   // Price range
-  results = results.filter(
-    (c) => c.price >= filters.priceFrom && c.price <= filters.priceTo,
-  );
+  results = results.filter((c) => c.price >= filters.priceFrom && c.price <= filters.priceTo);
 
   // Year range
-  results = results.filter(
-    (c) => c.year >= filters.yearFrom && c.year <= filters.yearTo,
-  );
+  results = results.filter((c) => c.year >= filters.yearFrom && c.year <= filters.yearTo);
 
   // Max mileage
   if (filters.mileageTo !== null) {
@@ -524,8 +516,8 @@ export function filterAndSort(cars: AS24Listing[], filters: ShopFilters): AS24Re
       results.sort((a, b) => a.mileage - b.mileage);
       break;
     default:
-      // recommended — featured/badged first
       results.sort((a, b) => {
+        // biome-ignore lint/style/noNestedTernary: DEV
         const score = (c: AS24Listing) => (c.badge === 'limited' ? 2 : c.badge ? 1 : 0);
         return score(b) - score(a);
       });
@@ -544,8 +536,17 @@ export function filterAndSort(cars: AS24Listing[], filters: ShopFilters): AS24Re
 // ─────────────────────────────────────────────────────────────────────────────
 
 export const MAKES = [
-  'Audi', 'Bentley', 'BMW', 'Ferrari', 'Lamborghini',
-  'Land Rover', 'Maserati', 'McLaren', 'Mercedes', 'Porsche', 'Tesla',
+  'Audi',
+  'Bentley',
+  'BMW',
+  'Ferrari',
+  'Lamborghini',
+  'Land Rover',
+  'Maserati',
+  'McLaren',
+  'Mercedes',
+  'Porsche',
+  'Tesla',
 ];
 
 export const BODIES: { value: BodyType; label: string }[] = [
@@ -588,8 +589,7 @@ type SearchParamsInput =
   | Record<string, string | string[] | undefined>;
 
 function _get(p: SearchParamsInput, key: string): string | null {
-  if (typeof (p as { get?: unknown }).get === 'function')
-    return (p as { get(k: string): string | null }).get(key);
+  if (typeof (p as { get?: unknown }).get === 'function') return (p as { get(k: string): string | null }).get(key);
   const v = (p as Record<string, string | string[] | undefined>)[key];
   if (!v) return null;
   return Array.isArray(v) ? (v[0] ?? null) : v;
@@ -619,22 +619,15 @@ export function parseSearchParams(params: SearchParamsInput): ShopFilters {
   return {
     search: _get(params, 'search') ?? DEFAULT_FILTERS.search,
     makes: _getAll(params, 'makes').filter((m) => MAKES.includes(m)),
-    bodies: _getAll(params, 'bodies').filter((b) =>
-      validBodies.includes(b as BodyType),
-    ) as BodyType[],
-    fuels: _getAll(params, 'fuels').filter((f) =>
-      validFuels.includes(f as FuelType),
-    ) as FuelType[],
-    transmission:
-      tx === 'automatic' || tx === 'manual' ? tx : 'all',
+    bodies: _getAll(params, 'bodies').filter((b) => validBodies.includes(b as BodyType)) as BodyType[],
+    fuels: _getAll(params, 'fuels').filter((f) => validFuels.includes(f as FuelType)) as FuelType[],
+    transmission: tx === 'automatic' || tx === 'manual' ? tx : 'all',
     priceFrom: Math.max(0, Number(_get(params, 'priceFrom') ?? DEFAULT_FILTERS.priceFrom)),
     priceTo: Math.min(5000, Number(_get(params, 'priceTo') ?? DEFAULT_FILTERS.priceTo)),
     yearFrom: Number(_get(params, 'yearFrom') ?? DEFAULT_FILTERS.yearFrom),
     yearTo: Number(_get(params, 'yearTo') ?? DEFAULT_FILTERS.yearTo),
     mileageTo: _get(params, 'mileageTo') ? Number(_get(params, 'mileageTo')) : null,
-    sort: (sort && validSorts.includes(sort as SortOption)
-      ? sort
-      : DEFAULT_FILTERS.sort) as SortOption,
+    sort: (sort && validSorts.includes(sort as SortOption) ? sort : DEFAULT_FILTERS.sort) as SortOption,
     page: 1,
   };
 }

@@ -15,20 +15,13 @@ import ShopClient from './ShopClient';
  * fresh server-rendered page 1 lands in the browser → ShopClient resets its
  * accumulated listings thanks to the stable `filterKey` being used as React key.
  */
-export default async function ShopPage({
-  searchParams,
-}: {
-  searchParams: Promise<Record<string, string | string[]>>;
-}) {
+export default async function ShopPage({ searchParams }: { searchParams: Promise<Record<string, string | string[]>> }) {
   const params = await searchParams;
   const filters = parseSearchParams(params);
 
   // Page number lives outside ShopFilters (infinite scroll ignores it).
-  const rawPage = params['page'];
-  const currentPage = Math.max(
-    1,
-    Number(Array.isArray(rawPage) ? rawPage[0] : (rawPage ?? '1')),
-  );
+  const rawPage = params.page;
+  const currentPage = Math.max(1, Number(Array.isArray(rawPage) ? rawPage[0] : (rawPage ?? '1')));
 
   const initialData = await fetchCars(filters, currentPage);
 

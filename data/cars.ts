@@ -41,7 +41,7 @@ export const cars: Car[] = [
       power: 'puissance max',
     },
     description:
-      'Plate-forme à double moteur à transmission intégrale avec couple instantané sur chaque essieu. La Model 3 redéfinit ce qu\'une berline électrique peut être — un équilibre parfait de performance, d\'autonomie et de design minimaliste.',
+      "Plate-forme à double moteur à transmission intégrale avec couple instantané sur chaque essieu. La Model 3 redéfinit ce qu'une berline électrique peut être — un équilibre parfait de performance, d'autonomie et de design minimaliste.",
     featured: true,
   },
   {
@@ -87,7 +87,7 @@ export const cars: Car[] = [
       power: 'puissance max',
     },
     description:
-      'Le SUV le plus sûr et le plus rapide jamais construit. Les portes Falcon Wing, un pare-brise panoramique et les performances Plaid s\'associent pour offrir un SUV électrique sans équivalent sur la route.',
+      "Le SUV le plus sûr et le plus rapide jamais construit. Les portes Falcon Wing, un pare-brise panoramique et les performances Plaid s'associent pour offrir un SUV électrique sans équivalent sur la route.",
     featured: false,
   },
 ];

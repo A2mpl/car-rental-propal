@@ -5,33 +5,34 @@
  * file needs updating — the rest of the codebase stays untouched.
  */
 
-import type {
-  AS24Listing,
-  AS24Response,
-  BadgeType,
-  BodyType,
-  FuelType,
-  TransmissionType,
-} from '@/lib/autoscout24';
-import type { AS24FuelCode, AS24BodyCode, AS24GearCode, AS24RawListing, AS24RawSearchResponse } from './types';
+import type { AS24Listing, AS24Response, BadgeType, BodyType, FuelType, TransmissionType } from '@/lib/autoscout24';
+import type { AS24BodyCode, AS24FuelCode, AS24GearCode, AS24RawListing, AS24RawSearchResponse } from './types';
 
 // ── Value translators ─────────────────────────────────────────────────────────
 
 function adaptFuel(code: AS24FuelCode): FuelType {
   switch (code) {
-    case 'E': return 'electric';
-    case 'H': return 'hybrid';
-    case 'D': return 'diesel';
-    default:  return 'petrol';
+    case 'E':
+      return 'electric';
+    case 'H':
+      return 'hybrid';
+    case 'D':
+      return 'diesel';
+    default:
+      return 'petrol';
   }
 }
 
 function adaptBody(code: AS24BodyCode): BodyType {
   switch (code) {
-    case 'suv':        return 'suv';
-    case 'coupe':      return 'sport';
-    case 'cabriolet':  return 'convertible';
-    default:           return 'sedan';
+    case 'suv':
+      return 'suv';
+    case 'coupe':
+      return 'sport';
+    case 'cabriolet':
+      return 'convertible';
+    default:
+      return 'sedan';
   }
 }
 
@@ -58,9 +59,7 @@ export function adaptVehicle(raw: AS24RawListing): AS24Listing {
   const v = raw.vehicle;
 
   // Parse year from "YYYY-MM" or "YYYY"
-  const year = v.firstRegistration
-    ? Number.parseInt(v.firstRegistration.split('-')[0], 10)
-    : new Date().getFullYear();
+  const year = v.firstRegistration ? Number.parseInt(v.firstRegistration.split('-')[0], 10) : new Date().getFullYear();
 
   // Convert power to HP
   const powerKw = v.power?.value ?? 0;
@@ -70,20 +69,13 @@ export function adaptVehicle(raw: AS24RawListing): AS24Listing {
   const primaryImage = raw.images.find((img) => img.isPrimary) ?? raw.images[0];
 
   // Price — prefer retail, fall back to lease monthly rate
-  const price =
-    raw.prices.retailPriceGross?.amount ??
-    raw.prices.leaseMonthlyRate?.amount ??
-    0;
+  const price = raw.prices.retailPriceGross?.amount ?? raw.prices.leaseMonthlyRate?.amount ?? 0;
 
   // Location string
-  const location = [raw.location?.city, raw.location?.country]
-    .filter(Boolean)
-    .join(', ');
+  const location = [raw.location?.city, raw.location?.country].filter(Boolean).join(', ');
 
   // Engine displacement label (e.g. "2.0L")
-  const engine = v.engineCapacity
-    ? `${(v.engineCapacity / 1000).toFixed(1)}L`
-    : '—';
+  const engine = v.engineCapacity ? `${(v.engineCapacity / 1000).toFixed(1)}L` : '—';
 
   return {
     id: raw.id,
@@ -117,10 +109,7 @@ export function adaptVehicle(raw: AS24RawListing): AS24Listing {
  * @param raw      Direct JSON from `GET /v1/listings`
  * @param pageSize Page size used in the request (default 20)
  */
-export function adaptSearchResponse(
-  raw: AS24RawSearchResponse,
-  pageSize = 20,
-): AS24Response {
+export function adaptSearchResponse(raw: AS24RawSearchResponse, pageSize = 20): AS24Response {
   const pages = Math.ceil(raw.totalResults / pageSize);
   // AS24 uses 0-based page index — convert back to 1-based
   const page = raw.page + 1;

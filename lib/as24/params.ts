@@ -47,11 +47,7 @@ const SORT_MAP: Record<SortOption, string> = {
  * @param page     1-based page number (converted to 0-based for AS24)
  * @param pageSize Results per page (default 20)
  */
-export function buildAS24Params(
-  filters: ShopFilters,
-  page = 1,
-  pageSize = 20,
-): URLSearchParams {
+export function buildAS24Params(filters: ShopFilters, page = 1, pageSize = 20): URLSearchParams {
   const p = new URLSearchParams();
 
   // Free-text search
