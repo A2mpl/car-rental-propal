@@ -3,6 +3,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import ThemeToggle from '@/components/ui/ThemeToggle';
 import { siteContent } from '@/data/content';
@@ -10,6 +11,7 @@ import styles from './Navbar.module.css';
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const pathname = usePathname();
   const { nav } = siteContent;
 
   const underlineVariants = {
@@ -27,20 +29,23 @@ export default function Navbar() {
         </motion.div>
 
         <ul className={styles.links}>
-          {nav.links.map((link) => (
-            <li key={link.label} className={styles.linkWrapper}>
-              <motion.div initial="initial" whileHover="hover" animate="initial" className={styles.motionContainer}>
-                <Link href={link.href} className={`${styles.link} ${link.active ? styles.linkActive : ''}`}>
-                  {link.label}
-                  <motion.div
-                    className={styles.underline}
-                    variants={underlineVariants}
-                    transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                  />
-                </Link>
-              </motion.div>
-            </li>
-          ))}
+          {nav.links.map((link) => {
+            const isActive = pathname === link.href;
+            return (
+              <li key={link.label} className={styles.linkWrapper}>
+                <motion.div initial="initial" whileHover="hover" animate="initial" className={styles.motionContainer}>
+                  <Link href={link.href} className={`${styles.link} ${isActive ? styles.linkActive : ''}`}>
+                    {link.label}
+                    <motion.div
+                      className={styles.underline}
+                      variants={underlineVariants}
+                      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                    />
+                  </Link>
+                </motion.div>
+              </li>
+            );
+          })}
         </ul>
 
         <div className={styles.icons}>
@@ -61,13 +66,20 @@ export default function Navbar() {
             transition={{ duration: 0.3 }}
           >
             <ul className={styles.mobileLinks}>
-              {nav.links.map((link) => (
-                <li key={link.label}>
-                  <Link href={link.href} onClick={() => setMobileOpen(false)}>
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+              {nav.links.map((link) => {
+                const isActive = pathname === link.href;
+                return (
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
+                      className={isActive ? styles.mobileLinkActive : undefined}
+                      onClick={() => setMobileOpen(false)}
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </motion.div>
         )}

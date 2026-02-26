@@ -22,7 +22,7 @@
   /* Text always on dark image overlays (hero, WhyUs photo) — never changes */
   --text-on-dark: #ffffff;
   /* Step number watermark */
-  --step-number-color: rgba(62, 99, 86, 0.06);
+  --step-number-color: rgba(62, 99, 86, 0.14);
   /* Quote mark tint */
   --quotemark-color: rgba(62, 99, 86, 0.12);
   --quotemark-hover: rgba(62, 99, 86, 0.22);

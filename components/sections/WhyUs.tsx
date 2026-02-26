@@ -2,6 +2,7 @@
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import Button from '@/components/ui/Button';
 import { siteContent } from '@/data/content';
 import styles from './WhyUs.module.css';
@@ -25,55 +26,71 @@ export default function WhyUs() {
         </div>
 
         <div className={styles.imageGrid}>
-          <motion.div
-            whileHover={{ y: -8 }}
-            transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
-            className={`${styles.imgCell} ${styles.imgLarge}`}
-            style={{ boxShadow: premiumWhiteHalo, borderRadius: '32px', overflow: 'hidden' }}
+          {/* ── Grande image — Véhicules Premium → shop filtré ── */}
+          <Link
+            href="/shop?bodies=supercar&bodies=sport&sort=price_desc"
+            className={styles.imgCardLink}
+            aria-label="Voir les véhicules premium"
           >
-            <Image src="images/img_2.png" alt={evChargers.images[0].alt} fill className={styles.img} unoptimized />
-            <div
-              style={{
-                position: 'absolute',
-                inset: 0,
-                padding: '30px',
-                background: 'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, transparent 60%)',
-                zIndex: 2,
-                pointerEvents: 'none',
-              }}
+            <motion.div
+              whileHover={{ y: -8 }}
+              transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+              className={`${styles.imgCell} ${styles.imgLarge}`}
+              style={{ boxShadow: premiumWhiteHalo, borderRadius: '32px', overflow: 'hidden' }}
             >
-              <h3
+              <Image src="images/img_2.png" alt={evChargers.images[0].alt} fill className={styles.img} unoptimized />
+              <div
                 style={{
-                  color: 'var(--text-on-dark)',
-                  fontSize: '28px',
-                  margin: 0,
-                  fontFamily: 'var(--font-display)',
-                  fontWeight: 'bold',
+                  position: 'absolute',
+                  inset: 0,
+                  padding: '30px',
+                  background: 'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, transparent 60%)',
+                  zIndex: 2,
+                  pointerEvents: 'none',
                 }}
               >
-                Véhicules Premium
-              </h3>
-              <p
-                style={{
-                  color: 'var(--text-on-dark)',
-                  fontSize: '14px',
-                  fontWeight: '500',
-                  textShadow: '0 2px 4px rgba(0,0,0,0.6)',
-                  marginTop: '6px',
-                }}
-              >
-                Nos meilleurs véhicules disponibles
-              </p>
-            </div>
-          </motion.div>
+                <h3
+                  style={{
+                    color: 'var(--text-on-dark)',
+                    fontSize: '28px',
+                    margin: 0,
+                    fontFamily: 'var(--font-display)',
+                    fontWeight: 'bold',
+                  }}
+                >
+                  Véhicules Premium
+                </h3>
+                <p
+                  style={{
+                    color: 'var(--text-on-dark)',
+                    fontSize: '14px',
+                    fontWeight: '500',
+                    textShadow: '0 2px 4px rgba(0,0,0,0.6)',
+                    marginTop: '6px',
+                  }}
+                >
+                  Nos meilleurs véhicules disponibles
+                </p>
+              </div>
+            </motion.div>
+          </Link>
 
-          <motion.div
-            whileHover={{ y: -8 }}
-            className={`${styles.imgCell} ${styles.imgSmallB}`}
-            style={{ borderRadius: '24px', boxShadow: premiumWhiteHalo, overflow: 'hidden' }}
+          {/* ── Petite image B — Sport / Supercar ── */}
+          <Link
+            href="/shop?bodies=sport&bodies=supercar"
+            className={styles.imgCardLink}
+            aria-label="Voir les voitures sport et supercar"
           >
-            <Image src="images/img_1.png" alt={evChargers.images[2].alt} fill className={styles.img} unoptimized />
-          </motion.div>
+            <motion.div
+              whileHover={{ y: -8 }}
+              className={`${styles.imgCell} ${styles.imgSmallB}`}
+              style={{ borderRadius: '24px', boxShadow: premiumWhiteHalo, overflow: 'hidden' }}
+            >
+              <Image src="images/img_1.png" alt={evChargers.images[2].alt} fill className={styles.img} unoptimized />
+            </motion.div>
+          </Link>
+
+          {/* ── Carte stats — 900+ clients ── */}
           <motion.div
             whileHover={{ y: -8 }}
             transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}

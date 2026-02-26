@@ -167,4 +167,8 @@
   .mobileLinks a:hover {
     color: var(--accent);
   }
+
+  .mobileLinkActive {
+    color: var(--accent) !important;
+  }
 }
