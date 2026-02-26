@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { headers } from 'next/headers';
 import { Archivo, Saira } from 'next/font/google';
 import ThemeProvider from '@/components/layout/ThemeProvider';
 import './globals.css';
@@ -23,16 +24,96 @@ const archivo = Archivo({
   display: 'swap',
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://timeless-cars.fr';
+
 export const metadata: Metadata = {
-  title: 'Timeless — Location de Voitures Électriques',
-  description: 'La façon moderne de voyager avec la location de voitures électriques à portée de main !',
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: 'Timeless — Location de Voitures Électriques',
+    template: '%s | Timeless',
+  },
+  description:
+    'Votre courtier de confiance pour la location de voitures électriques premium. Large sélection, prix transparents, livraison à domicile.',
+  keywords: [
+    'location voiture électrique',
+    'voiture électrique',
+    'Tesla location',
+    'location véhicule premium',
+    'courtier automobile',
+    'location voiture luxe',
+  ],
+  authors: [{ name: 'Timeless' }],
+  creator: 'Timeless',
+  openGraph: {
+    type: 'website',
+    locale: 'fr_FR',
+    url: siteUrl,
+    siteName: 'Timeless',
+    title: 'Timeless — Location de Voitures Électriques',
+    description:
+      'Votre courtier de confiance pour la location de voitures électriques premium. Large sélection, prix transparents, livraison à domicile.',
+    images: [
+      {
+        url: '/images/img_4.png',
+        width: 1200,
+        height: 630,
+        alt: 'Timeless — Location de Voitures Électriques Premium',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Timeless — Location de Voitures Électriques',
+    description:
+      'Votre courtier de confiance pour la location de voitures électriques premium. Large sélection, prix transparents, livraison à domicile.',
+    images: ['/images/img_4.png'],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  alternates: {
+    canonical: siteUrl,
+  },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'AutoDealer',
+  name: 'Timeless',
+  description:
+    'Courtier automobile spécialisé dans la location de voitures électriques premium. Large sélection, prix transparents, livraison à domicile.',
+  url: siteUrl,
+  logo: `${siteUrl}/images/img_4.png`,
+  sameAs: [],
+  areaServed: {
+    '@type': 'Country',
+    name: 'France',
+  },
+  inLanguage: 'fr-FR',
+};
+
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  // Nonce généré par middleware.ts — requis pour le CSP strict-dynamic
+  const nonce = (await headers()).get('x-nonce') ?? '';
+
   return (
     <html lang="fr" className={`${saira.variable} ${archivo.variable}`} suppressHydrationWarning>
       <body>
         <ThemeProvider>{children}</ThemeProvider>
+        <script
+          nonce={nonce}
+          type="application/ld+json"
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD structuré, pas d'input utilisateur
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
       </body>
     </html>
   );

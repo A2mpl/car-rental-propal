@@ -8,7 +8,7 @@ export interface Testimonial {
   id: string;
   name: string;
   company: string;
-  avatar: string; // Path in /public/images/ — data-todo="real-avatar"
+  avatar: string;
   text: string;
 }
 

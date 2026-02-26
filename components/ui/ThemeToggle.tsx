@@ -19,7 +19,7 @@ export default function ThemeToggle() {
       type="button"
       className={styles.toggle}
       onClick={() => setTheme(isDark ? 'light' : 'dark')}
-      aria-label={isDark ? 'Activer le mode clair' : 'Activer le mode sombre'}
+      aria-label={mounted ? (isDark ? 'Activer le mode clair' : 'Activer le mode sombre') : 'Changer de thème'}
     >
       <AnimatePresence mode="wait" initial={false}>
         {mounted && (

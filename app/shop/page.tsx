@@ -1,7 +1,22 @@
+import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import Navbar from '@/components/layout/Navbar';
 import { fetchCars, filtersToParams, parseSearchParams } from '@/lib/autoscout24';
 import ShopClient from './ShopClient';
+
+export const metadata: Metadata = {
+  title: 'Boutique',
+  description:
+    'Parcourez notre sélection de voitures électriques premium disponibles à la location. Filtrez par marque, prix et kilométrage.',
+  openGraph: {
+    title: 'Boutique — Voitures Électriques | Timeless',
+    description:
+      'Parcourez notre sélection de voitures électriques premium disponibles à la location. Filtrez par marque, prix et kilométrage.',
+  },
+  alternates: {
+    canonical: '/shop',
+  },
+};
 
 /**
  * Shop page — async Server Component.
