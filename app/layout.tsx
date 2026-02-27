@@ -101,13 +101,12 @@ const jsonLd = {
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  // Nonce généré par middleware.ts — requis pour le CSP strict-dynamic
   const nonce = (await headers()).get('x-nonce') ?? '';
 
   return (
     <html lang="fr" className={`${saira.variable} ${archivo.variable}`} suppressHydrationWarning>
       <body>
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider nonce={nonce}>{children}</ThemeProvider>
         <script
           nonce={nonce}
           type="application/ld+json"

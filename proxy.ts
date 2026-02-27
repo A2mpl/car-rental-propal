@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   // ── Dev mode : pas de CSP strict ─────────────────────────────────────────
   // Turbopack HMR charge des chunks via element.src dynamique (TrustedScriptURL)
   // et React dev build utilise innerHTML sans policy Trusted Types.
@@ -60,8 +60,14 @@ export function middleware(request: NextRequest) {
 export const config = {
   matcher: [
     {
-      // Exclut les assets statiques : pas besoin de nonce pour les fichiers
-      source: '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
+      /*
+       * Match all request paths except:
+       * - _next/static  (static files)
+       * - _next/image   (image optimization)
+       * - favicon.ico, sitemap.xml, robots.txt (metadata files)
+       * - image files (.svg, .png, .jpg, .jpeg, .gif, .webp)
+       */
+      source: '/((?!_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
       missing: [
         { type: 'header', key: 'next-router-prefetch' },
         { type: 'header', key: 'purpose', value: 'prefetch' },
