@@ -1,0 +1,178 @@
+/* ══════════════════════════════════
+   Privacy.module.css
+   ══════════════════════════════════ */
+
+.page {
+  background: var(--bg);
+  padding: 64px 0 96px;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ── Hero ── */
+.hero {
+  text-align: center;
+  padding: 64px 0 56px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 64px;
+}
+
+.label {
+  display: inline-block;
+  font-family: var(--font-body), sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  margin-bottom: 16px;
+  position: relative;
+  padding: 0 16px;
+}
+
+.label::before,
+.label::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 24px;
+  height: 1px;
+  background: rgba(62, 99, 86, 0.25);
+}
+
+.label::before {
+  right: 100%;
+}
+
+.label::after {
+  left: 100%;
+}
+
+.heading {
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(32px, 6vw, 52px);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text);
+  text-transform: uppercase;
+  line-height: 0.9;
+  letter-spacing: 0.01em;
+  margin-bottom: 20px;
+}
+
+.updated {
+  font-family: var(--font-body), sans-serif;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+/* ── Content ── */
+.content {
+  max-width: 760px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.sectionHeading {
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(18px, 2.5vw, 22px);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text);
+  text-transform: uppercase;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.section p {
+  font-family: var(--font-body), sans-serif;
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.list li {
+  font-family: var(--font-body), sans-serif;
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+  padding-left: 16px;
+  position: relative;
+}
+
+.list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+.link {
+  color: var(--accent);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.link:hover {
+  opacity: 0.75;
+}
+
+/* ── Responsive ── */
+@media (min-width: 768px) {
+  .page {
+    padding: 80px 0 120px;
+  }
+
+  .container {
+    padding: 0 40px;
+  }
+
+  .label::before,
+  .label::after {
+    width: 40px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .page {
+    padding: 96px 0 140px;
+  }
+
+  .container {
+    padding: 0 var(--px);
+  }
+
+  .label::before,
+  .label::after {
+    width: 56px;
+  }
+
+  .section p {
+    font-size: 15px;
+  }
+
+  .list li {
+    font-size: 15px;
+  }
+}

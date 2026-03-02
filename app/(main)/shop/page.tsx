@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
-import Navbar from '@/components/layout/Navbar';
 import { fetchCars, filtersToParams, parseSearchParams } from '@/lib/autoscout24';
 import ShopClient from './ShopClient';
 
@@ -45,21 +44,16 @@ export default async function ShopPage({ searchParams }: { searchParams: Promise
   const filterKey = filtersToParams(filters).toString();
 
   return (
-    <>
-      <Navbar />
-      {/* Suspense satisfies the useSearchParams() requirement for children
-          that read the URL on the client side. */}
-      <Suspense>
-        <ShopClient
-          initialListings={initialData.listings}
-          initialFilters={filters}
-          initialHasMore={initialData.page < initialData.pages}
-          total={initialData.total}
-          filterKey={filterKey}
-          currentPage={currentPage}
-          totalPages={initialData.pages}
-        />
-      </Suspense>
-    </>
+    <Suspense>
+      <ShopClient
+        initialListings={initialData.listings}
+        initialFilters={filters}
+        initialHasMore={initialData.page < initialData.pages}
+        total={initialData.total}
+        filterKey={filterKey}
+        currentPage={currentPage}
+        totalPages={initialData.pages}
+      />
+    </Suspense>
   );
 }

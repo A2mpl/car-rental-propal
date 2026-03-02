@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import Button from '@/components/ui/Button';
 import { siteContent } from '@/data/content';
 import styles from './WhyUs.module.css';
 
@@ -145,11 +144,6 @@ export default function WhyUs() {
                 </li>
               ))}
             </ul>
-          </div>
-          <div className={styles.ctaSide}>
-            <Button href={evChargers.learnMore.href} size="md">
-              {evChargers.learnMore.label}
-            </Button>
           </div>
         </div>
       </div>

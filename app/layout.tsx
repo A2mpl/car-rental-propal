@@ -110,7 +110,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <script
           nonce={nonce}
           type="application/ld+json"
-          // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD structuré, pas d'input utilisateur
+          // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD structuré
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </body>

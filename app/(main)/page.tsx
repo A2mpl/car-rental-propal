@@ -1,6 +1,4 @@
-import Navbar from '@/components/layout/Navbar';
 import BrandStrip from '@/components/sections/BrandStrip';
-import CtaFooter from '@/components/sections/CtaFooter';
 import Faq from '@/components/sections/Faq';
 import Hero from '@/components/sections/Hero';
 import HowItWorks from '@/components/sections/HowItWorks';
@@ -11,7 +9,6 @@ import WhyUs from '@/components/sections/WhyUs';
 export default function Home() {
   return (
     <main>
-      <Navbar />
       <Hero />
       <BrandStrip />
       <WhyUs />
@@ -19,7 +16,6 @@ export default function Home() {
       <HowItWorks />
       <Faq />
       <Testimonials />
-      <CtaFooter />
     </main>
   );
 }

@@ -4,8 +4,7 @@ export const siteContent = {
     links: [
       { label: 'ACCUEIL', href: '/', active: true },
       { label: 'BOUTIQUE', href: '/shop', active: false },
-      { label: 'NOS MODÈLES', href: '/models', active: false, hasDropdown: true },
-      { label: 'NOUS TROUVER', href: '/find-us', active: false },
+      { label: 'CONTACT', href: '/contact', active: false },
     ],
   },
 
@@ -17,10 +16,6 @@ export const siteContent = {
   },
 
   featuredCar: {
-    learnMore: {
-      label: 'EN SAVOIR PLUS',
-      href: '/models',
-    },
     prevAriaLabel: 'Voiture précédente',
     nextAriaLabel: 'Voiture suivante',
   },
@@ -34,10 +29,6 @@ export const siteContent = {
       'Meilleurs prix — justes, transparents, sans frais cachés',
       'Service expert — livraison à domicile avec soin',
     ],
-    learnMore: {
-      label: 'EN SAVOIR PLUS',
-      href: '/ev-chargers',
-    },
     images: [
       {
         alt: 'Gros plan sur la prise de charge Tesla, éclairage dramatique',
@@ -54,10 +45,6 @@ export const siteContent = {
   faq: {
     ghostText: 'QUESTIONS',
     heading: ['RÉPONSES À VOS QUESTIONS'],
-    seeFaq: {
-      label: 'VOIR LA FAQ',
-      href: '/faq',
-    },
   },
 
   testimonials: {
@@ -69,20 +56,11 @@ export const siteContent = {
   ctaFooter: {
     heading: 'PRÊT À PASSER AVEC NOUS ?',
     body: "Rejoignez des milliers de conducteurs qui ont déjà franchi le cap de l'électrique. Louez un véhicule Timeless dès aujourd'hui et vivez l'avenir de la mobilité — zéro émission, performance totale.",
+    ctaBtn: { label: 'NOUS CONTACTER', href: '/contact' },
     navColumns: [
       [
         { label: 'MENTIONS LÉGALES', href: '/privacy' },
-        { label: 'RAPPELS VÉHICULES', href: '/recalls' },
         { label: 'CONTACT', href: '/contact' },
-        {
-          label: 'RECRUTEMENT',
-          href: '/careers',
-        },
-      ],
-      [
-        { label: 'ACTUALITÉS', href: '/news' },
-        { label: 'COMMUNAUTÉ', href: '/engage' },
-        { label: 'NOUS TROUVER', href: '/find-us' },
       ],
     ],
     copyright: 'Timeless © 2026',

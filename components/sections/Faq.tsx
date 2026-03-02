@@ -4,7 +4,6 @@ import type { BezierDefinition, Variants } from 'framer-motion';
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import AccordionItem from '@/components/ui/AccordionItem';
-import Button from '@/components/ui/Button';
 import { siteContent } from '@/data/content';
 import { faqItems } from '@/data/faq';
 import styles from './Faq.module.css';
@@ -85,16 +84,6 @@ export default function Faq() {
           ))}
         </motion.ul>
 
-        <motion.div
-          className={styles.ctaRow}
-          variants={listVariants}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-        >
-          <Button href={faq.seeFaq.href} size="sm">
-            {faq.seeFaq.label}
-          </Button>
-        </motion.div>
       </div>
     </section>
   );
