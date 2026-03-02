@@ -18,6 +18,11 @@
   --border: rgba(0, 0, 0, 0.07);
   --border-mid: rgba(0, 0, 0, 0.13);
 
+  /* ── Error ── */
+  --error: #e05252;
+  --error-bg: rgba(224, 82, 82, 0.08);
+  --error-border: rgba(224, 82, 82, 0.2);
+
   /* ── Semantic helpers ── */
   /* Text always on dark image overlays (hero, WhyUs photo) — never changes */
   --text-on-dark: #ffffff;

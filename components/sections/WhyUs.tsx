@@ -19,9 +19,9 @@ export default function WhyUs() {
       <div className={styles.container}>
         <div className={styles.headingRow}>
           <h2 className={styles.heading}>{evChargers.heading}</h2>
-          <button className={styles.arrowBtn} type="button" aria-label="Voir tous les véhicules">
+          <Link href="/shop" className={styles.arrowBtn} aria-label="Voir tous les véhicules">
             <ArrowUpRight size={22} aria-hidden="true" />
-          </button>
+          </Link>
         </div>
 
         <div className={styles.imageGrid}>

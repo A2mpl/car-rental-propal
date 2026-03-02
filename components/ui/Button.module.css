@@ -38,3 +38,20 @@
   padding: 15px 32px;
   font-size: 13px;
 }
+
+/* ── Variants ── */
+.solid {
+  /* default — already set on .btn */
+}
+
+.ghost {
+  background: transparent;
+  color: var(--accent);
+  border-color: var(--border);
+}
+
+.ghost:hover {
+  background: var(--accent-light);
+  border-color: var(--accent);
+  color: var(--accent);
+}

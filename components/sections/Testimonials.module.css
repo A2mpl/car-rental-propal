@@ -148,7 +148,7 @@
   flex-shrink: 0;
   width: 280px;
   padding: 1px;
-  border-radius: 2px;
+  border-radius: 8px;
   background: var(--border);
   transition: background 0.4s ease;
 }
@@ -161,7 +161,7 @@
   position: relative;
   z-index: 1;
   background: var(--bg);
-  border-radius: 1px;
+  border-radius: 7px;
   padding: 24px 20px;
   display: flex;
   flex-direction: column;
@@ -177,7 +177,7 @@
 .cardGlow {
   position: absolute;
   inset: -1px;
-  border-radius: 3px;
+  border-radius: 9px;
   background: linear-gradient(
     135deg,
     rgba(62, 99, 86, 0.1) 0%,

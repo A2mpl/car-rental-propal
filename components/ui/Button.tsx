@@ -4,6 +4,7 @@ import styles from './Button.module.css';
 interface ButtonProps {
   children: ReactNode;
   size?: 'sm' | 'md' | 'lg';
+  variant?: 'solid' | 'ghost';
   href?: string;
   className?: string;
   onClick?: () => void;
@@ -14,6 +15,7 @@ interface ButtonProps {
 
 export default function Button({
   size = 'md',
+  variant = 'solid',
   children,
   onClick,
   className,
@@ -22,7 +24,7 @@ export default function Button({
   disabled,
   'aria-label': ariaLabel,
 }: ButtonProps) {
-  const cls = [styles.btn, styles[size], className].filter(Boolean).join(' ');
+  const cls = [styles.btn, styles[size], styles[variant], className].filter(Boolean).join(' ');
 
   if (href) {
     return (

@@ -5,6 +5,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
 import { useRef } from 'react';
+import SectionLabel from '@/components/ui/SectionLabel';
 import styles from './HowItWorks.module.css';
 
 interface Step {
@@ -116,7 +117,7 @@ export default function HowItWorks() {
         <section ref={containerRef} className={styles.section} aria-label="Comment ça marche">
             <div className={styles.container}>
                 <div className={styles.header}>
-                    <span className={`${styles.label} header-anim`}>Comment ça marche</span>
+                    <SectionLabel className="header-anim">Comment ça marche</SectionLabel>
                     <h2 className={`${styles.heading} header-anim`}>TROIS ÉTAPES SIMPLES</h2>
                     <p className={`${styles.subtitle} header-anim`}>
                         De l&apos;estimation au paiement, notre processus irréprochable garantit une expérience sans accroc, à la

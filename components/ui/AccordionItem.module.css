@@ -19,7 +19,7 @@
 }
 
 .question {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--text);
   text-transform: uppercase;
@@ -50,7 +50,7 @@
 }
 
 .answer {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--muted);
   line-height: 1.7;
   font-family: var(--font-body), sans-serif;

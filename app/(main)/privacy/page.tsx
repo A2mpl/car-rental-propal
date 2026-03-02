@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import SectionLabel from '@/components/ui/SectionLabel';
 import styles from './Privacy.module.css';
 
 export const metadata: Metadata = {
@@ -15,7 +16,7 @@ export default function PrivacyPage() {
 
           {/* ── Hero header ── */}
           <header className={styles.hero}>
-            <span className={styles.label}>Légal</span>
+            <SectionLabel>Légal</SectionLabel>
             <h1 className={styles.heading}>Mentions Légales</h1>
             <p className={styles.updated}>Dernière mise à jour : 1er mars 2026</p>
           </header>

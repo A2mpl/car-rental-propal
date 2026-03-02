@@ -3,6 +3,8 @@
 import type { BezierDefinition, Variants } from 'framer-motion';
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
+import Button from '@/components/ui/Button';
+import SectionLabel from '@/components/ui/SectionLabel';
 import styles from './ContactForm.module.css';
 
 const luxeEase: BezierDefinition = [0.16, 1, 0.3, 1];
@@ -106,13 +108,11 @@ export default function ContactForm() {
             <p className={styles.successBody}>
               Merci pour votre message. Notre équipe vous répondra dans les plus brefs délais.
             </p>
-            <button
-              type="button"
-              className={styles.resetBtn}
-              onClick={() => setStatus('idle')}
-            >
-              Envoyer un autre message
-            </button>
+            <div className={styles.resetBtnWrapper}>
+              <Button variant="ghost" size="sm" onClick={() => setStatus('idle')}>
+                Envoyer un autre message
+              </Button>
+            </div>
           </div>
         </div>
       </section>
@@ -130,7 +130,7 @@ export default function ContactForm() {
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
         >
-          <span className={styles.label}>Contact</span>
+          <SectionLabel>Contact</SectionLabel>
           <h1 className={styles.heading}>Parlons-en</h1>
           <p className={styles.subtitle}>
             Une question sur nos véhicules, une demande de location ou simplement envie d'en savoir plus ?
@@ -251,13 +251,9 @@ export default function ContactForm() {
           )}
 
           <div className={styles.submitRow}>
-            <button
-              type="submit"
-              className={styles.submitBtn}
-              disabled={status === 'loading'}
-            >
+            <Button type="submit" size="md" disabled={status === 'loading'}>
               {status === 'loading' ? 'Envoi en cours…' : 'Envoyer le message'}
-            </button>
+            </Button>
           </div>
 
         </motion.form>

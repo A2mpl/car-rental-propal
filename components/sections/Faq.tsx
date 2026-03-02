@@ -4,6 +4,7 @@ import type { BezierDefinition, Variants } from 'framer-motion';
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import AccordionItem from '@/components/ui/AccordionItem';
+import SectionHeader from '@/components/ui/SectionHeader';
 import { siteContent } from '@/data/content';
 import { faqItems } from '@/data/faq';
 import styles from './Faq.module.css';
@@ -58,11 +59,11 @@ export default function Faq() {
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
         >
-          <span className={styles.label}>FAQ</span>
-          <h2 className={styles.heading}>{faq.heading}</h2>
-          <p className={styles.subtitle}>
-            Tout ce que vous devez savoir sur nos services. Vous ne trouvez pas ce que vous cherchez ? Contactez-nous.
-          </p>
+          <SectionHeader
+            label="FAQ"
+            heading={faq.heading[0]}
+            subtitle="Tout ce que vous devez savoir sur nos services. Vous ne trouvez pas ce que vous cherchez ? Contactez-nous."
+          />
         </motion.div>
 
         <motion.ul

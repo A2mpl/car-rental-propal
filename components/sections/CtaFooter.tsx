@@ -1,3 +1,4 @@
+import Button from '@/components/ui/Button';
 import { siteContent } from '@/data/content';
 import styles from './CtaFooter.module.css';
 
@@ -30,9 +31,11 @@ export default function CtaFooter() {
           <div className={styles.ctaSide}>
             <h2 className={styles.heading}>{ctaFooter.heading}</h2>
             <p className={styles.body}>{ctaFooter.body}</p>
-            <a href={ctaFooter.ctaBtn.href} className={styles.ctaBtn}>
-              {ctaFooter.ctaBtn.label}
-            </a>
+            <div className={styles.ctaBtnWrapper}>
+              <Button href={ctaFooter.ctaBtn.href} size="sm">
+                {ctaFooter.ctaBtn.label}
+              </Button>
+            </div>
           </div>
 
           <nav className={styles.navArea} aria-label="Footer navigation">
