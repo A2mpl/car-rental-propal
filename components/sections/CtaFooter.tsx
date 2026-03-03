@@ -1,5 +1,6 @@
 import Button from '@/components/ui/Button';
 import { siteContent } from '@/data/content';
+import { siteName } from '@/lib/site';
 import styles from './CtaFooter.module.css';
 
 interface FooterLink {
@@ -51,7 +52,8 @@ export default function CtaFooter() {
       <div className={styles.bottomBar}>
         <div className={styles.bottomInner}>
           <p className={styles.copyright}>{ctaFooter.copyright}</p>
-          <p className={styles.tagline}>Electric. Minimal. Timeless.</p>
+          {/* TODO: adapter ce tagline si le nom de marque change */}
+          <p className={styles.tagline}>Electric. Minimal. {siteName}.</p>
         </div>
       </div>
     </footer>

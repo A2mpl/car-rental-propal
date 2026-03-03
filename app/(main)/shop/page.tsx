@@ -1,16 +1,27 @@
 import type { Metadata } from 'next';
 import { Suspense } from 'react';
+import { siteName } from '@/lib/site';
 import { fetchCars, filtersToParams, parseSearchParams } from '@/lib/autoscout24';
 import ShopClient from './ShopClient';
 
 export const metadata: Metadata = {
-  title: 'Boutique',
+  title: 'Véhicules — BMW, Audi, Porsche, Moto & Électrique à Bordeaux',
   description:
-    'Parcourez notre sélection de voitures électriques premium disponibles à la location. Filtrez par marque, prix et kilométrage.',
+    'Découvrez notre sélection de voitures sport, BMW, Audi, Porsche, Ferrari, Tesla électrique et motos à Bordeaux. Filtrez par marque, budget et type de véhicule.',
+  keywords: [
+    'voiture sport bordeaux',
+    'BMW occasion bordeaux',
+    'Audi sport bordeaux',
+    'Porsche bordeaux',
+    'Ferrari bordeaux',
+    'Tesla occasion bordeaux',
+    'moto sport bordeaux',
+    'véhicule premium bordeaux',
+    'voiture électrique bordeaux',
+  ],
   openGraph: {
-    title: 'Boutique — Voitures Électriques | Timeless',
-    description:
-      'Parcourez notre sélection de voitures électriques premium disponibles à la location. Filtrez par marque, prix et kilométrage.',
+    title: `Véhicules — BMW, Audi, Porsche, Moto & Électrique | ${siteName} Bordeaux`,
+    description: `Sélection de voitures sport, électriques et motos à Bordeaux. BMW, Audi, Porsche, Ferrari, Tesla — trouvez votre prochain véhicule avec ${siteName}.`,
   },
   alternates: {
     canonical: '/shop',

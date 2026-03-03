@@ -1,3 +1,5 @@
+import { siteName } from '@/lib/site';
+
 export const siteContent = {
   nav: {
     logo: 'TIMELESS',
@@ -55,14 +57,13 @@ export const siteContent = {
 
   ctaFooter: {
     heading: 'PRÊT À PASSER AVEC NOUS ?',
-    body: "Rejoignez des milliers de conducteurs qui ont déjà franchi le cap de l'électrique. Louez un véhicule Timeless dès aujourd'hui et vivez l'avenir de la mobilité — zéro émission, performance totale.",
+    body: `Rejoignez des milliers de conducteurs qui ont déjà franchi le cap de l'électrique. Louez un véhicule ${siteName} dès aujourd'hui et vivez l'avenir de la mobilité — zéro émission, performance totale.`,
     ctaBtn: { label: 'NOUS CONTACTER', href: '/contact' },
     navColumns: [
       [
         { label: 'MENTIONS LÉGALES', href: '/privacy' },
-        { label: 'CONTACT', href: '/contact' },
       ],
     ],
-    copyright: 'Timeless © 2026',
+    copyright: `${siteName} © 2026`,
   },
 } as const;

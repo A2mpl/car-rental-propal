@@ -41,6 +41,9 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  // Génère un serveur Node.js auto-suffisant dans .next/standalone/
+  // → image Docker ~10× plus légère (pas de node_modules complet dans le runner)
+  output: 'standalone',
   images: {
     remotePatterns: [{ protocol: 'https', hostname: 'images.unsplash.com' }],
   },

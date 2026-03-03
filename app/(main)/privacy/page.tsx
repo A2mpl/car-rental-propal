@@ -1,11 +1,15 @@
 import type { Metadata } from 'next';
+import { siteName } from '@/lib/site';
 import SectionLabel from '@/components/ui/SectionLabel';
 import styles from './Privacy.module.css';
 
 export const metadata: Metadata = {
   title: 'Mentions Légales',
-  description: 'Mentions légales de Timeless — éditeur, hébergement, propriété intellectuelle et données personnelles.',
-  robots: { index: true, follow: true },
+  description: `Mentions légales de ${siteName}, courtier automobile à Bordeaux — éditeur, hébergement, propriété intellectuelle et données personnelles.`,
+  robots: { index: false, follow: false },
+  alternates: {
+    canonical: '/privacy',
+  },
 };
 
 export default function PrivacyPage() {

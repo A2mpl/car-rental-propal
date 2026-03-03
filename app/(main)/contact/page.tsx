@@ -1,10 +1,14 @@
 import type { Metadata } from 'next';
+import { siteName } from '@/lib/site';
 import ContactForm from '@/components/sections/ContactForm';
 
 export const metadata: Metadata = {
-  title: 'Contact',
-  description: "Contactez l'équipe Timeless pour toute question sur nos véhicules électriques premium.",
+  title: 'Contact — Courtier Automobile Bordeaux',
+  description: `Contactez ${siteName}, votre courtier automobile à Bordeaux. Voiture sport, BMW, Audi, Porsche, moto — notre équipe vous accompagne dans votre projet véhicule en Gironde.`,
   robots: { index: true, follow: true },
+  alternates: {
+    canonical: '/contact',
+  },
 };
 
 export default function ContactPage() {

@@ -1,0 +1,22 @@
+# Dépendances locales — réinstallées dans le stage deps
+node_modules
+
+# Build local — reconstruit dans le stage builder
+.next
+
+# Secrets — ne jamais embarquer dans l'image
+.env
+.env.*
+!.env.local.example
+
+# Git
+.git
+.gitignore
+
+# Outils de dev
+.biome
+*.log
+
+# Docker lui-même
+Dockerfile
+.dockerignore

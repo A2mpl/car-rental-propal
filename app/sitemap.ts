@@ -1,6 +1,5 @@
 import type { MetadataRoute } from 'next';
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://timeless-cars.fr';
+import { siteUrl } from '@/lib/site';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
@@ -17,16 +16,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
-      url: `${siteUrl}/models`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${siteUrl}/find-us`,
+      url: `${siteUrl}/contact`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
-      priority: 0.7,
+      priority: 0.8,
     },
   ];
 }

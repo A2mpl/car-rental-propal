@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { headers } from 'next/headers';
 import { Archivo, Saira } from 'next/font/google';
+import { siteName, siteUrl } from '@/lib/site';
 import ThemeProvider from '@/components/layout/ThemeProvider';
 import './globals.css';
 
@@ -24,48 +25,58 @@ const archivo = Archivo({
   display: 'swap',
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://timeless-cars.fr';
-
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'Timeless — Location de Voitures Électriques',
-    template: '%s | Timeless',
+    default: `${siteName} — Courtier Automobile à Bordeaux | Voitures Sport, Moto & Électrique`,
+    template: `%s | ${siteName} Bordeaux`,
   },
   description:
-    'Votre courtier de confiance pour la location de voitures électriques premium. Large sélection, prix transparents, livraison à domicile.',
+    'Courtier automobile à Bordeaux — BMW, Audi, Porsche, Ferrari, Mercedes, Tesla électrique, motos et véhicules premium. Sélection exclusive, prix transparents, livraison en Gironde.',
   keywords: [
-    'location voiture électrique',
-    'voiture électrique',
-    'Tesla location',
-    'location véhicule premium',
-    'courtier automobile',
-    'location voiture luxe',
+    'courtier automobile bordeaux',
+    'courtier voiture bordeaux',
+    'voiture sport bordeaux',
+    'BMW bordeaux',
+    'Audi bordeaux',
+    'Porsche bordeaux',
+    'Ferrari bordeaux',
+    'Mercedes bordeaux',
+    'voiture électrique bordeaux',
+    'Tesla bordeaux',
+    'moto bordeaux',
+    'courtier moto bordeaux',
+    'achat voiture sport bordeaux',
+    'véhicule premium bordeaux',
+    'voiture luxe bordeaux',
+    'courtier automobile gironde',
+    'voiture sport gironde',
+    'achat moto bordeaux',
   ],
-  authors: [{ name: 'Timeless' }],
-  creator: 'Timeless',
+  authors: [{ name: siteName }],
+  creator: siteName,
   openGraph: {
     type: 'website',
     locale: 'fr_FR',
     url: siteUrl,
-    siteName: 'Timeless',
-    title: 'Timeless — Location de Voitures Électriques',
+    siteName: `${siteName} Bordeaux`,
+    title: `${siteName} — Courtier Automobile à Bordeaux | Voitures Sport, Moto & Électrique`,
     description:
-      'Votre courtier de confiance pour la location de voitures électriques premium. Large sélection, prix transparents, livraison à domicile.',
+      'Courtier automobile à Bordeaux — BMW, Audi, Porsche, Ferrari, Tesla électrique, motos et véhicules premium. Sélection exclusive, prix transparents, livraison en Gironde.',
     images: [
       {
         url: '/images/img_4.png',
         width: 1200,
         height: 630,
-        alt: 'Timeless — Location de Voitures Électriques Premium',
+        alt: `${siteName} — Courtier Automobile à Bordeaux, voitures sport et motos premium`,
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Timeless — Location de Voitures Électriques',
+    title: `${siteName} — Courtier Automobile à Bordeaux`,
     description:
-      'Votre courtier de confiance pour la location de voitures électriques premium. Large sélection, prix transparents, livraison à domicile.',
+      'BMW, Audi, Porsche, Ferrari, Tesla électrique, motos — votre courtier automobile à Bordeaux. Prix transparents, livraison en Gironde.',
     images: ['/images/img_4.png'],
   },
   robots: {
@@ -87,16 +98,31 @@ export const metadata: Metadata = {
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'AutoDealer',
-  name: 'Timeless',
-  description:
-    'Courtier automobile spécialisé dans la location de voitures électriques premium. Large sélection, prix transparents, livraison à domicile.',
+  name: siteName,
+  description: `Courtier automobile à Bordeaux spécialisé dans les voitures sport, premium et électriques ainsi que les motos. BMW, Audi, Porsche, Ferrari, Mercedes, Tesla — sélection exclusive, prix transparents.`,
   url: siteUrl,
   logo: `${siteUrl}/images/img_4.png`,
-  sameAs: [],
-  areaServed: {
-    '@type': 'Country',
-    name: 'France',
+  image: `${siteUrl}/images/img_4.png`,
+  telephone: '',
+  email: `contact@timeless-cars.fr`,
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Bordeaux',
+    addressRegion: 'Nouvelle-Aquitaine',
+    postalCode: '33000',
+    addressCountry: 'FR',
   },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 44.8378,
+    longitude: -0.5792,
+  },
+  areaServed: [
+    { '@type': 'City', name: 'Bordeaux' },
+    { '@type': 'AdministrativeArea', name: 'Gironde' },
+    { '@type': 'AdministrativeArea', name: 'Nouvelle-Aquitaine' },
+  ],
+  sameAs: [],
   inLanguage: 'fr-FR',
 };
 
@@ -107,8 +133,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html lang="fr" className={`${saira.variable} ${archivo.variable}`} suppressHydrationWarning>
       <body>
         <ThemeProvider nonce={nonce}>{children}</ThemeProvider>
+        {/* Pas de nonce ici : type="application/ld+json" est un data script,
+            il n'est pas exécuté en JS → script-src ne s'y applique pas.
+            Ajouter nonce provoquerait un mismatch d'hydratation (le browser
+            masque l'attribut nonce dans le DOM après parsing). */}
         <script
-          nonce={nonce}
           type="application/ld+json"
           // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD structuré
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

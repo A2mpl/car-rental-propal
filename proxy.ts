@@ -2,47 +2,41 @@ import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 
 export function proxy(request: NextRequest) {
-  // ── Dev mode : pas de CSP strict ─────────────────────────────────────────
-  // Turbopack HMR charge des chunks via element.src dynamique (TrustedScriptURL)
-  // et React dev build utilise innerHTML sans policy Trusted Types.
-  // Ces patterns sont incompatibles avec un CSP à nonces → on laisse passer
-  // en local. Lighthouse teste toujours le build de production.
-  // ─────────────────────────────────────────────────────────────────────────
-  if (process.env.NODE_ENV === 'development') {
-    return NextResponse.next();
-  }
-
-  // Nonce unique par requête — base64 d'un UUID aléatoire
   const nonce = Buffer.from(crypto.randomUUID()).toString('base64');
+  const isDev = process.env.NODE_ENV === 'development';
 
-  // ── Content Security Policy ───────────────────────────────────────────────
-  // 'strict-dynamic' : les scripts chargés par un script noncé héritent
-  //   automatiquement de la confiance → les chunks Next.js sont couverts.
-  // 'unsafe-inline' et 'self' sont conservés en fallback pour anciens navigateurs
-  //   (ignorés par les navigateurs supportant strict-dynamic).
-  //
-  // Note sur require-trusted-types-for : retiré car next-themes injecte un
-  //   script de détection de thème via innerHTML sans policy Trusted Types,
-  //   ce qui casserait le site en production. C'est un check "Unscored" dans
-  //   Lighthouse — il n'impacte pas le score.
-  // ─────────────────────────────────────────────────────────────────────────
+  // ── Content Security Policy ─────────────────────────────────────────────────
+  // script-src: 'strict-dynamic' → scripts chargés par un script noncé héritent
+  //   automatiquement de la confiance (chunks Next.js couverts sans les lister).
+  //   'unsafe-eval' requis en dev uniquement : React utilise eval() pour reconstruire
+  //   les stack serveur côté navigateur (débogage). Absent de prod.
+  // style-src: 'unsafe-inline' requis pour framer-motion (inline style attrs)
+  //   et les injections CSS de Next.js.
+  // img-src: CarCard utilise <Image unoptimized> → le browser charge les URLs
+  //   directement (Unsplash, futurs CDNs AS24). https: couvre tous les cas ;
+  //   les images ne peuvent pas exécuter de code → règle sans risque.
+  // font-src: next/font/google auto-héberge les polices → 'self' suffit.
+  // upgrade-insecure-requests: force HTTP → HTTPS au niveau navigateur.
+
+    // TODO: remplacer :     img-src 'self' data: blob:;
+  // ───────────────────────────────────────────────────────────────────────────
   const csp = `
     default-src 'self';
-    script-src 'self' 'nonce-${nonce}' 'strict-dynamic';
-    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-    font-src 'self' https://fonts.gstatic.com;
-    img-src 'self' data: blob: https://images.unsplash.com;
+    script-src 'self' 'nonce-${nonce}' 'strict-dynamic'${isDev ? " 'unsafe-eval'" : ''};
+    style-src 'self' 'unsafe-inline';
+    img-src 'self' data: blob: https:;
+    font-src 'self';
     connect-src 'self';
-    frame-ancestors 'none';
+    object-src 'none';
     base-uri 'self';
     form-action 'self';
-    object-src 'none';
+    frame-ancestors 'none';
+    upgrade-insecure-requests;
   `
-    .replace(/\n/g, ' ')
     .replace(/\s{2,}/g, ' ')
     .trim();
 
-  // Transmission du nonce aux Server Components via header de requête
+  // Nonce transmis aux Server Components via header de requête interne
   const requestHeaders = new Headers(request.headers);
   requestHeaders.set('x-nonce', nonce);
   requestHeaders.set('Content-Security-Policy', csp);
@@ -61,13 +55,13 @@ export const config = {
   matcher: [
     {
       /*
-       * Match all request paths except:
-       * - _next/static  (static files)
-       * - _next/image   (image optimization)
-       * - favicon.ico, sitemap.xml, robots.txt (metadata files)
-       * - image files (.svg, .png, .jpg, .jpeg, .gif, .webp)
+       * Appliqué à toutes les routes sauf :
+       * - api            (routes API — CSP inutile sur les réponses JSON)
+       * - _next/static   (fichiers statiques)
+       * - _next/image    (optimisation d'images)
+       * - favicon.ico, sitemap.xml, robots.txt (métadonnées)
        */
-      source: '/((?!_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
+      source: '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)',
       missing: [
         { type: 'header', key: 'next-router-prefetch' },
         { type: 'header', key: 'purpose', value: 'prefetch' },

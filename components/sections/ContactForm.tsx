@@ -2,10 +2,16 @@
 
 import type { BezierDefinition, Variants } from 'framer-motion';
 import { motion, useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
+import { useActionState, useEffect, useRef, useState } from 'react';
+import { type ContactState, submitContact } from '@/app/(main)/contact/actions';
 import Button from '@/components/ui/Button';
 import SectionLabel from '@/components/ui/SectionLabel';
 import styles from './ContactForm.module.css';
+
+// Constante locale — ne peut pas être exportée depuis un fichier 'use server'
+const INITIAL_CONTACT_STATE: ContactState = { status: 'idle' };
+
+// ── Animation ─────────────────────────────────────────────────────────────────
 
 const luxeEase: BezierDefinition = [0.16, 1, 0.3, 1];
 
@@ -19,6 +25,8 @@ const formVariants: Variants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: luxeEase, delay: 0.15 } },
 };
 
+// ── Constants ─────────────────────────────────────────────────────────────────
+
 const SUBJECTS = [
   'Demande de location',
   'Question sur un véhicule',
@@ -28,101 +36,42 @@ const SUBJECTS = [
   'Autre',
 ] as const;
 
-interface FormState {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  subject: string;
-  message: string;
-}
-
-type SubmitStatus = 'idle' | 'loading' | 'success' | 'error';
-
-const INITIAL_STATE: FormState = {
-  firstName: '',
-  lastName: '',
-  email: '',
-  phone: '',
-  subject: '',
-  message: '',
-};
+// ── Component ─────────────────────────────────────────────────────────────────
 
 export default function ContactForm() {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.15 });
 
-  const [form, setForm] = useState<FormState>(INITIAL_STATE);
-  const [errors, setErrors] = useState<Partial<FormState>>({});
-  const [status, setStatus] = useState<SubmitStatus>('idle');
+  // useActionState — validation serveur + état du formulaire (React 19 / Next.js 16)
+  const [state, formAction, isPending] = useActionState(submitContact, INITIAL_CONTACT_STATE);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value } = e.target;
-    setForm((prev) => ({ ...prev, [name]: value }));
-    if (errors[name as keyof FormState]) {
-      setErrors((prev) => ({ ...prev, [name]: '' }));
-    }
+  // showForm passe à false dès qu'une soumission réussit.
+  // On track l'objet state (pas uniquement state.status) pour que deux soumissions
+  // réussies consécutives déclenchent bien l'écran de succès la seconde fois.
+  const [showForm, setShowForm] = useState(true);
+  // biome-ignore lint/correctness/useExhaustiveDependencies: intentional — track object ref
+  useEffect(() => {
+    if (state.status === 'success') setShowForm(false);
+  }, [state]);
+
+  // formKey remonte le <form> pour vider les champs après "envoyer un autre message"
+  const [formKey, setFormKey] = useState(0);
+
+  const handleReset = () => {
+    setShowForm(true);
+    setFormKey((k) => k + 1);
   };
 
-  const validate = (): boolean => {
-    const newErrors: Partial<FormState> = {};
-    if (!form.firstName.trim()) newErrors.firstName = 'Prénom requis';
-    if (!form.lastName.trim()) newErrors.lastName = 'Nom requis';
-    if (!form.email.trim()) {
-      newErrors.email = 'Email requis';
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
-      newErrors.email = 'Email invalide';
-    }
-    if (!form.subject) newErrors.subject = 'Veuillez choisir un objet';
-    if (!form.message.trim()) newErrors.message = 'Message requis';
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
+  // Retourne l'erreur de champ uniquement en état 'error'
+  const err = (field: 'firstName' | 'lastName' | 'email' | 'subject' | 'message') =>
+    state.status === 'error' ? state.errors[field] : undefined;
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!validate()) return;
-
-    setStatus('loading');
-    try {
-      const res = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
-      });
-      if (!res.ok) throw new Error('Erreur serveur');
-      setStatus('success');
-      setForm(INITIAL_STATE);
-    } catch {
-      setStatus('error');
-    }
-  };
-
-  if (status === 'success') {
-    return (
-      <section ref={sectionRef} className={styles.section}>
-        <div className={styles.container}>
-          <div className={styles.success}>
-            <div className={styles.successIcon} aria-hidden="true">✓</div>
-            <h2 className={styles.successHeading}>Message envoyé !</h2>
-            <p className={styles.successBody}>
-              Merci pour votre message. Notre équipe vous répondra dans les plus brefs délais.
-            </p>
-            <div className={styles.resetBtnWrapper}>
-              <Button variant="ghost" size="sm" onClick={() => setStatus('idle')}>
-                Envoyer un autre message
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  }
+  // Erreur générique (ex: exception serveur) = status error sans erreurs de champ
+  const hasGenericError = state.status === 'error' && Object.keys(state.errors).length === 0;
 
   return (
     <section ref={sectionRef} className={styles.section} aria-label="Formulaire de contact">
       <div className={styles.container}>
-
         {/* ── Header ── */}
         <motion.div
           className={styles.header}
@@ -138,125 +87,182 @@ export default function ContactForm() {
           </p>
         </motion.div>
 
-        {/* ── Form ── */}
-        <motion.form
-          className={styles.form}
-          onSubmit={handleSubmit}
-          noValidate
-          variants={formVariants}
-          initial="hidden"
-          animate={isInView ? 'visible' : 'hidden'}
-        >
-
-          {/* Prénom + Nom */}
-          <div className={styles.row}>
-            <div className={styles.field}>
-              <label htmlFor="firstName" className={styles.fieldLabel}>Prénom *</label>
-              <input
-                id="firstName"
-                name="firstName"
-                type="text"
-                autoComplete="given-name"
-                className={`${styles.input} ${errors.firstName ? styles.inputError : ''}`}
-                value={form.firstName}
-                onChange={handleChange}
-                placeholder="Jean"
-              />
-              {errors.firstName && <span className={styles.error}>{errors.firstName}</span>}
+        {/* ── Success ── */}
+        {!showForm ? (
+          <div className={styles.success}>
+            <div className={styles.successIcon} aria-hidden="true">
+              ✓
             </div>
-            <div className={styles.field}>
-              <label htmlFor="lastName" className={styles.fieldLabel}>Nom *</label>
-              <input
-                id="lastName"
-                name="lastName"
-                type="text"
-                autoComplete="family-name"
-                className={`${styles.input} ${errors.lastName ? styles.inputError : ''}`}
-                value={form.lastName}
-                onChange={handleChange}
-                placeholder="Dupont"
-              />
-              {errors.lastName && <span className={styles.error}>{errors.lastName}</span>}
-            </div>
-          </div>
-
-          {/* Email + Téléphone */}
-          <div className={styles.row}>
-            <div className={styles.field}>
-              <label htmlFor="email" className={styles.fieldLabel}>Email *</label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                autoComplete="email"
-                className={`${styles.input} ${errors.email ? styles.inputError : ''}`}
-                value={form.email}
-                onChange={handleChange}
-                placeholder="jean@exemple.fr"
-              />
-              {errors.email && <span className={styles.error}>{errors.email}</span>}
-            </div>
-            <div className={styles.field}>
-              <label htmlFor="phone" className={styles.fieldLabel}>Téléphone <span className={styles.optional}>(optionnel)</span></label>
-              <input
-                id="phone"
-                name="phone"
-                type="tel"
-                autoComplete="tel"
-                className={styles.input}
-                value={form.phone}
-                onChange={handleChange}
-                placeholder="+33 6 00 00 00 00"
-              />
-            </div>
-          </div>
-
-          {/* Objet */}
-          <div className={styles.field}>
-            <label htmlFor="subject" className={styles.fieldLabel}>Objet *</label>
-            <select
-              id="subject"
-              name="subject"
-              className={`${styles.select} ${errors.subject ? styles.inputError : ''}`}
-              value={form.subject}
-              onChange={handleChange}
-            >
-              <option value="">Choisir un objet…</option>
-              {SUBJECTS.map((s) => (
-                <option key={s} value={s}>{s}</option>
-              ))}
-            </select>
-            {errors.subject && <span className={styles.error}>{errors.subject}</span>}
-          </div>
-
-          {/* Message */}
-          <div className={styles.field}>
-            <label htmlFor="message" className={styles.fieldLabel}>Message *</label>
-            <textarea
-              id="message"
-              name="message"
-              rows={6}
-              className={`${styles.textarea} ${errors.message ? styles.inputError : ''}`}
-              value={form.message}
-              onChange={handleChange}
-              placeholder="Décrivez votre demande…"
-            />
-            {errors.message && <span className={styles.error}>{errors.message}</span>}
-          </div>
-
-          {status === 'error' && (
-            <p className={styles.errorBanner}>
-              Une erreur est survenue. Veuillez réessayer ou nous contacter directement par email.
+            <h2 className={styles.successHeading}>Message envoyé !</h2>
+            <p className={styles.successBody}>
+              Merci pour votre message. Notre équipe vous répondra dans les plus brefs délais.
             </p>
-          )}
-
-          <div className={styles.submitRow}>
-            <Button type="submit" size="md" disabled={status === 'loading'}>
-              {status === 'loading' ? 'Envoi en cours…' : 'Envoyer le message'}
-            </Button>
+            <div className={styles.resetBtnWrapper}>
+              <Button variant="ghost" size="sm" onClick={handleReset}>
+                Envoyer un autre message
+              </Button>
+            </div>
           </div>
+        ) : (
+          /* ── Form ── */
+          <motion.form
+            key={formKey}
+            className={styles.form}
+            action={formAction}
+            noValidate
+            variants={formVariants}
+            initial="hidden"
+            animate={isInView ? 'visible' : 'hidden'}
+          >
+            {/* Prénom + Nom */}
+            <div className={styles.row}>
+              <div className={styles.field}>
+                <label htmlFor="firstName" className={styles.fieldLabel}>
+                  Prénom *
+                </label>
+                <input
+                  id="firstName"
+                  name="firstName"
+                  type="text"
+                  autoComplete="given-name"
+                  aria-required="true"
+                  aria-invalid={!!err('firstName')}
+                  aria-describedby={err('firstName') ? 'firstName-error' : undefined}
+                  className={`${styles.input} ${err('firstName') ? styles.inputError : ''}`}
+                  placeholder="Jean"
+                />
+                {err('firstName') && (
+                  <span id="firstName-error" className={styles.error} role="alert">
+                    {err('firstName')}
+                  </span>
+                )}
+              </div>
 
-        </motion.form>
+              <div className={styles.field}>
+                <label htmlFor="lastName" className={styles.fieldLabel}>
+                  Nom *
+                </label>
+                <input
+                  id="lastName"
+                  name="lastName"
+                  type="text"
+                  autoComplete="family-name"
+                  aria-required="true"
+                  aria-invalid={!!err('lastName')}
+                  aria-describedby={err('lastName') ? 'lastName-error' : undefined}
+                  className={`${styles.input} ${err('lastName') ? styles.inputError : ''}`}
+                  placeholder="Dupont"
+                />
+                {err('lastName') && (
+                  <span id="lastName-error" className={styles.error} role="alert">
+                    {err('lastName')}
+                  </span>
+                )}
+              </div>
+            </div>
+
+            {/* Email + Téléphone */}
+            <div className={styles.row}>
+              <div className={styles.field}>
+                <label htmlFor="email" className={styles.fieldLabel}>
+                  Email *
+                </label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  aria-required="true"
+                  aria-invalid={!!err('email')}
+                  aria-describedby={err('email') ? 'email-error' : undefined}
+                  className={`${styles.input} ${err('email') ? styles.inputError : ''}`}
+                  placeholder="jean@exemple.fr"
+                />
+                {err('email') && (
+                  <span id="email-error" className={styles.error} role="alert">
+                    {err('email')}
+                  </span>
+                )}
+              </div>
+
+              <div className={styles.field}>
+                <label htmlFor="phone" className={styles.fieldLabel}>
+                  Téléphone <span className={styles.optional}>(optionnel)</span>
+                </label>
+                <input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  autoComplete="tel"
+                  className={styles.input}
+                  placeholder="+33 6 00 00 00 00"
+                />
+              </div>
+            </div>
+
+            {/* Objet */}
+            <div className={styles.field}>
+              <label htmlFor="subject" className={styles.fieldLabel}>
+                Objet *
+              </label>
+              <select
+                id="subject"
+                name="subject"
+                aria-required="true"
+                aria-invalid={!!err('subject')}
+                aria-describedby={err('subject') ? 'subject-error' : undefined}
+                className={`${styles.select} ${err('subject') ? styles.inputError : ''}`}
+              >
+                <option value="">Choisir un objet…</option>
+                {SUBJECTS.map((s) => (
+                  <option key={s} value={s}>
+                    {s}
+                  </option>
+                ))}
+              </select>
+              {err('subject') && (
+                <span id="subject-error" className={styles.error} role="alert">
+                  {err('subject')}
+                </span>
+              )}
+            </div>
+
+            {/* Message */}
+            <div className={styles.field}>
+              <label htmlFor="message" className={styles.fieldLabel}>
+                Message *
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                rows={6}
+                aria-required="true"
+                aria-invalid={!!err('message')}
+                aria-describedby={err('message') ? 'message-error' : undefined}
+                className={`${styles.textarea} ${err('message') ? styles.inputError : ''}`}
+                placeholder="Décrivez votre demande…"
+              />
+              {err('message') && (
+                <span id="message-error" className={styles.error} role="alert">
+                  {err('message')}
+                </span>
+              )}
+            </div>
+
+            {/* Bannière d'erreur générique (exception serveur) */}
+            {hasGenericError && (
+              <p className={styles.errorBanner} role="alert" aria-live="polite">
+                Une erreur est survenue. Veuillez réessayer ou nous contacter directement par email.
+              </p>
+            )}
+
+            <div className={styles.submitRow}>
+              <Button type="submit" size="md" disabled={isPending}>
+                {isPending ? 'Envoi en cours…' : 'Envoyer le message'}
+              </Button>
+            </div>
+          </motion.form>
+        )}
       </div>
     </section>
   );
