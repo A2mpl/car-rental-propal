@@ -130,7 +130,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const nonce = (await headers()).get('x-nonce') ?? '';
 
   return (
-    <html lang="fr" className={`${saira.variable} ${archivo.variable}`} suppressHydrationWarning>
+    <html lang="fr" className={`${saira.variable} ${archivo.variable}`} data-scroll-behavior="smooth" suppressHydrationWarning>
       <body>
         <ThemeProvider nonce={nonce}>{children}</ThemeProvider>
         {/* Pas de nonce ici : type="application/ld+json" est un data script,
