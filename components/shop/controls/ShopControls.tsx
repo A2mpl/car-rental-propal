@@ -3,10 +3,10 @@
 import { ChevronDown, ChevronsDown, LayoutGrid, List, ListOrdered, SlidersHorizontal, X } from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useState, useTransition } from 'react';
+import type { ScrollMode } from '@/components/shop/client/types';
 import type { SortOption } from '@/lib/autoscout24';
 import { countActiveFilters, filtersToParams, parseSearchParams, SORT_OPTIONS } from '@/lib/autoscout24';
 import styles from './ShopControls.module.css';
-import type {ScrollMode} from "@/components/shop/client/types";
 
 const BODY_LABELS: Record<string, string> = {
   sedan: 'Berline',

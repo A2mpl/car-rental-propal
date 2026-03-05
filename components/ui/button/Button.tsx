@@ -1,4 +1,4 @@
-import type {ButtonProps} from "@/components/ui/button/types"
+import type { ButtonProps } from '@/components/ui/button/types';
 import styles from './Button.module.css';
 
 export default function Button({

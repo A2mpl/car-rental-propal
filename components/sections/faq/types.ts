@@ -1,6 +1,6 @@
 export interface FAQItem {
-    id: string;
-    question: string;
-    answer: string;
-    defaultOpen?: boolean;
+  id: string;
+  question: string;
+  answer: string;
+  defaultOpen?: boolean;
 }

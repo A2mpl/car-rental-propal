@@ -1,17 +1,17 @@
 export type VehicleType = 'Électrique' | 'Sport' | 'SUV' | 'Cabriolet';
 
 export interface ModelInfo {
-    name: string;
-    types: VehicleType[];
+  name: string;
+  types: VehicleType[];
 }
 
 export interface BrandInfo {
-    models: ModelInfo[];
+  models: ModelInfo[];
 }
 
 export interface Filters {
-    type: string;
-    brand: string;
-    model: string;
-    price: string;
+  type: string;
+  brand: string;
+  model: string;
+  price: string;
 }

@@ -1,15 +1,8 @@
 'use server';
 
+export type ContactErrors = Partial<Record<'firstName' | 'lastName' | 'email' | 'subject' | 'message', string>>;
 
-export type ContactErrors = Partial<
-  Record<'firstName' | 'lastName' | 'email' | 'subject' | 'message', string>
->;
-
-export type ContactState =
-  | { status: 'idle' }
-  | { status: 'success' }
-  | { status: 'error'; errors: ContactErrors };
-
+export type ContactState = { status: 'idle' } | { status: 'success' } | { status: 'error'; errors: ContactErrors };
 
 const VALID_SUBJECTS = [
   'Demande de location',
@@ -23,7 +16,6 @@ const VALID_SUBJECTS = [
 function isValidEmail(email: string): boolean {
   return email.length <= 254 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
-
 
 export async function submitContact(_prevState: ContactState, formData: FormData): Promise<ContactState> {
   const firstName = (formData.get('firstName') as string | null)?.trim() ?? '';

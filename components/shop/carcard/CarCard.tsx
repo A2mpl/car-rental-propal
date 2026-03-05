@@ -1,9 +1,9 @@
 import { ArrowRight, Fuel, Gauge, Zap } from 'lucide-react';
 import Image from 'next/image';
+import type { ReactNode } from 'react';
+import { BADGE_CONFIG, BODY_LABELS, FUEL_LABELS } from '@/components/shop/carcard/data';
+import type { CarCardProps } from '@/components/shop/carcard/types';
 import styles from './CarCard.module.css';
-import type {CarCardProps} from "@/components/shop/carcard/types";
-import {BADGE_CONFIG, BODY_LABELS, FUEL_LABELS} from "@/components/shop/carcard/data";
-import type {ReactNode} from "react";
 
 const FUEL_ICONS: Record<string, ReactNode> = {
   electric: <Zap size={11} />,
@@ -27,7 +27,7 @@ export default function CarCard({ car, priority = false }: CarCardProps) {
           className={styles.image}
           sizes="(max-width: 640px) calc(100vw - 40px), (max-width: 1023px) calc(50vw - 30px), (max-width: 1280px) calc(50vw - 178px), calc(33vw - 125px)"
           priority={priority}
-          fetchPriority={"high"}
+          fetchPriority={'high'}
         />
 
         <div className={styles.imageBadges}>

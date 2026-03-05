@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
-import { headers } from 'next/headers';
 import { Archivo, Saira } from 'next/font/google';
-import { siteName, siteUrl } from '@/lib/site';
+import { headers } from 'next/headers';
 import ThemeProvider from '@/components/layout/ThemeProvider';
+import { siteName, siteUrl } from '@/lib/site';
 import './globals.css';
 
 const saira = Saira({
@@ -99,7 +99,8 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'AutoDealer',
   name: siteName,
-  description: 'Courtier automobile à Bordeaux spécialisé dans les voitures sport, premium et électriques ainsi que les motos. BMW, Audi, Porsche, Ferrari, Mercedes, Tesla — sélection exclusive, prix transparents.',
+  description:
+    'Courtier automobile à Bordeaux spécialisé dans les voitures sport, premium et électriques ainsi que les motos. BMW, Audi, Porsche, Ferrari, Mercedes, Tesla — sélection exclusive, prix transparents.',
   url: siteUrl,
   logo: `${siteUrl}/images/img_4.png`,
   image: `${siteUrl}/images/img_4.png`,
@@ -130,7 +131,12 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const nonce = (await headers()).get('x-nonce') ?? '';
 
   return (
-    <html lang="fr" className={`${saira.variable} ${archivo.variable}`} data-scroll-behavior="smooth" suppressHydrationWarning>
+    <html
+      lang="fr"
+      className={`${saira.variable} ${archivo.variable}`}
+      data-scroll-behavior="smooth"
+      suppressHydrationWarning
+    >
       <body>
         <ThemeProvider nonce={nonce}>{children}</ThemeProvider>
         <script

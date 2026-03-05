@@ -4,10 +4,9 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
-import type {Filters} from "@/components/ui/search/types";
-import {ALL_PRICES, ALL_TYPES, FIELD_KEYS, type FieldKey, LABELS} from "@/components/ui/search/data";
-import {buildShopParams, getFilteredBrands, getFilteredModels} from "@/components/ui/search/utils";
-
+import { ALL_PRICES, ALL_TYPES, FIELD_KEYS, type FieldKey, LABELS } from '@/components/ui/search/data';
+import type { Filters } from '@/components/ui/search/types';
+import { buildShopParams, getFilteredBrands, getFilteredModels } from '@/components/ui/search/utils';
 
 export default function SearchBar() {
   const router = useRouter();

@@ -2,13 +2,13 @@
 
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
+import type { ScrollMode, ShopClientProps } from '@/components/shop/client/types';
+import ShopControls from '@/components/shop/controls/ShopControls';
 import FilterSidebar from '@/components/shop/filter/FilterSidebar';
+import InfiniteCarGrid from '@/components/shop/infinite/InfiniteCarGrid';
+import PaginatedCarGrid from '@/components/shop/paginated/PaginatedCarGrid';
 import { filtersToParams } from '@/lib/autoscout24';
 import styles from './shop.module.css';
-import type {ShopClientProps, ScrollMode} from "@/components/shop/client/types";
-import PaginatedCarGrid from "@/components/shop/paginated/PaginatedCarGrid";
-import InfiniteCarGrid from "@/components/shop/infinite/InfiniteCarGrid";
-import ShopControls from "@/components/shop/controls/ShopControls";
 
 export default function ShopClient({
   initialListings,

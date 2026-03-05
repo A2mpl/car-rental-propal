@@ -13,7 +13,7 @@
 
 .label::before,
 .label::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 50%;
   width: 24px;

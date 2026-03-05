@@ -2,16 +2,20 @@
 
 import { useCallback, useEffect, useRef, useState, useTransition } from 'react';
 import CarCard from '@/components/shop/carcard/CarCard';
-import { type AS24Listing, type AS24Response, filtersToParams } from '@/lib/autoscout24';
-import _styles from './InfiniteCarGrid.module.css';
+import type { InfiniteCarGridProps } from '@/components/shop/infinite/types';
 import _gridStyles from '@/components/shop/shared/grid.module.css';
 import _skeletonStyles from '@/components/shop/shared/skeleton.module.css';
-import type {InfiniteCarGridProps} from "@/components/shop/infinite/types";
+import { type AS24Listing, type AS24Response, filtersToParams } from '@/lib/autoscout24';
+import _styles from './InfiniteCarGrid.module.css';
 
 const styles = { ..._styles, ..._gridStyles, ..._skeletonStyles };
 
-
-export default function InfiniteCarGrid({ initialListings, initialFilters, initialHasMore, viewMode }: InfiniteCarGridProps) {
+export default function InfiniteCarGrid({
+  initialListings,
+  initialFilters,
+  initialHasMore,
+  viewMode,
+}: InfiniteCarGridProps) {
   const [listings, setListings] = useState<AS24Listing[]>(initialListings);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(initialHasMore);
@@ -66,8 +70,13 @@ export default function InfiniteCarGrid({ initialListings, initialFilters, initi
 
         {isPending &&
           Array.from({ length: 3 }).map((_, i) => (
-            <div key={`sk-${// biome-ignore lint/suspicious/noArrayIndexKey: dev
-i}`} className={styles.skeletonCard}>
+            <div
+              key={`sk-${
+                // biome-ignore lint/suspicious/noArrayIndexKey: dev
+                i
+              }`}
+              className={styles.skeletonCard}
+            >
               <div className={styles.skeletonImage} />
               <div className={styles.skeletonContent}>
                 <div className={styles.skeletonLine} style={{ width: '35%' }} />

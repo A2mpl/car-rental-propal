@@ -5,9 +5,8 @@
  * reorganisation stays transparent to consumers.
  */
 
-
 // biome-ignore lint/performance/noBarrelFile: DEV
-export  { adaptSearchResponse, adaptVehicle } from './adapter';
+export { adaptSearchResponse, adaptVehicle } from './adapter';
 export { searchVehicles } from './client';
 export { buildAS24Params } from './params';
 export type {

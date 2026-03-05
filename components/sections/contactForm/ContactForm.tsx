@@ -2,11 +2,11 @@
 
 import { motion, useInView } from 'framer-motion';
 import { useActionState, useEffect, useRef, useState } from 'react';
-import {  submitContact } from '@/app/(main)/contact/actions';
+import { submitContact } from '@/app/(main)/contact/actions';
+import { formVariants, headerVariants, INITIAL_CONTACT_STATE, SUBJECTS } from '@/components/sections/contactForm/data';
 import Button from '@/components/ui/button/Button';
 import SectionLabel from '@/components/ui/sectionlabel/SectionLabel';
 import styles from './ContactForm.module.css';
-import {formVariants, headerVariants, INITIAL_CONTACT_STATE, SUBJECTS} from "@/components/sections/contactForm/data";
 
 export default function ContactForm() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -43,8 +43,8 @@ export default function ContactForm() {
           <SectionLabel>Contact</SectionLabel>
           <h1 className={styles.heading}>Parlons-en</h1>
           <p className={styles.subtitle}>
-            Une question sur nos véhicules, une demande de location ou simplement envie d'en savoir plus ?
-            Notre équipe est là pour vous.
+            Une question sur nos véhicules, une demande de location ou simplement envie d'en savoir plus ? Notre équipe
+            est là pour vous.
           </p>
         </motion.div>
 

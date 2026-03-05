@@ -1,8 +1,14 @@
+import type { SectionHeaderProps } from '@/components/ui/sectionheader/types';
 import SectionLabel from '@/components/ui/sectionlabel/SectionLabel';
 import styles from './SectionHeader.module.css';
-import type {SectionHeaderProps} from "@/components/ui/sectionheader/types";
 
-export default function SectionHeader({ label, heading, subtitle, level: Tag = 'h2', labelClassName }: SectionHeaderProps) {
+export default function SectionHeader({
+  label,
+  heading,
+  subtitle,
+  level: Tag = 'h2',
+  labelClassName,
+}: SectionHeaderProps) {
   return (
     <>
       <SectionLabel className={labelClassName}>{label}</SectionLabel>

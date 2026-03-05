@@ -1,4 +1,4 @@
 export interface FooterLink {
-    readonly label: string;
-    readonly href: string;
+  readonly label: string;
+  readonly href: string;
 }

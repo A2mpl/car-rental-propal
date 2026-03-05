@@ -4,9 +4,9 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useTransition } from 'react';
 import CarCard from '@/components/shop/carcard/CarCard';
+import _gridStyles from '@/components/shop/shared/grid.module.css';
 import { type AS24Listing, filtersToParams, type ShopFilters } from '@/lib/autoscout24';
 import _styles from './PaginatedCarGrid.module.css';
-import _gridStyles from '@/components/shop/shared/grid.module.css';
 
 const styles = { ..._styles, ..._gridStyles };
 

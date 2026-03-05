@@ -2,13 +2,13 @@
 
 import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
+import { headerVariants, listVariants } from '@/components/sections/faq/data';
+import type { FAQItem } from '@/components/sections/faq/types';
 import AccordionItem from '@/components/ui/accordion/AccordionItem';
 import SectionHeader from '@/components/ui/sectionheader/SectionHeader';
 import { siteContent } from '@/data/content';
+import { faqItems } from '@/data/faq';
 import styles from './Faq.module.css';
-import {headerVariants, listVariants} from "@/components/sections/faq/data";
-import type {FAQItem} from "@/components/sections/faq/types";
-import {faqItems} from "@/data/faq";
 
 export default function Faq() {
   const { faq } = siteContent;
@@ -56,7 +56,6 @@ export default function Faq() {
             </li>
           ))}
         </motion.ul>
-
       </div>
     </section>
   );

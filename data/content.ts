@@ -59,11 +59,7 @@ export const siteContent = {
     heading: 'PRÊT À PASSER AVEC NOUS ?',
     body: `Rejoignez des milliers de conducteurs qui ont déjà franchi le cap de l'électrique. Louez un véhicule ${siteName} dès aujourd'hui et vivez l'avenir de la mobilité — zéro émission, performance totale.`,
     ctaBtn: { label: 'NOUS CONTACTER', href: '/contact' },
-    navColumns: [
-      [
-        { label: 'MENTIONS LÉGALES', href: '/privacy' },
-      ],
-    ],
+    navColumns: [[{ label: 'MENTIONS LÉGALES', href: '/privacy' }]],
     copyright: `${siteName} © 2026`,
   },
 } as const;

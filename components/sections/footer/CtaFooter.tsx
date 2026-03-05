@@ -1,9 +1,9 @@
+import { NavCol } from '@/components/sections/footer/NavCol';
+import type { FooterLink } from '@/components/sections/footer/types';
 import Button from '@/components/ui/button/Button';
 import { siteContent } from '@/data/content';
 import { siteName } from '@/lib/site';
 import styles from './CtaFooter.module.css';
-import {NavCol} from "@/components/sections/footer/NavCol";
-import type {FooterLink} from "@/components/sections/footer/types";
 
 export default function CtaFooter() {
   const { ctaFooter } = siteContent;
@@ -26,7 +26,7 @@ export default function CtaFooter() {
             <div className={styles.columns}>
               {ctaFooter.navColumns.map((col, i) => (
                 // biome-ignore lint/suspicious/noArrayIndexKey: DEV
-<NavCol key={i} links={col as readonly FooterLink[]} />
+                <NavCol key={i} links={col as readonly FooterLink[]} />
               ))}
             </div>
           </nav>

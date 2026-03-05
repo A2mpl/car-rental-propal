@@ -1,8 +1,8 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import type { AccordionItemProps } from '@/components/ui/accordion/types';
 import styles from './AccordionItem.module.css';
-import type {AccordionItemProps} from "@/components/ui/accordion/types";
 
 export default function AccordionItem({ question, answer, isOpen, onToggle }: AccordionItemProps) {
   const contentRef = useRef<HTMLDivElement>(null);

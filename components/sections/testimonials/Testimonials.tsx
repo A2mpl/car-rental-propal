@@ -2,10 +2,10 @@
 import { motion, useInView } from 'framer-motion';
 import Image from 'next/image';
 import { useRef } from 'react';
+import { headerVariants, trackVariants } from '@/components/sections/testimonials/data';
+import type { Testimonial } from '@/components/sections/testimonials/types';
 import { testimonials } from '@/data/testimonials';
 import styles from './Testimonials.module.css';
-import type {Testimonial} from "@/components/sections/testimonials/types";
-import {headerVariants, trackVariants} from "@/components/sections/testimonials/data";
 
 function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
   return (

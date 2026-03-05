@@ -50,7 +50,6 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        // Appliqué à toutes les routes
         source: '/(.*)',
         headers: securityHeaders,
       },

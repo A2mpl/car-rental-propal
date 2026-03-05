@@ -24,9 +24,9 @@
   --error-border: rgba(224, 82, 82, 0.2);
 
   /* ── Status badges (CarCard) — ratio contraste avec --text-on-dark (#fff) ── */
-  --badge-new: #15803d;      /* 4.6:1 ✓ */
-  --badge-popular: #2563eb;  /* 5.0:1 ✓ */
-  --badge-limited: #dc2626;  /* 4.6:1 ✓ */
+  --badge-new: #15803d; /* 4.6:1 ✓ */
+  --badge-popular: #2563eb; /* 5.0:1 ✓ */
+  --badge-limited: #dc2626; /* 4.6:1 ✓ */
 
   /* ── Carte stat (WhyUs) — fond fixe sombre, texte blanc 9.7:1 ✓ ── */
   --card-stat-bg: #2d4a3f;

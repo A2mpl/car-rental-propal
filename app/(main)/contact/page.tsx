@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import { siteName } from '@/lib/site';
 import ContactForm from '@/components/sections/contactForm/ContactForm';
+import { siteName } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Contact — Courtier Automobile Bordeaux',

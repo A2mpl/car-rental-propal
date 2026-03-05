@@ -1,6 +1,6 @@
 export interface AccordionItemProps {
-    question: string;
-    answer: string;
-    isOpen: boolean;
-    onToggle: () => void;
+  question: string;
+  answer: string;
+  isOpen: boolean;
+  onToggle: () => void;
 }
