@@ -77,20 +77,20 @@
 }
 
 .badgeNew {
-  background: #16a34a;
-  color: #ffffff;
+  background: var(--badge-new);
+  color: var(--text-on-dark);
   border: none;
 }
 
 .badgePopular {
-  background: #2563eb;
-  color: #ffffff;
+  background: var(--badge-popular);
+  color: var(--text-on-dark);
   border: none;
 }
 
 .badgeLimited {
-  background: #dc2626;
-  color: #ffffff;
+  background: var(--badge-limited);
+  color: var(--text-on-dark);
   border: none;
 }
 
@@ -98,6 +98,12 @@
   background: var(--accent);
   color: var(--text-on-dark);
   border: none;
+}
+
+/* En dark mode --accent passe à #52a882 (vert clair) → blanc insuffisant (~2.7:1).
+   On bascule sur --bg (#0f1210) qui donne ~7.2:1 ✓ */
+:global([data-theme="dark"]) .badgeElectric {
+  color: var(--bg);
 }
 
 /* Fuel chip (bottom-right) */
@@ -171,7 +177,8 @@
 /* ── Specs strip ── */
 .specs {
   display: flex;
-  gap: 14px;
+  flex-wrap: wrap;
+  gap: 6px 14px;
   padding: 10px 0;
   border-top: 1px solid var(--border);
   border-bottom: 1px solid var(--border);
@@ -181,7 +188,7 @@
   display: flex;
   align-items: center;
   gap: 4px;
-  flex-shrink: 0;
+  min-width: 0;
 }
 
 .specIcon {

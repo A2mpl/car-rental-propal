@@ -77,7 +77,7 @@ export default function CarCard({ car }: CarCardProps) {
         </div>
 
         {/* Title */}
-        <h3 className={styles.title}>{car.title}</h3>
+        <h2 className={styles.title}>{car.title}</h2>
 
         {/* Specs strip */}
         <div className={styles.specs}>

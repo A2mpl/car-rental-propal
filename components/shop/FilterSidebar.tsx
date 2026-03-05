@@ -198,6 +198,7 @@ export default function FilterSidebar({ isMobileOpen, onMobileClose }: FilterSid
                   max={filters.priceTo}
                   value={localPriceFrom}
                   onChange={(e) => handlePriceFrom(Number(e.target.value))}
+                  aria-label="Prix minimum par jour (€)"
                 />
               </div>
               <span className={styles.rangeSep}>—</span>
@@ -210,6 +211,7 @@ export default function FilterSidebar({ isMobileOpen, onMobileClose }: FilterSid
                   max={5000}
                   value={localPriceTo}
                   onChange={(e) => handlePriceTo(Number(e.target.value))}
+                  aria-label="Prix maximum par jour (€)"
                 />
               </div>
             </div>
@@ -236,6 +238,7 @@ export default function FilterSidebar({ isMobileOpen, onMobileClose }: FilterSid
                 max={filters.yearTo}
                 value={filters.yearFrom}
                 onChange={(e) => push({ yearFrom: Number(e.target.value) })}
+                aria-label="Année de début"
               />
               <span className={styles.rangeSep}>—</span>
               <input
@@ -245,6 +248,7 @@ export default function FilterSidebar({ isMobileOpen, onMobileClose }: FilterSid
                 max={2025}
                 value={filters.yearTo}
                 onChange={(e) => push({ yearTo: Number(e.target.value) })}
+                aria-label="Année de fin"
               />
             </div>
           </div>

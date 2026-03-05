@@ -50,7 +50,14 @@ export default function Navbar() {
 
         <div className={styles.icons}>
           <ThemeToggle />
-          <button type="button" className={styles.hamburger} onClick={() => setMobileOpen(!mobileOpen)}>
+          <button
+            type="button"
+            className={styles.hamburger}
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label={mobileOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+            aria-expanded={mobileOpen}
+            aria-controls="mobile-menu"
+          >
             {mobileOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
@@ -59,6 +66,7 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
+            id="mobile-menu"
             className={styles.mobileMenu}
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
