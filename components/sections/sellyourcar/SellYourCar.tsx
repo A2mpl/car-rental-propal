@@ -16,7 +16,6 @@ export default function SellYourCar() {
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 45vw"
                 className={styles.img}
-                unoptimized
               />
             </div>
           </div>

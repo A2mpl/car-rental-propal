@@ -80,6 +80,11 @@
   overflow: hidden;
   background: var(--surface-2);
   cursor: pointer;
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.imgCell:hover {
+  transform: translateY(-8px);
 }
 
 .imgCardLink:focus-visible .imgCell {

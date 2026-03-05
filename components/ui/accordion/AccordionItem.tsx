@@ -1,19 +1,9 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
 import type { AccordionItemProps } from '@/components/ui/accordion/types';
 import styles from './AccordionItem.module.css';
 
 export default function AccordionItem({ question, answer, isOpen, onToggle }: AccordionItemProps) {
-  const contentRef = useRef<HTMLDivElement>(null);
-  const [contentHeight, setContentHeight] = useState(0);
-
-  useEffect(() => {
-    if (contentRef.current) {
-      setContentHeight(contentRef.current.scrollHeight);
-    }
-  }, []);
-
   return (
     <div className={styles.item}>
       <button type="button" onClick={onToggle} aria-expanded={isOpen} className={styles.trigger}>
@@ -33,11 +23,10 @@ export default function AccordionItem({ question, answer, isOpen, onToggle }: Ac
       </button>
 
       <div
-        className={styles.answerWrap}
-        style={{ height: isOpen ? `${contentHeight}px` : '0px' }}
+        className={[styles.answerWrap, isOpen ? styles.answerWrapOpen : ''].join(' ')}
         aria-hidden={!isOpen}
       >
-        <div ref={contentRef} className={styles.answerInner}>
+        <div className={styles.answerInner}>
           <p className={styles.answer}>{answer}</p>
         </div>
       </div>

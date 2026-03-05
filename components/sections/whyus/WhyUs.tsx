@@ -1,5 +1,3 @@
-'use client';
-import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -28,13 +26,17 @@ export default function WhyUs() {
             className={styles.imgCardLink}
             aria-label="Voir les véhicules premium"
           >
-            <motion.div
-              whileHover={{ y: -8 }}
-              transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+            <div
               className={`${styles.imgCell} ${styles.imgLarge}`}
               style={{ boxShadow: premiumWhiteHalo, borderRadius: '32px', overflow: 'hidden' }}
             >
-              <Image src="images/img_2.png" alt={evChargers.images[0].alt} fill className={styles.img} unoptimized />
+              <Image
+                src="/images/img_2.png"
+                alt={evChargers.images[0].alt}
+                fill
+                sizes="(max-width: 1023px) calc(100vw - 48px), 40vw"
+                className={styles.img}
+              />
               <div
                 style={{
                   position: 'absolute',
@@ -68,7 +70,7 @@ export default function WhyUs() {
                   Nos meilleurs véhicules disponibles
                 </p>
               </div>
-            </motion.div>
+            </div>
           </Link>
 
           <Link
@@ -76,18 +78,21 @@ export default function WhyUs() {
             className={styles.imgCardLink}
             aria-label="Voir les voitures sport et supercar"
           >
-            <motion.div
-              whileHover={{ y: -8 }}
+            <div
               className={`${styles.imgCell} ${styles.imgSmallB}`}
               style={{ borderRadius: '24px', boxShadow: premiumWhiteHalo, overflow: 'hidden' }}
             >
-              <Image src="images/img_1.png" alt={evChargers.images[2].alt} fill className={styles.img} unoptimized />
-            </motion.div>
+              <Image
+                src="/images/img_1.png"
+                alt={evChargers.images[2].alt}
+                fill
+                sizes="(max-width: 1023px) calc(50vw - 28px), 33vw"
+                className={styles.img}
+              />
+            </div>
           </Link>
 
-          <motion.div
-            whileHover={{ y: -8 }}
-            transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
+          <div
             className={`${styles.imgCell} ${styles.imgSmallA}`}
             style={{
               backgroundColor: 'var(--card-stat-bg)',
@@ -114,7 +119,7 @@ export default function WhyUs() {
             >
               Clients Satisfaits
             </span>
-          </motion.div>
+          </div>
         </div>
 
         <div className={styles.bottomRow}>
