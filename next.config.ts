@@ -44,6 +44,11 @@ const nextConfig: NextConfig = {
   // Génère un serveur Node.js auto-suffisant dans .next/standalone/
   // → image Docker ~10× plus légère (pas de node_modules complet dans le runner)
   output: 'standalone',
+  experimental: {
+    // Injecte le CSS directement dans le HTML → élimine les chunks CSS render-bloquants
+    // → améliore FCP/LCP en supprimant les requêtes réseau dans le critical path
+    inlineCss: true,
+  },
   images: {
     remotePatterns: [{ protocol: 'https', hostname: 'images.unsplash.com' }],
   },

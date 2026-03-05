@@ -94,6 +94,30 @@
   --quotemark-hover: rgba(82, 168, 130, 0.35);
 }
 
+/* Fallback CSS pur — quand next-themes n'a pas encore posé data-theme
+   (SSR, script bloqué, JS désactivé). :not([data-theme="light"]) exclut
+   le cas où l'utilisateur a explicitement choisi le thème clair. */
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme="light"]) {
+    --bg: #0f1210;
+    --surface: #161a17;
+    --surface-2: #1d221e;
+    --text: #e8eae6;
+    --text-2: #aab4ae;
+    --muted: #7a8880;
+    --accent: #52a882;
+    --accent-dark: #3e8e6a;
+    --accent-light: rgba(82, 168, 130, 0.12);
+    --border: rgba(255, 255, 255, 0.06);
+    --border-mid: rgba(255, 255, 255, 0.1);
+    --text-on-dark: #ffffff;
+    --text-on-accent: var(--bg);
+    --step-number-color: rgba(82, 168, 130, 0.14);
+    --quotemark-color: rgba(82, 168, 130, 0.2);
+    --quotemark-hover: rgba(82, 168, 130, 0.35);
+  }
+}
+
 *,
 *::before,
 *::after {
