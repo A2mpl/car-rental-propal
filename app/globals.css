@@ -28,6 +28,9 @@
   --badge-popular: #2563eb;  /* 5.0:1 ✓ */
   --badge-limited: #dc2626;  /* 4.6:1 ✓ */
 
+  /* ── Carte stat (WhyUs) — fond fixe sombre, texte blanc 9.7:1 ✓ ── */
+  --card-stat-bg: #2d4a3f;
+
   /* ── Semantic helpers ── */
   /* Text always on dark image overlays (hero, WhyUs photo) — never changes */
   --text-on-dark: #ffffff;

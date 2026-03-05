@@ -95,7 +95,7 @@ export default function WhyUs() {
             transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
             className={`${styles.imgCell} ${styles.imgSmallA}`}
             style={{
-              backgroundColor: 'var(--accent-dark)',
+              backgroundColor: 'var(--card-stat-bg)',
               borderRadius: '24px',
               display: 'flex',
               flexDirection: 'column',
@@ -109,7 +109,7 @@ export default function WhyUs() {
             <h3 className={styles.nbClients}>900+</h3>
             <span
               style={{
-                color: 'var(--surface)',
+                color: 'var(--text-on-dark)',
                 fontWeight: '800',
                 fontSize: '10px',
                 textTransform: 'uppercase',

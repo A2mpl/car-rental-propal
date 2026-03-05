@@ -32,7 +32,7 @@
 }
 
 .nbClients {
-  color: var(--surface);
+  color: var(--text-on-dark);
   font-size: 22px;
   font-weight: 900;
   margin: 0;

@@ -53,6 +53,7 @@ export default function CarCard({ car, priority = false }: CarCardProps) {
           className={styles.image}
           sizes="(max-width: 640px) calc(100vw - 40px), (max-width: 1023px) calc(50vw - 30px), (max-width: 1280px) calc(50vw - 178px), calc(33vw - 125px)"
           priority={priority}
+          fetchPriority={"high"}
         />
 
         {/* Overlay badges */}

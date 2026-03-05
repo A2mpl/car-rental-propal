@@ -100,6 +100,12 @@
   background-color: var(--accent-dark);
 }
 
+/* En dark mode --accent = #52a882 (vert clair) → blanc insuffisant (~2.7:1).
+   Même correctif que badgeElectric : texte sombre --bg (#0f1210) → 7.2:1 ✓ */
+:global([data-theme="dark"]) .mobileButton {
+  color: var(--bg);
+}
+
 /* ── 4. Barre de recherche (Cachée sur Mobile) ── */
 .searchContainer {
   display: none;
