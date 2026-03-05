@@ -1,0 +1,47 @@
+/* ══════════════════════════════════════════════
+   Shared — Skeleton shimmer
+   Utilisé via `composes` dans InfiniteCarGrid
+   et loading.module.css
+   ══════════════════════════════════════════════ */
+
+@keyframes shimmer {
+  0% {
+    background-position: -600px 0;
+  }
+  100% {
+    background-position: 600px 0;
+  }
+}
+
+.skeletonCard {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.skeletonImage {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: linear-gradient(90deg, var(--surface-2) 25%, var(--bg) 50%, var(--surface-2) 75%);
+  background-size: 600px 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+.skeletonContent {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px 18px 18px;
+}
+
+.skeletonLine {
+  height: 12px;
+  width: 100%;
+  border-radius: 6px;
+  background: linear-gradient(90deg, var(--surface-2) 25%, var(--bg) 50%, var(--surface-2) 75%);
+  background-size: 600px 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}

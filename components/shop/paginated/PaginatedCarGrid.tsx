@@ -5,7 +5,10 @@ import { useRouter } from 'next/navigation';
 import { useTransition } from 'react';
 import CarCard from '@/components/shop/carcard/CarCard';
 import { type AS24Listing, filtersToParams, type ShopFilters } from '@/lib/autoscout24';
-import styles from './shop.module.css';
+import _styles from './PaginatedCarGrid.module.css';
+import _gridStyles from '@/components/shop/shared/grid.module.css';
+
+const styles = { ..._styles, ..._gridStyles };
 
 interface Props {
   listings: AS24Listing[];

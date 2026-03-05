@@ -1,4 +1,4 @@
-import SectionLabel from '../sectionlabel/SectionLabel';
+import SectionLabel from '@/components/ui/sectionlabel/SectionLabel';
 import styles from './SectionHeader.module.css';
 import type {SectionHeaderProps} from "@/components/ui/sectionheader/types";
 

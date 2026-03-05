@@ -3,24 +3,12 @@
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import FilterSidebar from '@/components/shop/filter/FilterSidebar';
-import type { AS24Listing, ShopFilters } from '@/lib/autoscout24';
 import { filtersToParams } from '@/lib/autoscout24';
-import InfiniteCarGrid from './InfiniteCarGrid';
-import PaginatedCarGrid from './PaginatedCarGrid';
-import ShopControls from './ShopControls';
 import styles from './shop.module.css';
-
-interface Props {
-  initialListings: AS24Listing[];
-  initialFilters: ShopFilters;
-  initialHasMore: boolean;
-  total: number;
-  filterKey: string;
-  currentPage: number;
-  totalPages: number;
-}
-
-export type ScrollMode = 'infinite' | 'paginated';
+import type {ShopClientProps, ScrollMode} from "@/components/shop/client/types";
+import PaginatedCarGrid from "@/components/shop/paginated/PaginatedCarGrid";
+import InfiniteCarGrid from "@/components/shop/infinite/InfiniteCarGrid";
+import ShopControls from "@/components/shop/controls/ShopControls";
 
 export default function ShopClient({
   initialListings,
@@ -30,7 +18,7 @@ export default function ShopClient({
   filterKey,
   currentPage,
   totalPages,
-}: Props) {
+}: ShopClientProps) {
   const router = useRouter();
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');

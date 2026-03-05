@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Suspense } from 'react';
 import { siteName } from '@/lib/site';
 import { fetchCars, filtersToParams, parseSearchParams } from '@/lib/autoscout24';
-import ShopClient from './ShopClient';
+import ShopClient from '@/components/shop/client/ShopClient';
 
 export const metadata: Metadata = {
   title: 'Véhicules — BMW, Audi, Porsche, Moto & Électrique à Bordeaux',

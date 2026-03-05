@@ -2,17 +2,16 @@
 
 import { useCallback, useEffect, useRef, useState, useTransition } from 'react';
 import CarCard from '@/components/shop/carcard/CarCard';
-import { type AS24Listing, type AS24Response, filtersToParams, type ShopFilters } from '@/lib/autoscout24';
-import styles from './shop.module.css';
+import { type AS24Listing, type AS24Response, filtersToParams } from '@/lib/autoscout24';
+import _styles from './InfiniteCarGrid.module.css';
+import _gridStyles from '@/components/shop/shared/grid.module.css';
+import _skeletonStyles from '@/components/shop/shared/skeleton.module.css';
+import type {InfiniteCarGridProps} from "@/components/shop/infinite/types";
 
-interface Props {
-  initialListings: AS24Listing[];
-  initialFilters: ShopFilters;
-  initialHasMore: boolean;
-  viewMode: 'grid' | 'list';
-}
+const styles = { ..._styles, ..._gridStyles, ..._skeletonStyles };
 
-export default function InfiniteCarGrid({ initialListings, initialFilters, initialHasMore, viewMode }: Props) {
+
+export default function InfiniteCarGrid({ initialListings, initialFilters, initialHasMore, viewMode }: InfiniteCarGridProps) {
   const [listings, setListings] = useState<AS24Listing[]>(initialListings);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(initialHasMore);

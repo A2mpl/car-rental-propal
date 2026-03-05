@@ -1,0 +1,175 @@
+/* ══════════════════════════════════════════════
+   ShopClient — Page layout, header, empty state
+   + loading.tsx skeleton classes
+   ══════════════════════════════════════════════ */
+
+/* ── Page layout ── */
+.pageWrap {
+  display: flex;
+  min-height: calc(100vh - 80px);
+  padding-top: 80px; /* navbar height */
+  background: var(--surface);
+}
+
+.main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 32px 32px 64px;
+  gap: 20px;
+}
+
+/* ── Page header ── */
+.pageHeader {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.pageHeaderLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.pageTitle {
+  font-family: var(--font-display), sans-serif;
+  font-size: 38px;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: 0.01em;
+  color: var(--text);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.pageSubtitle {
+  font-family: var(--font-body), sans-serif;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.pageHeaderRight {
+  flex-shrink: 0;
+}
+
+.sourceBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  border: 1px solid var(--border-mid);
+  border-radius: 20px;
+  font-family: var(--font-body), sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--muted);
+  background: var(--surface);
+}
+
+/* ── Empty state ── */
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.emptyIcon {
+  font-size: 48px;
+  line-height: 1;
+  opacity: 0.4;
+}
+
+.emptyTitle {
+  font-family: var(--font-display), sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--text);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.emptySubtitle {
+  font-family: var(--font-body), sans-serif;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.emptyReset {
+  margin-top: 4px;
+  padding: 10px 24px;
+  background: var(--accent);
+  color: var(--surface);
+  border: none;
+  border-radius: 8px;
+  font-family: var(--font-body), sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.emptyReset:hover {
+  background: var(--accent-dark);
+}
+
+/* ── Sidebar placeholder (loading.tsx) ── */
+.sidebarPlaceholder {
+  width: 272px;
+  flex-shrink: 0;
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+}
+
+.skeletonHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.skeletonSortBar {
+  height: 40px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  background: linear-gradient(90deg, var(--surface-2) 25%, var(--bg) 50%, var(--surface-2) 75%);
+  background-size: 600px 100%;
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+/* ══════════════════════════════════════════════
+   Responsive
+   ══════════════════════════════════════════════ */
+@media (max-width: 1023px) {
+  .pageWrap {
+    display: block;
+  }
+
+  .main {
+    padding: 24px 20px 48px;
+  }
+
+  .pageTitle {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pageHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}

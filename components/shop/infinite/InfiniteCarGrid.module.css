@@ -1,0 +1,21 @@
+/* ══════════════════════════════════════════════
+   InfiniteCarGrid — classes propres au composant
+   grid / listView  → shared/grid.module.css
+   skeleton         → shared/skeleton.module.css
+   ══════════════════════════════════════════════ */
+
+/* ── Infinite scroll sentinel ── */
+.sentinel {
+  height: 1px;
+  width: 100%;
+}
+
+/* ── End of list ── */
+.allLoaded {
+  text-align: center;
+  font-family: var(--font-body), sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+  padding: 24px 0 8px;
+  letter-spacing: 0.04em;
+}

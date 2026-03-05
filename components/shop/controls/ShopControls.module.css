@@ -1,0 +1,258 @@
+/* ══════════════════════════════════════════════
+   ShopControls — Sort bar, pills, view toggles
+   ══════════════════════════════════════════════ */
+
+/* ── Sort / count bar ── */
+.sortBar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.sortBarPending {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.mobileFilterBtn {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border: 1px solid var(--border-mid);
+  border-radius: 8px;
+  background: var(--surface);
+  font-family: var(--font-body), sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.mobileFilterBtn:hover {
+  border-color: var(--accent);
+}
+
+.filterCount {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  background: var(--accent);
+  color: var(--surface);
+  border-radius: 50%;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.resultCount {
+  font-family: var(--font-body), sans-serif;
+  font-size: 13px;
+  color: var(--muted);
+  margin-right: auto;
+}
+
+.resultCount strong {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.sortBarRight {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* View toggle */
+.viewToggle {
+  display: flex;
+  border: 1px solid var(--border-mid);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.viewBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  background: var(--surface);
+  border: none;
+  cursor: pointer;
+  color: var(--muted);
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.viewBtn:not(:last-child) {
+  border-right: 1px solid var(--border-mid);
+}
+
+.viewBtnActive {
+  background: var(--accent-light);
+  color: var(--accent);
+}
+
+.viewBtn:hover:not(.viewBtnActive) {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+/* Sort dropdown */
+.sortDropdown {
+  position: relative;
+}
+
+.sortBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border: 1px solid var(--border-mid);
+  border-radius: 8px;
+  background: var(--surface);
+  font-family: var(--font-body), sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color 0.2s ease;
+}
+
+.sortBtn:hover {
+  border-color: var(--accent);
+}
+
+.sortMenu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  min-width: 180px;
+  background: var(--surface);
+  border: 1px solid var(--border-mid);
+  border-radius: 10px;
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.08),
+    0 2px 8px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+  z-index: 20;
+  padding: 4px;
+}
+
+.sortOption {
+  display: block;
+  width: 100%;
+  padding: 9px 12px;
+  text-align: left;
+  background: none;
+  border: none;
+  border-radius: 8px;
+  font-family: var(--font-body), sans-serif;
+  font-size: 12px;
+  color: var(--text-2);
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.sortOption:hover {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.sortOptionActive {
+  background: var(--accent-light);
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ── Active filter pills ── */
+.pillsRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px 4px 12px;
+  background: var(--accent-light);
+  border: 1px solid rgba(62, 99, 86, 0.2);
+  border-radius: 20px;
+  font-family: var(--font-body), sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--accent);
+}
+
+.pillRemove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--accent);
+  opacity: 0.7;
+  padding: 0;
+  transition: opacity 0.2s ease;
+}
+
+.pillRemove:hover {
+  opacity: 1;
+}
+
+.clearAllPills {
+  font-family: var(--font-body), sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  padding: 4px 6px;
+  transition: color 0.2s ease;
+}
+
+.clearAllPills:hover {
+  color: var(--text);
+}
+
+/* ══════════════════════════════════════════════
+   Responsive
+   ══════════════════════════════════════════════ */
+@media (max-width: 1023px) {
+  .mobileFilterBtn {
+    display: flex;
+  }
+}
+
+@media (max-width: 640px) {
+  .sortBarRight {
+    gap: 6px;
+  }
+
+  .viewToggle {
+    display: none;
+  }
+}

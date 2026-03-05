@@ -5,8 +5,8 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useState, useTransition } from 'react';
 import type { SortOption } from '@/lib/autoscout24';
 import { countActiveFilters, filtersToParams, parseSearchParams, SORT_OPTIONS } from '@/lib/autoscout24';
-import type { ScrollMode } from './ShopClient';
-import styles from './shop.module.css';
+import styles from './ShopControls.module.css';
+import type {ScrollMode} from "@/components/shop/client/types";
 
 const BODY_LABELS: Record<string, string> = {
   sedan: 'Berline',
