@@ -8,21 +8,20 @@ export function proxy(request: NextRequest) {
   // ── Content Security Policy ─────────────────────────────────────────────────
   // script-src: 'strict-dynamic' → scripts chargés par un script noncé héritent
   //   automatiquement de la confiance (chunks Next.js couverts sans les lister).
-  //   'unsafe-eval' requis en dev uniquement : React utilise eval() pour reconstruire
-  //   les stack serveur côté navigateur (débogage). Absent de prod.
+  //   'unsafe-inline' & https:/http: → ignorés par les navigateurs supportant
+  //   nonces/'strict-dynamic', mais permettent la rétrocompat avec les vieux
+  //   navigateurs qui ne comprennent pas ces mécanismes modernes.
+  //   'unsafe-eval' requis en dev uniquement (React rebuild des stacks serveur).
   // style-src: 'unsafe-inline' requis pour framer-motion (inline style attrs)
   //   et les injections CSS de Next.js.
-  // img-src: CarCard utilise <Image unoptimized> → le browser charge les URLs
-  //   directement (Unsplash, futurs CDNs AS24). https: couvre tous les cas ;
-  //   les images ne peuvent pas exécuter de code → règle sans risque.
-  // font-src: next/font/google auto-héberge les polices → 'self' suffit.
+  // img-src: Next.js Image optimise les URLs Unsplash via /_next/image.
+  //   https: couvre tous les CDNs externes sans risque (les images n'exécutent pas de code).
+  // font-src: next/font auto-héberge les polices → 'self' suffit.
   // upgrade-insecure-requests: force HTTP → HTTPS au niveau navigateur.
-
-    // TODO: remplacer :     img-src 'self' data: blob:;
   // ───────────────────────────────────────────────────────────────────────────
   const csp = `
     default-src 'self';
-    script-src 'self' 'nonce-${nonce}' 'strict-dynamic'${isDev ? " 'unsafe-eval'" : ''};
+    script-src 'self' 'nonce-${nonce}' 'strict-dynamic' 'unsafe-inline' https: http:${isDev ? " 'unsafe-eval'" : ''};
     style-src 'self' 'unsafe-inline';
     img-src 'self' data: blob: https:;
     font-src 'self';

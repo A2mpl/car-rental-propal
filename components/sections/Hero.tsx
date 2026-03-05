@@ -29,6 +29,7 @@ export default function Hero() {
           fill
           priority
           className={styles.image}
+          fetchPriority="high"
           sizes="(max-width: 1600px) 100vw, 1600px"
         />
         <div className={styles.overlay} />
