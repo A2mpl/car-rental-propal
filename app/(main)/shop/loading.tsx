@@ -11,10 +11,8 @@ export default function ShopLoading() {
     <>
       <Navbar />
       <div className={styles.pageWrap}>
-        {/* Sidebar placeholder */}
         <div className={styles.sidebarPlaceholder} />
 
-        {/* Grid skeleton */}
         <main className={styles.main}>
           <div className={styles.skeletonHeader}>
             <div className={styles.skeletonLine} style={{ width: 220, height: 36 }} />

@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { siteName } from '@/lib/site';
-import SectionLabel from '@/components/ui/SectionLabel';
+import SectionLabel from '@/components/ui/sectionlabel/SectionLabel';
 import styles from './Privacy.module.css';
 
 export const metadata: Metadata = {
@@ -18,14 +18,12 @@ export default function PrivacyPage() {
       <div className={styles.page}>
         <div className={styles.container}>
 
-          {/* ── Hero header ── */}
           <header className={styles.hero}>
             <SectionLabel>Légal</SectionLabel>
             <h1 className={styles.heading}>Mentions Légales</h1>
             <p className={styles.updated}>Dernière mise à jour : 1er mars 2026</p>
           </header>
 
-          {/* ── Sections ── */}
           <div className={styles.content}>
 
             <section className={styles.section}>

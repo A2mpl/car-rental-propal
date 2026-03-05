@@ -44,14 +44,10 @@ export default async function ShopPage({ searchParams }: { searchParams: Promise
   const params = await searchParams;
   const filters = parseSearchParams(params);
 
-  // Page number lives outside ShopFilters (infinite scroll ignores it).
   const rawPage = params.page;
   const currentPage = Math.max(1, Number(Array.isArray(rawPage) ? rawPage[0] : (rawPage ?? '1')));
 
   const initialData = await fetchCars(filters, currentPage);
-
-  // Normalised key — excludes page so infinite scroll doesn't remount on
-  // page-number changes, only on actual filter changes.
   const filterKey = filtersToParams(filters).toString();
 
   return (

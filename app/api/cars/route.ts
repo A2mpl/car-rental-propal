@@ -38,7 +38,6 @@ export async function GET(request: NextRequest) {
       console.error('[GET /api/cars] AS24 API error, falling back to mock:', err);
     }
   }
-  // ─────────────────────────────────────────────────────────────────────────
 
   const result = filterAndSort(MOCK_CARS, { ...filters, page });
 

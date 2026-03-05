@@ -1,7 +1,7 @@
 'use client';
 
 import { useCallback, useEffect, useRef, useState, useTransition } from 'react';
-import CarCard from '@/components/shop/CarCard';
+import CarCard from '@/components/shop/carcard/CarCard';
 import { type AS24Listing, type AS24Response, filtersToParams, type ShopFilters } from '@/lib/autoscout24';
 import styles from './shop.module.css';
 
@@ -28,7 +28,6 @@ export default function InfiniteCarGrid({ initialListings, initialFilters, initi
 
     startTransition(async () => {
       const nextPage = page + 1;
-      // Route Handler — benefits from Cache-Control: s-maxage=60
       const params = filtersToParams(initialFilters);
       params.set('page', String(nextPage));
       const res = await fetch(`/api/cars?${params.toString()}`);
@@ -61,14 +60,11 @@ export default function InfiniteCarGrid({ initialListings, initialFilters, initi
 
   return (
     <>
-      {/* Car grid / list */}
       <div className={viewMode === 'grid' ? styles.grid : styles.listView}>
         {listings.map((car, index) => (
           <CarCard key={car.id} car={car} priority={index < 3} />
         ))}
 
-        {/* Skeleton placeholders shown while fetching next page — rendered
-            inside the grid so they slot naturally into the layout */}
         {isPending &&
           Array.from({ length: 3 }).map((_, i) => (
             <div key={`sk-${// biome-ignore lint/suspicious/noArrayIndexKey: dev
@@ -84,11 +80,8 @@ i}`} className={styles.skeletonCard}>
           ))}
       </div>
 
-      {/* Sentinel — invisible element; when it enters the viewport the
-          IntersectionObserver calls loadMore() */}
       <div ref={sentinelRef} className={styles.sentinel} aria-hidden="true" />
 
-      {/* End-of-list message */}
       {!hasMore && listings.length > 0 && (
         <p className={styles.allLoaded}>Les {listings.length} véhicules ont été chargés</p>
       )}

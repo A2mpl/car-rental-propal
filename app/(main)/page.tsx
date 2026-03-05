@@ -1,10 +1,10 @@
-import BrandStrip from '@/components/sections/BrandStrip';
-import Faq from '@/components/sections/Faq';
-import Hero from '@/components/sections/Hero';
-import HowItWorks from '@/components/sections/HowItWorks';
-import SellYourCar from '@/components/sections/SellYourCar';
-import Testimonials from '@/components/sections/Testimonials';
-import WhyUs from '@/components/sections/WhyUs';
+import BrandStrip from '@/components/sections/brandstrip/BrandStrip';
+import Faq from '@/components/sections/faq/Faq';
+import Hero from '@/components/sections/hero/Hero';
+import HowItWorks from '@/components/sections/howitswork/HowItWorks';
+import SellYourCar from '@/components/sections/sellyourcar/SellYourCar';
+import Testimonials from '@/components/sections/testimonials/Testimonials';
+import WhyUs from '@/components/sections/whyus/WhyUs';
 
 export default function Home() {
   return (

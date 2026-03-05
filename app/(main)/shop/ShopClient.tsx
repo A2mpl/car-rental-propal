@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import FilterSidebar from '@/components/shop/FilterSidebar';
+import FilterSidebar from '@/components/shop/filter/FilterSidebar';
 import type { AS24Listing, ShopFilters } from '@/lib/autoscout24';
 import { filtersToParams } from '@/lib/autoscout24';
 import InfiniteCarGrid from './InfiniteCarGrid';
@@ -35,9 +35,6 @@ export default function ShopClient({
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [scrollMode, setScrollMode] = useState<ScrollMode>('infinite');
-
-  // Incremented to force InfiniteCarGrid remount when switching back from
-  // paginated mode, so it starts fresh from the correct initialListings.
   const [infiniteResetKey, setInfiniteResetKey] = useState(0);
 
   const handleScrollModeChange = (mode: ScrollMode) => {
@@ -46,7 +43,6 @@ export default function ShopClient({
 
     if (mode === 'infinite') {
       setInfiniteResetKey((k) => k + 1);
-      // Remove page param so infinite scroll always starts from page 1
       if (currentPage > 1) {
         const params = filtersToParams(initialFilters);
         router.push(`/shop?${params.toString()}`);
@@ -59,7 +55,6 @@ export default function ShopClient({
       <FilterSidebar isMobileOpen={mobileFiltersOpen} onMobileClose={() => setMobileFiltersOpen(false)} />
 
       <main className={styles.main}>
-        {/* Page header */}
         <div className={styles.pageHeader}>
           <div className={styles.pageHeaderLeft}>
             <h1 className={styles.pageTitle}>Trouvez Votre Véhicule</h1>
@@ -70,7 +65,6 @@ export default function ShopClient({
           </div>
         </div>
 
-        {/* Sort / count / mode bar */}
         <ShopControls
           total={total}
           viewMode={viewMode}
@@ -80,7 +74,6 @@ export default function ShopClient({
           onScrollModeChange={handleScrollModeChange}
         />
 
-        {/* Results or empty state */}
         {total === 0 ? (
           <div className={styles.empty}>
             <div className={styles.emptyIcon}>🚗</div>
@@ -90,7 +83,7 @@ export default function ShopClient({
               Réinitialiser les filtres
             </button>
           </div>
-          // biome-ignore lint/style/noNestedTernary: We will choose TODO
+          // biome-ignore lint/style/noNestedTernary: DEV
         ) : scrollMode === 'paginated' ? (
           <PaginatedCarGrid
             listings={initialListings}

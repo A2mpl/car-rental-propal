@@ -1,6 +1,5 @@
 'use server';
 
-// ── Types ─────────────────────────────────────────────────────────────────────
 
 export type ContactErrors = Partial<
   Record<'firstName' | 'lastName' | 'email' | 'subject' | 'message', string>
@@ -11,7 +10,6 @@ export type ContactState =
   | { status: 'success' }
   | { status: 'error'; errors: ContactErrors };
 
-// ── Validation helpers ────────────────────────────────────────────────────────
 
 const VALID_SUBJECTS = [
   'Demande de location',
@@ -26,7 +24,6 @@ function isValidEmail(email: string): boolean {
   return email.length <= 254 && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-// ── Server Action ─────────────────────────────────────────────────────────────
 
 export async function submitContact(_prevState: ContactState, formData: FormData): Promise<ContactState> {
   const firstName = (formData.get('firstName') as string | null)?.trim() ?? '';
@@ -36,7 +33,6 @@ export async function submitContact(_prevState: ContactState, formData: FormData
   const subject = (formData.get('subject') as string | null)?.trim() ?? '';
   const message = (formData.get('message') as string | null)?.trim() ?? '';
 
-  // ── Validation serveur ────────────────────────────────────────────────────
   const errors: ContactErrors = {};
 
   if (!firstName) {
@@ -71,7 +67,6 @@ export async function submitContact(_prevState: ContactState, formData: FormData
     return { status: 'error', errors };
   }
 
-  // ── Envoi ─────────────────────────────────────────────────────────────────
   try {
     // TODO: configurer l'envoi d'email (ex: Resend, Nodemailer, Brevo)
     // const to = process.env.CONTACT_EMAIL;

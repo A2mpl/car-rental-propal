@@ -8,8 +8,6 @@
 import type { AS24Listing, AS24Response, BadgeType, BodyType, FuelType, TransmissionType } from '@/lib/autoscout24';
 import type { AS24BodyCode, AS24FuelCode, AS24GearCode, AS24RawListing, AS24RawSearchResponse } from './types';
 
-// ── Value translators ─────────────────────────────────────────────────────────
-
 function adaptFuel(code: AS24FuelCode): FuelType {
   switch (code) {
     case 'E':

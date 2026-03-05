@@ -62,7 +62,6 @@ export default function ShopControls({
     });
   };
 
-  // Build active pills
   const pills: { key: string; label: string; onRemove: () => void }[] = [
     ...filters.makes.map((m) => ({
       key: `make-${m}`,
@@ -110,9 +109,7 @@ export default function ShopControls({
 
   return (
     <>
-      {/* Sort / count bar */}
       <div className={`${styles.sortBar} ${isPending ? styles.sortBarPending : ''}`}>
-        {/* Mobile filter toggle */}
         <button type="button" className={styles.mobileFilterBtn} onClick={onMobileFilterOpen}>
           <SlidersHorizontal size={15} />
           <span>Filtres</span>
@@ -124,7 +121,6 @@ export default function ShopControls({
         </span>
 
         <div className={styles.sortBarRight}>
-          {/* View mode */}
           <div className={styles.viewToggle}>
             <button
               type="button"
@@ -144,7 +140,6 @@ export default function ShopControls({
             </button>
           </div>
 
-          {/* Scroll mode toggle — infinite scroll vs paginated */}
           <div className={styles.viewToggle}>
             <button
               type="button"
@@ -166,7 +161,6 @@ export default function ShopControls({
             </button>
           </div>
 
-          {/* Sort dropdown */}
           <div className={styles.sortDropdown}>
             <button type="button" className={styles.sortBtn} onClick={() => setSortOpen((o) => !o)}>
               <span>{currentSortLabel}</span>
@@ -196,7 +190,6 @@ export default function ShopControls({
         </div>
       </div>
 
-      {/* Active filter pills */}
       {pills.length > 0 && (
         <div className={styles.pillsRow}>
           {pills.map(({ key, label, onRemove }) => (

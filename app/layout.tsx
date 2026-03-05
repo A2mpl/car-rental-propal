@@ -99,12 +99,12 @@ const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'AutoDealer',
   name: siteName,
-  description: `Courtier automobile à Bordeaux spécialisé dans les voitures sport, premium et électriques ainsi que les motos. BMW, Audi, Porsche, Ferrari, Mercedes, Tesla — sélection exclusive, prix transparents.`,
+  description: 'Courtier automobile à Bordeaux spécialisé dans les voitures sport, premium et électriques ainsi que les motos. BMW, Audi, Porsche, Ferrari, Mercedes, Tesla — sélection exclusive, prix transparents.',
   url: siteUrl,
   logo: `${siteUrl}/images/img_4.png`,
   image: `${siteUrl}/images/img_4.png`,
   telephone: '',
-  email: `contact@timeless-cars.fr`,
+  email: 'contact@timeless-cars.fr',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Bordeaux',
@@ -133,10 +133,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html lang="fr" className={`${saira.variable} ${archivo.variable}`} data-scroll-behavior="smooth" suppressHydrationWarning>
       <body>
         <ThemeProvider nonce={nonce}>{children}</ThemeProvider>
-        {/* Pas de nonce ici : type="application/ld+json" est un data script,
-            il n'est pas exécuté en JS → script-src ne s'y applique pas.
-            Ajouter nonce provoquerait un mismatch d'hydratation (le browser
-            masque l'attribut nonce dans le DOM après parsing). */}
         <script
           type="application/ld+json"
           // biome-ignore lint/security/noDangerouslySetInnerHtml: JSON-LD structuré

@@ -5,7 +5,7 @@ import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useState } from 'react';
-import ThemeToggle from '@/components/ui/ThemeToggle';
+import ThemeToggle from '@/components/ui/toggle/ThemeToggle';
 import { siteContent } from '@/data/content';
 import styles from './Navbar.module.css';
 

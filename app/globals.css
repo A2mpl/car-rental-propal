@@ -34,6 +34,8 @@
   /* ── Semantic helpers ── */
   /* Text always on dark image overlays (hero, WhyUs photo) — never changes */
   --text-on-dark: #ffffff;
+  /* Text on --accent background: light mode accent is dark → white (6:1 ✓)  */
+  --text-on-accent: #ffffff;
   /* Step number watermark */
   --step-number-color: rgba(62, 99, 86, 0.14);
   /* Quote mark tint */
@@ -85,6 +87,8 @@
 
   /* Semantic overrides */
   --text-on-dark: #ffffff; /* stays white on dark overlays */
+  /* Dark mode accent is light (#52a882) → dark text needed (7.2:1 ✓) */
+  --text-on-accent: var(--bg);
   --step-number-color: rgba(82, 168, 130, 0.14); /* brighter on dark bg */
   --quotemark-color: rgba(82, 168, 130, 0.2); /* visible on dark card */
   --quotemark-hover: rgba(82, 168, 130, 0.35);

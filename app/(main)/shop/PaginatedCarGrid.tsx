@@ -3,7 +3,7 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useTransition } from 'react';
-import CarCard from '@/components/shop/CarCard';
+import CarCard from '@/components/shop/carcard/CarCard';
 import { type AS24Listing, filtersToParams, type ShopFilters } from '@/lib/autoscout24';
 import styles from './shop.module.css';
 
@@ -22,7 +22,6 @@ export default function PaginatedCarGrid({ listings, filters, currentPage, total
   const goToPage = (page: number) => {
     if (page < 1 || page > totalPages || page === currentPage) return;
     const params = filtersToParams(filters);
-    // Only set page param when not on page 1 (keeps URLs clean)
     if (page > 1) params.set('page', String(page));
     startTransition(() => {
       router.push(`/shop?${params.toString()}`);
@@ -31,7 +30,6 @@ export default function PaginatedCarGrid({ listings, filters, currentPage, total
 
   return (
     <>
-      {/* Grid — fades while next page is loading */}
       <div className={`${styles.gridOuter} ${isPending ? styles.gridPending : ''}`}>
         <div className={viewMode === 'grid' ? styles.grid : styles.listView}>
           {listings.map((car, index) => (
@@ -40,7 +38,6 @@ export default function PaginatedCarGrid({ listings, filters, currentPage, total
         </div>
       </div>
 
-      {/* Pagination controls */}
       {totalPages > 1 && (
         <nav className={styles.pagination} aria-label="Navigation par pages">
           <button
