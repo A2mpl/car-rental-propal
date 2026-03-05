@@ -63,8 +63,8 @@ export default function InfiniteCarGrid({ initialListings, initialFilters, initi
     <>
       {/* Car grid / list */}
       <div className={viewMode === 'grid' ? styles.grid : styles.listView}>
-        {listings.map((car) => (
-          <CarCard key={car.id} car={car} />
+        {listings.map((car, index) => (
+          <CarCard key={car.id} car={car} priority={index < 3} />
         ))}
 
         {/* Skeleton placeholders shown while fetching next page — rendered

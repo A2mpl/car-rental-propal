@@ -34,8 +34,8 @@ export default function PaginatedCarGrid({ listings, filters, currentPage, total
       {/* Grid — fades while next page is loading */}
       <div className={`${styles.gridOuter} ${isPending ? styles.gridPending : ''}`}>
         <div className={viewMode === 'grid' ? styles.grid : styles.listView}>
-          {listings.map((car) => (
-            <CarCard key={car.id} car={car} />
+          {listings.map((car, index) => (
+            <CarCard key={car.id} car={car} priority={index < 3} />
           ))}
         </div>
       </div>

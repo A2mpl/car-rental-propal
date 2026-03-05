@@ -5,6 +5,7 @@ import styles from './CarCard.module.css';
 
 interface CarCardProps {
   car: AS24Listing;
+  priority?: boolean;
 }
 
 const BADGE_CONFIG = {
@@ -36,7 +37,7 @@ const BODY_LABELS: Record<string, string> = {
   convertible: 'Cabriolet',
 };
 
-export default function CarCard({ car }: CarCardProps) {
+export default function CarCard({ car, priority = false }: CarCardProps) {
   const badge = car.badge ? BADGE_CONFIG[car.badge] : null;
   const primarySpec = car.range ?? `${car.power} HP`;
   const primaryLabel = car.range ? 'Autonomie' : 'Puissance';
@@ -50,8 +51,8 @@ export default function CarCard({ car }: CarCardProps) {
           alt={car.title}
           fill
           className={styles.image}
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-          unoptimized
+          sizes="(max-width: 640px) calc(100vw - 40px), (max-width: 1023px) calc(50vw - 30px), (max-width: 1280px) calc(50vw - 178px), calc(33vw - 125px)"
+          priority={priority}
         />
 
         {/* Overlay badges */}
