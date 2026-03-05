@@ -21,3 +21,19 @@
   border-color: var(--accent);
   color: var(--accent);
 }
+
+@keyframes iconEnter {
+  from {
+    opacity: 0;
+    transform: rotate(-30deg) scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0deg) scale(1);
+  }
+}
+
+.icon {
+  display: flex;
+  animation: iconEnter 0.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}

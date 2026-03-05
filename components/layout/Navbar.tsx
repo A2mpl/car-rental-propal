@@ -1,6 +1,5 @@
 'use client';
 
-import { AnimatePresence, motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -14,35 +13,22 @@ export default function Navbar() {
   const pathname = usePathname();
   const { nav } = siteContent;
 
-  const underlineVariants = {
-    initial: { width: 0, opacity: 0 },
-    hover: { width: '100%', opacity: 1 },
-  };
-
   return (
     <header className={styles.header}>
       <nav className={styles.nav}>
-        <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-          <Link href="/" className={styles.logo}>
-            {nav.logo}
-          </Link>
-        </motion.div>
+        <Link href="/" className={styles.logo}>
+          {nav.logo}
+        </Link>
 
         <ul className={styles.links}>
           {nav.links.map((link) => {
             const isActive = pathname === link.href;
             return (
               <li key={link.label} className={styles.linkWrapper}>
-                <motion.div initial="initial" whileHover="hover" animate="initial" className={styles.motionContainer}>
-                  <Link href={link.href} className={`${styles.link} ${isActive ? styles.linkActive : ''}`}>
-                    {link.label}
-                    <motion.div
-                      className={styles.underline}
-                      variants={underlineVariants}
-                      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                    />
-                  </Link>
-                </motion.div>
+                <Link href={link.href} className={`${styles.link} ${isActive ? styles.linkActive : ''}`}>
+                  {link.label}
+                  <div className={styles.underline} />
+                </Link>
               </li>
             );
           })}
@@ -63,35 +49,29 @@ export default function Navbar() {
         </div>
       </nav>
 
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            id="mobile-menu"
-            className={styles.mobileMenu}
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            <ul className={styles.mobileLinks}>
-              {nav.links.map((link) => {
-                const isActive = pathname === link.href;
-                return (
-                  <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className={isActive ? styles.mobileLinkActive : undefined}
-                      onClick={() => setMobileOpen(false)}
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <div
+        id="mobile-menu"
+        className={`${styles.mobileMenu} ${mobileOpen ? styles.mobileMenuOpen : ''}`}
+      >
+        <div className={styles.mobileMenuInner}>
+          <ul className={styles.mobileLinks}>
+            {nav.links.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <li key={link.label}>
+                  <Link
+                    href={link.href}
+                    className={isActive ? styles.mobileLinkActive : undefined}
+                    onClick={() => setMobileOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </div>
     </header>
   );
 }
