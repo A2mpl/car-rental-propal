@@ -6,6 +6,7 @@ export const siteContent = {
     links: [
       { label: 'ACCUEIL', href: '/', active: true },
       { label: 'BOUTIQUE', href: '/shop', active: false },
+      { label: 'PRESTATIONS', href: '/prestations', active: false },
       { label: 'CONTACT', href: '/contact', active: false },
     ],
   },
@@ -59,7 +60,12 @@ export const siteContent = {
     heading: 'PRÊT À PASSER AVEC NOUS ?',
     body: `Rejoignez des milliers de conducteurs qui ont déjà franchi le cap de l'électrique. Louez un véhicule ${siteName} dès aujourd'hui et vivez l'avenir de la mobilité — zéro émission, performance totale.`,
     ctaBtn: { label: 'NOUS CONTACTER', href: '/contact' },
-    navColumns: [[{ label: 'MENTIONS LÉGALES', href: '/privacy' }]],
+    navColumns: [
+      [
+        { label: 'MENTIONS LÉGALES', href: '/privacy' },
+        { label: 'BLOG', href: '/blog' },
+      ],
+    ],
     copyright: `${siteName} © 2026`,
   },
 } as const;

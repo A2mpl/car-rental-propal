@@ -1,0 +1,125 @@
+.wrapper {
+  max-width: 720px;
+  margin: 40px auto;
+  padding: 0 var(--px-mobile);
+}
+
+/* ── Article content ── */
+
+.content {
+  font-family: var(--font-body), sans-serif;
+  font-size: 15px;
+  line-height: 1.75;
+  color: var(--text);
+}
+
+.content h2 {
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(20px, 3vw, 28px);
+  font-weight: 400;
+  font-style: italic;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-top: 40px;
+  margin-bottom: 16px;
+  line-height: 1.05;
+}
+
+.content h3 {
+  font-family: var(--font-body), sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text);
+  margin-top: 28px;
+  margin-bottom: 10px;
+}
+
+.content p {
+  margin-bottom: 16px;
+  color: var(--text);
+}
+
+.content strong {
+  font-weight: 700;
+  color: var(--text);
+}
+
+.content ul,
+.content ol {
+  margin: 16px 0;
+  padding-left: 20px;
+}
+
+.content li {
+  margin-bottom: 8px;
+  color: var(--text);
+}
+
+.content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 13px;
+}
+
+.content th {
+  background: var(--surface-2);
+  padding: 10px 14px;
+  text-align: left;
+  font-weight: 700;
+  color: var(--text);
+  border-bottom: 1px solid var(--border);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.content td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  color: var(--muted);
+}
+
+/* ── CTA ── */
+
+.ctaBlock {
+  margin-top: 48px;
+  padding: 28px 24px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.ctaText {
+  font-family: var(--font-display), sans-serif;
+  font-size: 20px;
+  font-style: italic;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+.ctaBtn {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-body), sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.ctaBtn:hover {
+  opacity: 0.75;
+}
+
+@media (min-width: 768px) {
+  .wrapper {
+    padding: 0 var(--px);
+  }
+}

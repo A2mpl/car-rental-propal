@@ -2,6 +2,12 @@
    CarCard — Light Mode Premium
    ══════════════════════════════════════════════ */
 
+.cardLink {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
 .card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -9,6 +15,7 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
   transition:
     box-shadow 0.3s ease,
     transform 0.3s ease,
@@ -252,7 +259,6 @@
     transform 0.2s ease;
 }
 
-.viewBtn:hover {
+.cardLink:hover .viewBtn {
   background: var(--accent-dark);
-  transform: translateX(2px);
 }

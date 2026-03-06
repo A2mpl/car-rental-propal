@@ -455,6 +455,10 @@ export const MOCK_CARS: AS24Listing[] = [
   },
 ];
 
+export function getCarById(id: string): AS24Listing | undefined {
+  return MOCK_CARS.find((car) => car.id === id);
+}
+
 // ─────────────────────────────────────────────────────────────────────────────
 // Filter & Sort Logic (client-side)
 // ─────────────────────────────────────────────────────────────────────────────

@@ -1,0 +1,128 @@
+.section {
+  padding: 56px 0 96px;
+  background: var(--surface);
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--px-mobile);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+/* ── Card ── */
+
+.card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  overflow: hidden;
+  transition:
+    box-shadow 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.card:hover {
+  border-color: var(--border-mid);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.07);
+  transform: translateY(-2px);
+}
+
+.imageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--surface-2);
+}
+
+.image {
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.card:hover .image {
+  transform: scale(1.04);
+}
+
+.content {
+  padding: 20px 22px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.category {
+  font-family: var(--font-body), sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+}
+
+.dot {
+  color: var(--border-mid);
+  font-size: 12px;
+}
+
+.date,
+.read {
+  font-family: var(--font-body), sans-serif;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.title {
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(18px, 3vw, 24px);
+  font-weight: 400;
+  font-style: italic;
+  text-transform: uppercase;
+  color: var(--text);
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+}
+
+.desc {
+  font-family: var(--font-body), sans-serif;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.cta {
+  font-family: var(--font-body), sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-top: 4px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 var(--px);
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

@@ -1,0 +1,164 @@
+.gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* ── Main viewer ── */
+.main {
+  position: relative;
+  width: 100%;
+  height: clamp(240px, 50vw, 540px);
+  overflow: hidden;
+  background: var(--surface-2);
+}
+
+/* Chaque slide est empilée, la transition est CSS pure — pas de re-render */
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.32s ease;
+  pointer-events: none;
+}
+
+.slideActive {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.img {
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 55%, rgba(0, 0, 0, 0.22) 100%);
+  pointer-events: none;
+}
+
+/* ── Badges (bottom-left) ── */
+.badges {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 3;
+}
+
+/* ── Counter (bottom-right) ── */
+.counter {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  padding: 4px 10px;
+  background: color-mix(in srgb, #000 55%, transparent);
+  backdrop-filter: blur(6px);
+  border-radius: 20px;
+  font-family: var(--font-body), sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: #fff;
+  z-index: 3;
+  letter-spacing: 0.05em;
+}
+
+/* ── Arrow buttons ── */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-mid);
+  border-radius: 50%;
+  color: var(--text);
+  cursor: pointer;
+  z-index: 3;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    color 0.2s ease;
+}
+
+.arrowLeft {
+  left: 14px;
+}
+
+.arrowRight {
+  right: 14px;
+}
+
+.arrow:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--text-on-accent);
+}
+
+.arrowLeft:hover {
+  transform: translateY(-50%) translateX(-1px);
+}
+
+.arrowRight:hover {
+  transform: translateY(-50%) translateX(1px);
+}
+
+/* ── Thumbnails ── */
+.thumbs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+  scrollbar-width: none;
+}
+
+.thumbs::-webkit-scrollbar {
+  display: none;
+}
+
+.thumb {
+  position: relative;
+  flex-shrink: 0;
+  width: 88px;
+  height: 60px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid transparent;
+  cursor: pointer;
+  background: var(--surface-2);
+  transition:
+    border-color 0.2s ease,
+    opacity 0.2s ease,
+    transform 0.2s ease;
+  padding: 0;
+}
+
+.thumb:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+.thumbActive {
+  border-color: var(--accent);
+  opacity: 1;
+}
+
+.thumbImg {
+  object-fit: cover;
+}
+
+/* ── Desktop: taille agrandie ── */
+@media (min-width: 1024px) {
+  .thumb {
+    width: 100px;
+    height: 68px;
+  }
+}

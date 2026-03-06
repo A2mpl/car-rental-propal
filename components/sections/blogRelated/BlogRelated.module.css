@@ -1,0 +1,102 @@
+.section {
+  border-top: 1px solid var(--border);
+  padding: 56px 0 80px;
+  background: var(--surface);
+}
+
+.inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--px-mobile);
+}
+
+.heading {
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(26px, 4vw, 40px);
+  font-weight: 400;
+  font-style: italic;
+  text-transform: uppercase;
+  color: var(--text);
+  line-height: 1;
+  margin-top: 10px;
+  margin-bottom: 32px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+/* ── Card ── */
+
+.card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.card:hover {
+  border-color: var(--border-mid);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.imageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: var(--surface-2);
+}
+
+.image {
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.card:hover .image {
+  transform: scale(1.04);
+}
+
+.content {
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.category {
+  font-family: var(--font-body), sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent);
+}
+
+.title {
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(14px, 2vw, 18px);
+  font-weight: 400;
+  font-style: italic;
+  text-transform: uppercase;
+  color: var(--text);
+  line-height: 1.1;
+}
+
+@media (min-width: 768px) {
+  .inner {
+    padding: 0 var(--px);
+  }
+
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
