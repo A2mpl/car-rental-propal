@@ -46,7 +46,7 @@ export default function BlogPage() {
 
   return (
     <main>
-      <BlogHero />
+      <BlogHero article={sorted[0]}/>
       <BlogGrid articles={sorted} />
     </main>
   );

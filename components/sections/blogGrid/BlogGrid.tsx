@@ -4,52 +4,116 @@ import type { BlogArticle } from '@/data/blog';
 import styles from './BlogGrid.module.css';
 
 interface Props {
-  articles: BlogArticle[];
+    articles: BlogArticle[];
 }
 
 export default function BlogGrid({ articles }: Props) {
-  return (
-    <section className={styles.section} aria-label="Articles">
-      <div className={styles.container}>
-        <div className={styles.grid}>
-          {articles.map((article, i) => (
-            <Link key={article.slug} href={`/blog/${article.slug}`} className={styles.card}>
-              {article.image && (
-                <div className={styles.imageWrap}>
-                  <Image
-                    src={article.image}
-                    alt={article.title}
-                    fill
-                    className={styles.image}
-                    sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1279px) calc(50vw - 60px), 580px"
-                    priority={i === 0}
-                    fetchPriority={i === 0 ? 'high' : 'auto'}
-                    loading={i === 0 ? undefined : 'lazy'}
-                  />
+    // On retire le 1er article (Hero) et on garde les 6 suivants (index 1 à 7 exclus)
+    const recentArticles = articles.slice(1, 7);
+
+    return (
+        <div className={styles.wrapper}>
+
+            {/* 1. SECTION ÉDITO / INTRO */}
+            <section className={styles.introSection}>
+                <div className={styles.introGrid}>
+                    <div className={styles.introLabel}>
+                        <span>DEPUIS 2020</span>
+                    </div>
+                    <div className={styles.introContent}>
+                        <h2 className={styles.introTitle}>
+                            Décrypter le marché premium.<br />
+                            Sécuriser vos importations.<br />
+                            Conduire l&apos;exception.
+                        </h2>
+                        <p className={styles.introDesc}>
+                            Des guides experts et des comparatifs détaillés pour vous accompagner dans la location ou l&apos;achat de votre prochain véhicule de prestige à Bordeaux et partout en Europe.
+                        </p>
+                    </div>
                 </div>
-              )}
-              <div className={styles.content}>
-                <div className={styles.meta}>
-                  <span className={styles.category}>{article.category}</span>
-                  <span className={styles.dot}>·</span>
-                  <time dateTime={article.date} className={styles.date}>
-                    {new Date(article.date).toLocaleDateString('fr-FR', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric',
-                    })}
-                  </time>
-                  <span className={styles.dot}>·</span>
-                  <span className={styles.read}>{article.readTime} min</span>
+            </section>
+
+            {/* 2. SECTION CATÉGORIES (Grille 2x2) */}
+            <section className={styles.categorySection}>
+                <div className={styles.categoryGrid}>
+                    <Link href="/blog/categorie/essais" className={styles.catImageCard}>
+                        <Image src="/images/img_2.png" alt="Essais et Avis" fill className={styles.catImage} />
+                        <div className={styles.catOverlay}>
+                            <h3 className={styles.catTitle}>Essais & Avis</h3>
+                            <span className={styles.catArrow}>→</span>
+                        </div>
+                    </Link>
+
+                    <Link href="/blog/categorie/guides" className={styles.catImageCard}>
+                        <Image src="/images/img_2.png" alt="Guides d'importation" fill className={styles.catImage} />
+                        <div className={styles.catOverlay}>
+                            <h3 className={styles.catTitle}>Guides d&apos;Importation</h3>
+                            <span className={styles.catArrow}>→</span>
+                        </div>
+                    </Link>
+
+                    <div className={styles.catTextCard}>
+                        <span className={styles.catTextLabel}>AUTRES THÉMATIQUES</span>
+                        <div className={styles.catLinksList}>
+                            <Link href="/blog/categorie/fiscalite">Fiscalité & Malus</Link>
+                            <Link href="/blog/categorie/electrique">Transition Électrique</Link>
+                            <Link href="/blog/categorie/marche">Analyse du Marché</Link>
+                            <Link href="/blog/categorie/lifestyle">Lifestyle & Évènements</Link>
+                        </div>
+                    </div>
+
+                    <Link href="/blog/categorie/tendances" className={styles.catImageCard}>
+                        <Image src="/images/img_2.png" alt="Tendances du marché" fill className={styles.catImage} />
+                        <div className={styles.catOverlay}>
+                            <h3 className={styles.catTitle}>Tendances du Marché</h3>
+                            <span className={styles.catArrow}>→</span>
+                        </div>
+                    </Link>
                 </div>
-                <h2 className={styles.title}>{article.title}</h2>
-                <p className={styles.desc}>{article.description}</p>
-                <span className={styles.cta}>Lire l&apos;article →</span>
-              </div>
-            </Link>
-          ))}
+            </section>
+
+            {/* 3. SECTION DERNIERS ARTICLES (Les 6 derniers) */}
+            <section className={styles.latestSection}>
+                <div className={styles.latestGrid}>
+                    <div className={styles.latestLabel}>
+                        <span>DERNIÈRES PUBLICATIONS</span>
+                    </div>
+
+                    <div className={styles.latestList}>
+                        {recentArticles.map((article) => (
+                            <Link key={article.slug} href={`/blog/${article.slug}`} className={styles.articleRow}>
+                                <div className={styles.articleImageWrap}>
+                                    {article.image && (
+                                        <Image
+                                            src={article.image}
+                                            alt={article.title}
+                                            fill
+                                            className={styles.articleImage}
+                                            sizes="(max-width: 768px) 100vw, 400px"
+                                        />
+                                    )}
+                                </div>
+
+                                <div className={styles.articleContent}>
+                                    <h3 className={styles.articleTitle}>{article.title}</h3>
+                                    <p className={styles.articleDesc}>{article.description}</p>
+                                </div>
+
+                                <div className={styles.articleMeta}>
+                                    <time dateTime={article.date}>
+                                        {new Date(article.date).toLocaleDateString('fr-FR', {
+                                            year: 'numeric',
+                                            month: '2-digit',
+                                            day: '2-digit',
+                                        })}
+                                    </time>
+                                </div>
+                            </Link>
+                        ))}
+                    </div>
+                </div>
+            </section>
+
         </div>
-      </div>
-    </section>
-  );
+    );
 }
