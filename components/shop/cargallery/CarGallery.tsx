@@ -55,7 +55,7 @@ export default function CarGallery({ images, title, priority = false, badges }: 
               sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1279px) calc(100vw - 96px), 1184px"
               priority={priority && i === 0}
               fetchPriority={priority && i === 0 ? 'high' : 'auto'}
-              loading={priority && i === 0 ? undefined : 'lazy'}
+              loading={priority && i === 0 ? 'eager' : 'lazy'}
             />
           </div>
         ))}

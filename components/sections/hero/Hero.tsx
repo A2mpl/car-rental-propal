@@ -16,6 +16,7 @@ export default function Hero() {
           alt="Véhicule de luxe"
           fill
           priority
+          loading="eager"
           className={styles.image}
           fetchPriority="high"
           sizes="(max-width: 1600px) 100vw, 1600px"

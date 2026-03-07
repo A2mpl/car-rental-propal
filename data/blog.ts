@@ -9,8 +9,6 @@ export interface BlogArticle {
   content: string;
 }
 
-const u = (id: string) => `https://images.unsplash.com/photo-${id}?w=1200&auto=format&fit=crop&q=80`;
-
 export const BLOG_ARTICLES: BlogArticle[] = [
   {
     slug: 'louer-ferrari-bordeaux',
@@ -20,7 +18,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     date: '2025-11-10',
     category: 'Guide',
     readTime: 7,
-    image: u('1592198084033-aade902d1aae'),
+    image: '/images/blog/ferrari-roma.jpg',
     content: `
       <h2>Louer une Ferrari à Bordeaux : le rêve accessible</h2>
       <p>Bordeaux, avec ses routes sinueuses de Gironde et ses vignobles pittoresques, offre un cadre idéal pour profiter d'une <strong>Ferrari à la location</strong>. Que vous rêviez d'une Ferrari Roma, d'une 488 GTB ou d'une SF90 Stradale, plusieurs options s'offrent à vous dans la région bordelaise.</p>
@@ -66,7 +64,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     date: '2025-10-22',
     category: 'Comparatif',
     readTime: 8,
-    image: u('1560958089-b8a1929cea89'),
+    image: '/images/blog/electrique-2025.jpg',
     content: `
       <h2>Électrique rime désormais avec performance</h2>
       <p>En 2025, la <strong>location de voitures électriques premium</strong> connaît une croissance exponentielle. Les conducteurs découvrent que zéro émission n'est pas synonyme de compromis sur les sensations de conduite. Bien au contraire.</p>
@@ -102,7 +100,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     date: '2025-09-15',
     category: 'Événement',
     readTime: 6,
-    image: u('1563720223523-59d3b3e7d1e5'),
+    image: '/images/blog/mariage-bordeaux.jpg',
     content: `
       <h2>La voiture de mariage idéale : entre tradition et modernité</h2>
       <p>Votre mariage mérite une <strong>voiture d'exception à Bordeaux</strong>. Entre le classicisme d'une Bentley Continental GT et l'audace d'une Ferrari Roma, les options ne manquent pas pour marquer les esprits de vos invités et immortaliser votre journée en photos.</p>
@@ -143,7 +141,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     date: '2025-08-30',
     category: 'Comparatif',
     readTime: 9,
-    image: u('1503376780353-7e6692767b70'),
+    image: '/images/blog/porsche-vs-audi.jpg',
     content: `
       <h2>Le grand débat : thermique vs électrique pour la conduite sportive</h2>
       <p>La <strong>Porsche 911 GT3</strong> et l'<strong>Audi RS e-tron GT</strong> représentent deux visions radicalement différentes de la voiture de sport. L'une est ancrée dans 60 ans de tradition, l'autre dessine l'avenir. Laquelle conviendra le mieux à votre prochaine location ?</p>
@@ -189,7 +187,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     date: '2025-08-05',
     category: 'Guide',
     readTime: 7,
-    image: u('1533473359331-0135ef1b58bf'),
+    image: '/images/blog/location-longue-duree.jpg',
     content: `
       <h2>La location longue durée premium : une alternative séduisante à l'achat</h2>
       <p>La <strong>location longue durée de voitures premium</strong> (LLD) connaît un essor remarquable en France. À Bordeaux et en Gironde, de plus en plus de professionnels et particuliers optent pour cette formule qui permet de rouler en BMW M5, Porsche Taycan ou Tesla Model S sans immobiliser un capital important.</p>
@@ -239,7 +237,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     date: '2025-07-18',
     category: 'Véhicule',
     readTime: 6,
-    image: u('1561580125-028ee3bd62eb'),
+    image: '/images/blog/tesla-model-s.jpg',
     content: `
       <h2>Tesla Model S Plaid : le summum de la berline électrique</h2>
       <p>La <strong>Tesla Model S Plaid à Bordeaux</strong> offre une expérience de conduite radicalement différente. Trois moteurs électriques, 1 020 chevaux, 0 à 100 km/h en 1,9 secondes : les chiffres donnent le vertige. Mais au-delà des performances brutes, c'est la praticité au quotidien qui séduira les conducteurs bordelais.</p>
@@ -273,7 +271,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     date: '2025-06-25',
     category: 'Circuit',
     readTime: 8,
-    image: u('1519245659620-e859806a8d3b'),
+    image: '/images/blog/circuit-sport.jpg',
     content: `
       <h2>Location voiture sport pour circuit : une niche exigeante</h2>
       <p>Piloter une voiture de sport sur circuit est l'expérience de conduite ultime. Mais louer une voiture premium pour une <strong>sortie circuit</strong> est différent de la location routière classique — et beaucoup plus encadré.</p>
@@ -313,7 +311,7 @@ export const BLOG_ARTICLES: BlogArticle[] = [
     date: '2025-05-12',
     category: 'Véhicule',
     readTime: 7,
-    image: u('1555215695-3004980ad54e'),
+    image: '/images/blog/bmw-m4.jpg',
     content: `
       <h2>BMW M4 Competition : l'équilibre parfait entre utilité et performance</h2>
       <p>La <strong>BMW M4 Competition</strong> s'est imposée comme la référence absolue de la berline sport accessible. Ni trop extrême comme la 911 GT3, ni trop sage comme une BMW série 4 standard, elle occupe une position unique sur le marché et dans nos coeurs de passionnés.</p>

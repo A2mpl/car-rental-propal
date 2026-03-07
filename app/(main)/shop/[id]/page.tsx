@@ -10,18 +10,6 @@ import styles from './CarDetail.module.css';
 
 type Props = { params: Promise<{ id: string }> };
 
-/** Génère 4 recadrages différents à partir de l'URL Unsplash de base */
-function buildImageVariants(baseUrl: string): string[] {
-  // Extraire le base sans query string
-  const base = baseUrl.split('?')[0];
-  return [
-    `${base}?w=1200&h=700&fit=crop&crop=center&auto=format&q=82`,
-    `${base}?w=1200&h=700&fit=crop&crop=top&auto=format&q=82`,
-    `${base}?w=1200&h=700&fit=crop&crop=entropy&auto=format&q=82`,
-    `${base}?w=1200&h=700&fit=crop&crop=bottom&auto=format&q=82`,
-  ];
-}
-
 export function generateStaticParams() {
   return MOCK_CARS.map((car) => ({ id: car.id }));
 }
@@ -93,7 +81,7 @@ export default async function CarDetailPage({ params }: Props) {
     },
   };
   const fuelIcon = car.fuel === 'electric' || car.fuel === 'hybrid' ? <Zap size={14} /> : <Fuel size={14} />;
-  const images = buildImageVariants(car.image);
+  const images = car.images ?? [car.image];
 
   const galleryBadges = (
     <>
@@ -129,7 +117,8 @@ export default async function CarDetailPage({ params }: Props) {
           <CarGallery images={images} title={car.title} priority badges={galleryBadges} />
         </div>
 
-        {/* Detail layout */}
+        {/* Detail layout — section pleine largeur avec fond surface */}
+        <section className={styles.detailSection}>
         <div className={styles.layout}>
           {/* Left: info */}
           <div className={styles.infoCol}>
@@ -141,7 +130,6 @@ export default async function CarDetailPage({ params }: Props) {
 
             <h1 className={styles.title}>{car.title}</h1>
 
-            {/* Specs grid */}
             <div className={styles.specsGrid}>
               <div className={styles.specItem}>
                 <span className={styles.specIcon}>
@@ -226,6 +214,7 @@ export default async function CarDetailPage({ params }: Props) {
             </div>
           </aside>
         </div>
+        </section>
       </main>
     </>
   );

@@ -20,6 +20,7 @@ export default function BlogHero({ article }: Props) {
             sizes="100vw"
             priority
             fetchPriority="high"
+            loading="eager"
           />
         )}
         <div className={styles.overlay} aria-hidden />

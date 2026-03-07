@@ -19,9 +19,16 @@ export function proxy(request: NextRequest) {
   // font-src: next/font auto-héberge les polices → 'self' suffit.
   // upgrade-insecure-requests: force HTTP → HTTPS au niveau navigateur.
   // ───────────────────────────────────────────────────────────────────────────
+  // En dev, on retire 'strict-dynamic' car il désactive les sources host-based (http:)
+  // ce qui bloque les chunks Turbopack chargés sans nonce (loading.tsx, etc.).
+  // En prod, strict-dynamic + nonce = CSP stricte sans liste blanche d'URLs.
+  const scriptSrc = isDev
+    ? `'self' 'nonce-${nonce}' 'unsafe-inline' 'unsafe-eval' http: https:`
+    : `'self' 'nonce-${nonce}' 'strict-dynamic'`;
+
   const csp = `
     default-src 'self';
-    script-src 'self' 'nonce-${nonce}' 'strict-dynamic' 'unsafe-inline' https: http:${isDev ? " 'unsafe-eval'" : ''};
+    script-src ${scriptSrc};
     style-src 'self' 'unsafe-inline';
     img-src 'self' data: blob: https:;
     font-src 'self';

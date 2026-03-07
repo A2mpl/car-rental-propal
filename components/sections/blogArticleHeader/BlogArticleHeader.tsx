@@ -53,6 +53,7 @@ export default function BlogArticleHeader({ article }: Props) {
             sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1279px) calc(100vw - 96px), 1184px"
             priority
             fetchPriority="high"
+            loading="eager"
           />
         </div>
       )}

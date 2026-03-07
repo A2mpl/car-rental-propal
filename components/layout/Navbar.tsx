@@ -22,7 +22,7 @@ export default function Navbar() {
 
         <ul className={styles.links}>
           {nav.links.map((link) => {
-            const isActive = pathname === link.href;
+            const isActive = link.href === '/' ? pathname === '/' : pathname.startsWith(link.href);
             return (
               <li key={link.label} className={styles.linkWrapper}>
                 <Link href={link.href} className={`${styles.link} ${isActive ? styles.linkActive : ''}`}>
@@ -56,7 +56,7 @@ export default function Navbar() {
         <div className={styles.mobileMenuInner}>
           <ul className={styles.mobileLinks}>
             {nav.links.map((link) => {
-              const isActive = pathname === link.href;
+              const isActive = link.href === '/' ? pathname === '/' : pathname.startsWith(link.href);
               return (
                 <li key={link.label}>
                   <Link

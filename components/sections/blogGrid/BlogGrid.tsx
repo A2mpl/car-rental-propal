@@ -12,6 +12,7 @@ export default function BlogGrid({ articles }: Props) {
     const recentArticles = articles.slice(1, 7);
 
     return (
+        <>
         <div className={styles.wrapper}>
 
             {/* 1. SECTION ÉDITO / INTRO */}
@@ -33,11 +34,10 @@ export default function BlogGrid({ articles }: Props) {
                 </div>
             </section>
 
-            {/* 2. SECTION CATÉGORIES (Grille 2x2) */}
             <section className={styles.categorySection}>
                 <div className={styles.categoryGrid}>
                     <Link href="/blog/categorie/essais" className={styles.catImageCard}>
-                        <Image src="/images/img_2.png" alt="Essais et Avis" fill className={styles.catImage} />
+                        <Image src="/images/img_2.png" alt="Essais et Avis" fill sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1279px) 50vw, 640px" className={styles.catImage} />
                         <div className={styles.catOverlay}>
                             <h3 className={styles.catTitle}>Essais & Avis</h3>
                             <span className={styles.catArrow}>→</span>
@@ -45,7 +45,7 @@ export default function BlogGrid({ articles }: Props) {
                     </Link>
 
                     <Link href="/blog/categorie/guides" className={styles.catImageCard}>
-                        <Image src="/images/img_2.png" alt="Guides d'importation" fill className={styles.catImage} />
+                        <Image src="/images/img_2.png" alt="Guides d'importation" fill sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1279px) 50vw, 640px" className={styles.catImage} />
                         <div className={styles.catOverlay}>
                             <h3 className={styles.catTitle}>Guides d&apos;Importation</h3>
                             <span className={styles.catArrow}>→</span>
@@ -63,7 +63,7 @@ export default function BlogGrid({ articles }: Props) {
                     </div>
 
                     <Link href="/blog/categorie/tendances" className={styles.catImageCard}>
-                        <Image src="/images/img_2.png" alt="Tendances du marché" fill className={styles.catImage} />
+                        <Image src="/images/img_2.png" alt="Tendances du marché" fill sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1279px) 50vw, 640px" className={styles.catImage} />
                         <div className={styles.catOverlay}>
                             <h3 className={styles.catTitle}>Tendances du Marché</h3>
                             <span className={styles.catArrow}>→</span>
@@ -71,9 +71,9 @@ export default function BlogGrid({ articles }: Props) {
                     </Link>
                 </div>
             </section>
-
-            {/* 3. SECTION DERNIERS ARTICLES (Les 6 derniers) */}
-            <section className={styles.latestSection}>
+        </div>
+        <section className={styles.latestSection}>
+            <div className={styles.latestInner}>
                 <div className={styles.latestGrid}>
                     <div className={styles.latestLabel}>
                         <span>DERNIÈRES PUBLICATIONS</span>
@@ -112,8 +112,8 @@ export default function BlogGrid({ articles }: Props) {
                         ))}
                     </div>
                 </div>
-            </section>
-
-        </div>
+            </div>
+        </section>
+        </>
     );
 }
