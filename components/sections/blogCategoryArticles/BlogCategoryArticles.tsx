@@ -36,8 +36,8 @@ export default function BlogCategoryArticles({ articles, categoryName }: BlogCat
                     fill
                     className={styles.image}
                     sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1023px) calc(50vw - 36px), calc(33vw - 48px)"
-                    priority={index === 0}
-                    loading={index === 0 ? 'eager' : 'lazy'}
+                    priority={index < 3}
+                    loading={index < 3 ? 'eager' : 'lazy'}
                   />
                 </div>
               )}
