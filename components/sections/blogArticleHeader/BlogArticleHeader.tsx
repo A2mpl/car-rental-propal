@@ -6,7 +6,7 @@ import styles from './BlogArticleHeader.module.css';
 
 export default function BlogArticleHeader({ article }: BlogArticleHeaderProps) {
   return (
-    <>
+    <div className={styles.sectionBlogArticleHeader}>
       {/* Breadcrumb */}
       <div className={styles.breadcrumb}>
         <Link href="/blog" className={styles.breadcrumbLink}>
@@ -53,6 +53,6 @@ export default function BlogArticleHeader({ article }: BlogArticleHeaderProps) {
           />
         </div>
       )}
-    </>
+    </div>
   );
 }

@@ -46,6 +46,7 @@ export default function BlogGrid({ articles }: BlogGridProps) {
                   fill
                   sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1279px) 50vw, 640px"
                   className={styles.catImage}
+                  loading="lazy"
                 />
                 <div className={styles.catOverlay}>
                   <h3 className={styles.catTitle}>{cat.label}</h3>
@@ -73,6 +74,7 @@ export default function BlogGrid({ articles }: BlogGridProps) {
                   fill
                   sizes="(max-width: 767px) calc(100vw - 40px), (max-width: 1279px) 50vw, 640px"
                   className={styles.catImage}
+                  loading="lazy"
                 />
                 <div className={styles.catOverlay}>
                   <h3 className={styles.catTitle}>{cat.label}</h3>
@@ -91,7 +93,7 @@ export default function BlogGrid({ articles }: BlogGridProps) {
             </div>
 
             <div className={styles.latestList}>
-              {recentArticles.map((article) => (
+              {recentArticles.map((article, _) => (
                 <Link key={article.slug} href={`/blog/${article.slug}`} className={styles.articleRow}>
                   <div className={styles.articleImageWrap}>
                     {article.image && (
@@ -101,6 +103,8 @@ export default function BlogGrid({ articles }: BlogGridProps) {
                         fill
                         className={styles.articleImage}
                         sizes="(max-width: 768px) 100vw, 400px"
+                        loading="lazy"
+                        priority={false}
                       />
                     )}
                   </div>

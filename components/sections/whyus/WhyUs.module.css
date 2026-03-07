@@ -224,7 +224,7 @@
   color: var(--text-on-dark);
   font-size: 28px;
   margin: 0;
-    font-family: var(--font-display), serif;
+  font-family: var(--font-display), serif;
   font-weight: bold;
 }
 

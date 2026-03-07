@@ -1,4 +1,6 @@
-/* ── Breadcrumb ── */
+.sectionBlogArticleHeader {
+    padding-top: 80px;
+}
 
 .breadcrumb {
   display: flex;
