@@ -55,19 +55,25 @@ export default function CarCard({ car, priority = false }: CarCardProps) {
 
           <div className={styles.specs}>
             <div className={styles.spec}>
-              <Gauge size={13} className={styles.specIcon} />
-              <span className={styles.specValue}>{primarySpec}</span>
+              <span className={styles.specTop}>
+                <Gauge size={13} className={styles.specIcon} />
+                <span className={styles.specValue}>{primarySpec}</span>
+              </span>
               <span className={styles.specLabel}>{primaryLabel}</span>
             </div>
             {car.acceleration && (
               <div className={styles.spec}>
-                <Zap size={13} className={styles.specIcon} />
-                <span className={styles.specValue}>{car.acceleration}</span>
+                <span className={styles.specTop}>
+                  <Zap size={13} className={styles.specIcon} />
+                  <span className={styles.specValue}>{car.acceleration}</span>
+                </span>
                 <span className={styles.specLabel}>0–100 km/h</span>
               </div>
             )}
             <div className={styles.spec}>
-              <span className={styles.specValue}>{car.mileage.toLocaleString()} km</span>
+              <span className={styles.specTop}>
+                <span className={styles.specValue}>{car.mileage.toLocaleString()} km</span>
+              </span>
               <span className={styles.specLabel}>Kilométrage</span>
             </div>
           </div>
