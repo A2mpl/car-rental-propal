@@ -1,13 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import type { BlogArticle } from '@/data/blog';
+import type { BlogHeroProps } from '@/components/sections/blogHero/types';
 import styles from './BlogHero.module.css';
 
-interface Props {
-  article: BlogArticle;
-}
-
-export default function BlogHero({ article }: Props) {
+export default function BlogHero({ article }: BlogHeroProps) {
   return (
     <section className={styles.section} aria-label="Article à la une">
       <Link href={`/blog/${article.slug}`} className={styles.link}>

@@ -22,10 +22,7 @@ export default function AccordionItem({ question, answer, isOpen, onToggle }: Ac
         </span>
       </button>
 
-      <div
-        className={[styles.answerWrap, isOpen ? styles.answerWrapOpen : ''].join(' ')}
-        aria-hidden={!isOpen}
-      >
+      <div className={[styles.answerWrap, isOpen ? styles.answerWrapOpen : ''].join(' ')} aria-hidden={!isOpen}>
         <div className={styles.answerInner}>
           <p className={styles.answer}>{answer}</p>
         </div>

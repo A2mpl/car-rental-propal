@@ -4,21 +4,21 @@ import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useTransition } from 'react';
 import CarCard from '@/components/shop/carcard/CarCard';
+import { getPageRange } from '@/components/shop/paginated/data';
+import type { PaginatedCarGridProps } from '@/components/shop/paginated/types';
 import _gridStyles from '@/components/shop/shared/grid.module.css';
-import { type AS24Listing, filtersToParams, type ShopFilters } from '@/lib/autoscout24';
+import { filtersToParams } from '@/lib/autoscout24';
 import _styles from './PaginatedCarGrid.module.css';
 
 const styles = { ..._styles, ..._gridStyles };
 
-interface Props {
-  listings: AS24Listing[];
-  filters: ShopFilters;
-  currentPage: number;
-  totalPages: number;
-  viewMode: 'grid' | 'list';
-}
-
-export default function PaginatedCarGrid({ listings, filters, currentPage, totalPages, viewMode }: Props) {
+export default function PaginatedCarGrid({
+  listings,
+  filters,
+  currentPage,
+  totalPages,
+  viewMode,
+}: PaginatedCarGridProps) {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
 
@@ -87,29 +87,4 @@ export default function PaginatedCarGrid({ listings, filters, currentPage, total
       )}
     </>
   );
-}
-
-/**
- * Smart page range: always shows first + last page,
- * current page ±1, with ellipsis gaps in between.
- * E.g. for page 5 of 10: [1, …, 4, 5, 6, …, 10]
- */
-function getPageRange(current: number, total: number): (number | 'ellipsis')[] {
-  if (total <= 7) {
-    return Array.from({ length: total }, (_, i) => i + 1);
-  }
-
-  const range: (number | 'ellipsis')[] = [1];
-
-  if (current > 3) range.push('ellipsis');
-
-  const start = Math.max(2, current - 1);
-  const end = Math.min(total - 1, current + 1);
-  for (let i = start; i <= end; i++) range.push(i);
-
-  if (current < total - 2) range.push('ellipsis');
-
-  range.push(total);
-
-  return range;
 }

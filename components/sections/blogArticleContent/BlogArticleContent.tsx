@@ -1,12 +1,9 @@
 import Link from 'next/link';
-import type { BlogArticle } from '@/data/blog';
+import { ARTICLE_CTA } from '@/components/sections/blogArticleContent/data';
+import type { BlogArticleContentProps } from '@/components/sections/blogArticleContent/types';
 import styles from './BlogArticleContent.module.css';
 
-interface Props {
-  article: Pick<BlogArticle, 'content'>;
-}
-
-export default function BlogArticleContent({ article }: Props) {
+export default function BlogArticleContent({ article }: BlogArticleContentProps) {
   return (
     <div className={styles.wrapper}>
       <article
@@ -16,9 +13,9 @@ export default function BlogArticleContent({ article }: Props) {
       />
 
       <aside className={styles.ctaBlock}>
-        <p className={styles.ctaText}>Prêt à vivre l&apos;expérience ?</p>
-        <Link href="/shop" className={styles.ctaBtn}>
-          Voir nos véhicules disponibles →
+        <p className={styles.ctaText}>{ARTICLE_CTA.text}</p>
+        <Link href={ARTICLE_CTA.linkHref} className={styles.ctaBtn}>
+          {ARTICLE_CTA.linkLabel}
         </Link>
       </aside>
     </div>

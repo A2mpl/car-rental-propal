@@ -119,101 +119,101 @@ export default async function CarDetailPage({ params }: Props) {
 
         {/* Detail layout — section pleine largeur avec fond surface */}
         <section className={styles.detailSection}>
-        <div className={styles.layout}>
-          {/* Left: info */}
-          <div className={styles.infoCol}>
-            <div className={styles.meta}>
-              <span className={styles.year}>{car.year}</span>
-              <span className={styles.metaDot}>·</span>
-              <span className={styles.location}>{car.location}</span>
-            </div>
+          <div className={styles.layout}>
+            {/* Left: info */}
+            <div className={styles.infoCol}>
+              <div className={styles.meta}>
+                <span className={styles.year}>{car.year}</span>
+                <span className={styles.metaDot}>·</span>
+                <span className={styles.location}>{car.location}</span>
+              </div>
 
-            <h1 className={styles.title}>{car.title}</h1>
+              <h1 className={styles.title}>{car.title}</h1>
 
-            <div className={styles.specsGrid}>
-              <div className={styles.specItem}>
-                <span className={styles.specIcon}>
-                  <Fuel size={16} />
-                </span>
-                <span className={styles.specLabel}>Carburant</span>
-                <span className={styles.specValue}>{FUEL_LABELS[car.fuel]}</span>
-              </div>
-              <div className={styles.specItem}>
-                <span className={styles.specIcon}>
-                  <Gauge size={16} />
-                </span>
-                <span className={styles.specLabel}>Puissance</span>
-                <span className={styles.specValue}>{car.power} HP</span>
-              </div>
-              <div className={styles.specItem}>
-                <span className={styles.specIcon}>
-                  <Zap size={16} />
-                </span>
-                <span className={styles.specLabel}>0–100 km/h</span>
-                <span className={styles.specValue}>{car.acceleration ?? '—'}</span>
-              </div>
-              <div className={styles.specItem}>
-                <span className={styles.specIcon}>
-                  <Settings size={16} />
-                </span>
-                <span className={styles.specLabel}>Transmission</span>
-                <span className={styles.specValue}>
-                  {car.transmission === 'automatic' ? 'Automatique' : 'Manuelle'}
-                </span>
-              </div>
-              <div className={styles.specItem}>
-                <span className={styles.specIcon}>
-                  <Users size={16} />
-                </span>
-                <span className={styles.specLabel}>Places</span>
-                <span className={styles.specValue}>{car.specs.seats}</span>
-              </div>
-              <div className={styles.specItem}>
-                <span className={styles.specIcon}>
-                  <Gauge size={16} />
-                </span>
-                <span className={styles.specLabel}>Moteur</span>
-                <span className={styles.specValue}>{car.specs.engine}</span>
-              </div>
-              {car.range && (
+              <div className={styles.specsGrid}>
+                <div className={styles.specItem}>
+                  <span className={styles.specIcon}>
+                    <Fuel size={16} />
+                  </span>
+                  <span className={styles.specLabel}>Carburant</span>
+                  <span className={styles.specValue}>{FUEL_LABELS[car.fuel]}</span>
+                </div>
+                <div className={styles.specItem}>
+                  <span className={styles.specIcon}>
+                    <Gauge size={16} />
+                  </span>
+                  <span className={styles.specLabel}>Puissance</span>
+                  <span className={styles.specValue}>{car.power} HP</span>
+                </div>
                 <div className={styles.specItem}>
                   <span className={styles.specIcon}>
                     <Zap size={16} />
                   </span>
-                  <span className={styles.specLabel}>Autonomie</span>
-                  <span className={styles.specValue}>{car.range}</span>
+                  <span className={styles.specLabel}>0–100 km/h</span>
+                  <span className={styles.specValue}>{car.acceleration ?? '—'}</span>
                 </div>
-              )}
-              <div className={styles.specItem}>
-                <span className={styles.specIcon}>
-                  <Gauge size={16} />
-                </span>
-                <span className={styles.specLabel}>Kilométrage</span>
-                <span className={styles.specValue}>{car.mileage.toLocaleString('fr-FR')} km</span>
+                <div className={styles.specItem}>
+                  <span className={styles.specIcon}>
+                    <Settings size={16} />
+                  </span>
+                  <span className={styles.specLabel}>Transmission</span>
+                  <span className={styles.specValue}>
+                    {car.transmission === 'automatic' ? 'Automatique' : 'Manuelle'}
+                  </span>
+                </div>
+                <div className={styles.specItem}>
+                  <span className={styles.specIcon}>
+                    <Users size={16} />
+                  </span>
+                  <span className={styles.specLabel}>Places</span>
+                  <span className={styles.specValue}>{car.specs.seats}</span>
+                </div>
+                <div className={styles.specItem}>
+                  <span className={styles.specIcon}>
+                    <Gauge size={16} />
+                  </span>
+                  <span className={styles.specLabel}>Moteur</span>
+                  <span className={styles.specValue}>{car.specs.engine}</span>
+                </div>
+                {car.range && (
+                  <div className={styles.specItem}>
+                    <span className={styles.specIcon}>
+                      <Zap size={16} />
+                    </span>
+                    <span className={styles.specLabel}>Autonomie</span>
+                    <span className={styles.specValue}>{car.range}</span>
+                  </div>
+                )}
+                <div className={styles.specItem}>
+                  <span className={styles.specIcon}>
+                    <Gauge size={16} />
+                  </span>
+                  <span className={styles.specLabel}>Kilométrage</span>
+                  <span className={styles.specValue}>{car.mileage.toLocaleString('fr-FR')} km</span>
+                </div>
               </div>
             </div>
+
+            {/* Right: price + CTA */}
+            <aside className={styles.ctaCol}>
+              <div className={styles.ctaCard}>
+                <div className={styles.priceRow}>
+                  <span className={styles.price}>€{car.price}</span>
+                  <span className={styles.perDay}>/ jour</span>
+                </div>
+
+                <a href={car.url} target="_blank" rel="noopener noreferrer" className={styles.reserveBtn}>
+                  Réserver ↗
+                </a>
+
+                <Link href="/contact" className={styles.contactLink}>
+                  Nous contacter
+                </Link>
+
+                <p className={styles.ctaNote}>Sans frais cachés · Livraison disponible</p>
+              </div>
+            </aside>
           </div>
-
-          {/* Right: price + CTA */}
-          <aside className={styles.ctaCol}>
-            <div className={styles.ctaCard}>
-              <div className={styles.priceRow}>
-                <span className={styles.price}>€{car.price}</span>
-                <span className={styles.perDay}>/ jour</span>
-              </div>
-
-              <a href={car.url} target="_blank" rel="noopener noreferrer" className={styles.reserveBtn}>
-                Réserver ↗
-              </a>
-
-              <Link href="/contact" className={styles.contactLink}>
-                Nous contacter
-              </Link>
-
-              <p className={styles.ctaNote}>Sans frais cachés · Livraison disponible</p>
-            </div>
-          </aside>
-        </div>
         </section>
       </main>
     </>

@@ -1,14 +1,10 @@
 import { ArrowLeft } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
-import type { BlogArticle } from '@/data/blog';
+import type { BlogArticleHeaderProps } from '@/components/sections/blogArticleHeader/types';
 import styles from './BlogArticleHeader.module.css';
 
-interface Props {
-  article: BlogArticle;
-}
-
-export default function BlogArticleHeader({ article }: Props) {
+export default function BlogArticleHeader({ article }: BlogArticleHeaderProps) {
   return (
     <>
       {/* Breadcrumb */}

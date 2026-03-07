@@ -3,6 +3,7 @@
 import { SlidersHorizontal, X } from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useRef, useState, useTransition } from 'react';
+import type { FilterSidebarProps } from '@/components/shop/filter/types';
 import {
   BODIES,
   type BodyType,
@@ -15,11 +16,6 @@ import {
   type ShopFilters,
 } from '@/lib/autoscout24';
 import styles from './FilterSidebar.module.css';
-
-interface FilterSidebarProps {
-  isMobileOpen: boolean;
-  onMobileClose: () => void;
-}
 
 export default function FilterSidebar({ isMobileOpen, onMobileClose }: FilterSidebarProps) {
   const router = useRouter();

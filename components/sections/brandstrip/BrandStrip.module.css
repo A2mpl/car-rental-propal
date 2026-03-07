@@ -1,0 +1,54 @@
+.section {
+  padding-top: 32px;
+  overflow: hidden;
+  position: relative;
+  background: var(--surface);
+}
+
+.inner {
+  background: var(--bg);
+  padding: 40px 0;
+  position: relative;
+}
+
+.track {
+  display: flex;
+  width: max-content;
+}
+
+.strip {
+  display: flex;
+  align-items: center;
+  gap: 15vw;
+  padding-right: 15vw;
+}
+
+.logo {
+  color: var(--text);
+  width: 90px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.7;
+}
+
+.fadeLeft,
+.fadeRight {
+  position: absolute;
+  top: 0;
+  width: 20vw;
+  height: 100%;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.fadeLeft {
+  left: 0;
+  background: linear-gradient(to right, var(--bg) 10%, transparent);
+}
+
+.fadeRight {
+  right: 0;
+  background: linear-gradient(to left, var(--bg) 10%, transparent);
+}

@@ -1,15 +1,10 @@
 import { ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
+import type { BlogCategoryHeaderProps } from '@/components/sections/blogCategoryHeader/types';
 import SectionLabel from '@/components/ui/sectionlabel/SectionLabel';
-import type { BlogCategory } from '@/data/blogCategories';
 import styles from './BlogCategoryHeader.module.css';
 
-interface Props {
-  category: BlogCategory;
-  count: number;
-}
-
-export default function BlogCategoryHeader({ category, count }: Props) {
+export default function BlogCategoryHeader({ category, count }: BlogCategoryHeaderProps) {
   return (
     <header className={styles.header}>
       {/* Breadcrumb */}

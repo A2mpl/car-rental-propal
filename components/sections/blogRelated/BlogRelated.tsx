@@ -1,14 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import type { BlogRelatedProps } from '@/components/sections/blogRelated/types';
 import SectionLabel from '@/components/ui/sectionlabel/SectionLabel';
-import type { BlogArticle } from '@/data/blog';
 import styles from './BlogRelated.module.css';
 
-interface Props {
-  articles: BlogArticle[];
-}
-
-export default function BlogRelated({ articles }: Props) {
+export default function BlogRelated({ articles }: BlogRelatedProps) {
   return (
     <section className={styles.section} aria-label="Articles similaires">
       <div className={styles.inner}>

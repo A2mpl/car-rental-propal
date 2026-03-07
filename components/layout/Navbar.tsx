@@ -49,10 +49,7 @@ export default function Navbar() {
         </div>
       </nav>
 
-      <div
-        id="mobile-menu"
-        className={`${styles.mobileMenu} ${mobileOpen ? styles.mobileMenuOpen : ''}`}
-      >
+      <div id="mobile-menu" className={`${styles.mobileMenu} ${mobileOpen ? styles.mobileMenuOpen : ''}`}>
         <div className={styles.mobileMenuInner}>
           <ul className={styles.mobileLinks}>
             {nav.links.map((link) => {

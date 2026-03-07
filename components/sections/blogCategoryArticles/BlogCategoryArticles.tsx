@@ -1,14 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import type { BlogArticle } from '@/data/blog';
+import type { BlogCategoryArticlesProps } from '@/components/sections/blogCategoryArticles/types';
 import styles from './BlogCategoryArticles.module.css';
 
-interface Props {
-  articles: BlogArticle[];
-  categoryName: string;
-}
-
-export default function BlogCategoryArticles({ articles, categoryName }: Props) {
+export default function BlogCategoryArticles({ articles, categoryName }: BlogCategoryArticlesProps) {
   if (articles.length === 0) {
     return (
       <section className={styles.section}>

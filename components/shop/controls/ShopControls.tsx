@@ -3,39 +3,11 @@
 import { ChevronDown, ChevronsDown, LayoutGrid, List, ListOrdered, SlidersHorizontal, X } from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { useState, useTransition } from 'react';
-import type { ScrollMode } from '@/components/shop/client/types';
+import { BODY_LABELS, FUEL_LABELS, TX_LABELS } from '@/components/shop/controls/data';
+import type { ShopControlsProps } from '@/components/shop/controls/types';
 import type { SortOption } from '@/lib/autoscout24';
 import { countActiveFilters, filtersToParams, parseSearchParams, SORT_OPTIONS } from '@/lib/autoscout24';
 import styles from './ShopControls.module.css';
-
-const BODY_LABELS: Record<string, string> = {
-  sedan: 'Berline',
-  suv: 'SUV',
-  sport: 'Sport',
-  supercar: 'Supercar',
-  convertible: 'Cabriolet',
-};
-
-const FUEL_LABELS: Record<string, string> = {
-  electric: 'Électrique',
-  hybrid: 'Hybride',
-  petrol: 'Essence',
-  diesel: 'Diesel',
-};
-
-const TX_LABELS: Record<string, string> = {
-  automatic: 'Automatique',
-  manual: 'Manuelle',
-};
-
-interface Props {
-  total: number;
-  viewMode: 'grid' | 'list';
-  onViewModeChange: (v: 'grid' | 'list') => void;
-  onMobileFilterOpen: () => void;
-  scrollMode: ScrollMode;
-  onScrollModeChange: (mode: ScrollMode) => void;
-}
 
 export default function ShopControls({
   total,
@@ -44,7 +16,7 @@ export default function ShopControls({
   onMobileFilterOpen,
   scrollMode,
   onScrollModeChange,
-}: Props) {
+}: ShopControlsProps) {
   const router = useRouter();
   const rawParams = useSearchParams();
   const [isPending, startTransition] = useTransition();

@@ -7,9 +7,6 @@ import styles from './WhyUs.module.css';
 export default function WhyUs() {
   const { evChargers } = siteContent;
 
-  const premiumWhiteHalo = '0 20px 40px rgba(0, 0, 0, 0.06), 0 4px 12px rgba(0, 0, 0, 0.04)';
-  const premiumGreenHalo = '0 15px 45px rgba(62, 99, 86, 0.10), 0 4px 12px rgba(62, 99, 86, 0.06)';
-
   return (
     <section className={styles.section} aria-label="EV Chargers">
       <div className={styles.container}>
@@ -26,10 +23,7 @@ export default function WhyUs() {
             className={styles.imgCardLink}
             aria-label="Voir les véhicules premium"
           >
-            <div
-              className={`${styles.imgCell} ${styles.imgLarge}`}
-              style={{ boxShadow: premiumWhiteHalo, borderRadius: '32px', overflow: 'hidden' }}
-            >
+            <div className={`${styles.imgCell} ${styles.imgLarge} ${styles.imgLargeInner}`}>
               <Image
                 src="/images/img_2.png"
                 alt={evChargers.images[0].alt}
@@ -37,38 +31,9 @@ export default function WhyUs() {
                 sizes="(max-width: 1023px) calc(100vw - 48px), 40vw"
                 className={styles.img}
               />
-              <div
-                style={{
-                  position: 'absolute',
-                  inset: 0,
-                  padding: '30px',
-                  background: 'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, transparent 60%)',
-                  zIndex: 2,
-                  pointerEvents: 'none',
-                }}
-              >
-                <h3
-                  style={{
-                    color: 'var(--text-on-dark)',
-                    fontSize: '28px',
-                    margin: 0,
-                    fontFamily: 'var(--font-display)',
-                    fontWeight: 'bold',
-                  }}
-                >
-                  Véhicules Premium
-                </h3>
-                <p
-                  style={{
-                    color: 'var(--text-on-dark)',
-                    fontSize: '14px',
-                    fontWeight: '500',
-                    textShadow: '0 2px 4px rgba(0,0,0,0.6)',
-                    marginTop: '6px',
-                  }}
-                >
-                  Nos meilleurs véhicules disponibles
-                </p>
+              <div className={styles.imgOverlay}>
+                <h3 className={styles.imgOverlayTitle}>Véhicules Premium</h3>
+                <p className={styles.imgOverlaySubtitle}>Nos meilleurs véhicules disponibles</p>
               </div>
             </div>
           </Link>
@@ -78,10 +43,7 @@ export default function WhyUs() {
             className={styles.imgCardLink}
             aria-label="Voir les voitures sport et supercar"
           >
-            <div
-              className={`${styles.imgCell} ${styles.imgSmallB}`}
-              style={{ borderRadius: '24px', boxShadow: premiumWhiteHalo, overflow: 'hidden' }}
-            >
+            <div className={`${styles.imgCell} ${styles.imgSmallB} ${styles.imgSmallBInner}`}>
               <Image
                 src="/images/img_1.png"
                 alt={evChargers.images[2].alt}
@@ -92,33 +54,9 @@ export default function WhyUs() {
             </div>
           </Link>
 
-          <div
-            className={`${styles.imgCell} ${styles.imgSmallA}`}
-            style={{
-              backgroundColor: 'var(--card-stat-bg)',
-              borderRadius: '24px',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              alignItems: 'center',
-              boxShadow: premiumGreenHalo,
-              textAlign: 'center',
-              overflow: 'hidden',
-            }}
-          >
+          <div className={`${styles.imgCell} ${styles.imgSmallA} ${styles.imgSmallAInner}`}>
             <h3 className={styles.nbClients}>900+</h3>
-            <span
-              style={{
-                color: 'var(--text-on-dark)',
-                fontWeight: '800',
-                fontSize: '10px',
-                textTransform: 'uppercase',
-                letterSpacing: '1px',
-                marginTop: '10px',
-              }}
-            >
-              Clients Satisfaits
-            </span>
+            <span className={styles.statLabel}>Clients Satisfaits</span>
           </div>
         </div>
 

@@ -50,7 +50,7 @@ export default async function BlogCategoryPage({ params }: Props) {
   if (!category) notFound();
 
   const articles = BLOG_ARTICLES.filter((a) => category.categories.includes(a.category)).sort((a, b) =>
-    b.date.localeCompare(a.date),
+    b.date.localeCompare(a.date)
   );
 
   return (

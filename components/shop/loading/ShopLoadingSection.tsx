@@ -1,5 +1,6 @@
 import Navbar from '@/components/layout/Navbar';
 import _styles from '@/components/shop/client/shop.module.css';
+import { SKELETON_COUNT } from '@/components/shop/loading/data';
 import _gridStyles from '@/components/shop/shared/grid.module.css';
 import _skeletonStyles from '@/components/shop/shared/skeleton.module.css';
 
@@ -24,7 +25,7 @@ export default function ShopLoadingSection() {
           </div>
           <div className={styles.skeletonSortBar} />
           <div className={styles.grid}>
-            {Array.from({ length: 9 }).map((_, i) => (
+            {Array.from({ length: SKELETON_COUNT }).map((_, i) => (
               // biome-ignore lint/suspicious/noArrayIndexKey: DEV
               <div key={i} className={styles.skeletonCard}>
                 <div className={styles.skeletonImage} />

@@ -3,15 +3,8 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import { useCallback, useEffect, useState } from 'react';
+import type { CarGalleryProps } from '@/components/shop/cargallery/types';
 import styles from './CarGallery.module.css';
-
-interface CarGalleryProps {
-  images: string[];
-  title: string;
-  /** Passer true quand la galerie est l'élément LCP de la page (above-the-fold) */
-  priority?: boolean;
-  badges?: React.ReactNode;
-}
 
 export default function CarGallery({ images, title, priority = false, badges }: CarGalleryProps) {
   const [active, setActive] = useState(0);
